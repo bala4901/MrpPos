@@ -28,9 +28,9 @@ Partial Class BaseForm
         Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PieceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ItemInventoryMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -63,7 +63,7 @@ Partial Class BaseForm
         Me.MenuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.MenuStrip.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MenuStrip.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystemToolStripMenuItem, Me.PieceToolStripMenuItem, Me.ToolStripMenuItem1, Me.SummaryToolStripMenuItem, Me.ToolStripMenuItem2})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystemToolStripMenuItem, Me.PieceToolStripMenuItem, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.SummaryToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(858, 48)
@@ -110,6 +110,13 @@ Partial Class BaseForm
         Me.PieceToolStripMenuItem.Size = New System.Drawing.Size(59, 44)
         Me.PieceToolStripMenuItem.Text = "Scaling"
         '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.Indigo
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(65, 44)
+        Me.ToolStripMenuItem2.Text = "Barcode"
+        '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemInventoryMToolStripMenuItem})
@@ -126,14 +133,6 @@ Partial Class BaseForm
         Me.ItemInventoryMToolStripMenuItem.Name = "ItemInventoryMToolStripMenuItem"
         Me.ItemInventoryMToolStripMenuItem.Size = New System.Drawing.Size(139, 24)
         Me.ItemInventoryMToolStripMenuItem.Text = "Product"
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.Indigo
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(47, 44)
-        Me.ToolStripMenuItem2.Text = "CASE"
-        Me.ToolStripMenuItem2.Visible = False
         '
         'SummaryToolStripMenuItem
         '

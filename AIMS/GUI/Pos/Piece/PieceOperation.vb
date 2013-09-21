@@ -758,10 +758,10 @@ Public Class PieceOperation
 
                     Next
 
-                    'For Each line As mrp_order_line In orderLine.ToList
-                    '    line.box_id = box_id
-                    '    db.mrp_order_line.ApplyCurrentValues(line)
-                    'Next
+                    For Each line As mrp_order_line In orderLine.ToList
+                        line.box_id = box_id
+                        db.mrp_order_line.ApplyCurrentValues(line)
+                    Next
 
                   
                     Try
@@ -823,9 +823,9 @@ Public Class PieceOperation
         If box_id > 0 Then
             Using db As New MrpPosEntities
                 Dim cr As New Case_Summary
-                Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join oc In db.mrp_order_case
-                                                                     On ol.box_id Equals oc.id
-                                                                      Where oc.id = box_id
+                Dim lines As IEnumerable(Of mrp_order_line) = (From cp In db.mrp_case_piece Join ol In db.mrp_order_line On cp.line_id Equals ol.id
+                                                               Join oc In db.mrp_order_case On cp.case_id Equals oc.id
+                                                                      Where cp.case_id = box_id
                                                                       Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs}) _
                                                                            .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
                                                                                                                                       .total_weight = x.total_qty, .unit_price = x.unit_price})
