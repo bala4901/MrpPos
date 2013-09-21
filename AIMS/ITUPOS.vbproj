@@ -580,7 +580,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\MrpPos.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Lib\FileDB.dll" />
     <Content Include="Lib\Mono.Security.dll" />
