@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F52EA574-1B19-4368-8039-41BD3AFA86B0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>AIMS.My.MyApplication</StartupObject>
+    <RootNamespace>AIMS</RootNamespace>
+    <AssemblyName>AIMS</AssemblyName>
+    <MyType>WindowsForms</MyType>
+    <ApplicationIcon>newlogo.ico</ApplicationIcon>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>C:\Users\markus\Documents\Visual Studio 2010\Projects\POS\Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>AIMS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>AIMS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>AIMS.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>AIMS.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>BF043DCED20FB7970FAFB38C1A3E7CB0D8D8FECB</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ITUPOS_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0-rc1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0-rc1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServerCompact">
+      <HintPath>..\packages\EntityFramework.SqlServerCompact.6.0.0-rc1\lib\net40\EntityFramework.SqlServerCompact.dll</HintPath>
+    </Reference>
+    <Reference Include="FileDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\FileDB.dll</HintPath>
+    </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Mono.Security, Version=2.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.0.13.91, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="policy.2.0.Npgsql, Version=0.0.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\policy.2.0.Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyGridEx">
+      <HintPath>Lib\PropertyGridEx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VS2005Extender">
+      <HintPath>Lib\VS2005Extender.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <HintPath>Lib\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Class\AuthorCodeImageGalleryVB.Designer.vb">
+      <DependentUpon>AuthorCodeImageGalleryVB.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\AuthorCodeImageGalleryVB.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Class\MaintainScrollPosition.vb" />
+    <Compile Include="Class\PictureDescription.Designer.vb">
+      <DependentUpon>PictureDescription.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Class\PictureDescription.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Database\MrpPos.Designer.vb">
+      <DependentUpon>MrpPos.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Database\PartialClass.vb" />
+    <Compile Include="Dataset\MrpLineSummary.vb" />
+    <Compile Include="Dataset\MrpPos.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MrpPos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\MrpPos.vb">
+      <DependentUpon>MrpPos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\General\BaseForm.designer.vb">
+      <DependentUpon>BaseForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\General\BaseForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\General\ChangePasswordForm.Designer.vb">
+      <DependentUpon>ChangePasswordForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\General\ChangePasswordForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\General\LoginForm.Designer.vb">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\General\LoginForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Master\Product\AddProduct.Designer.vb">
+      <DependentUpon>AddProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Master\Product\AddProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Master\Product\CaseProduct.Designer.vb">
+      <DependentUpon>CaseProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Master\Product\CaseProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Master\Product\ModifyProduct.Designer.vb">
+      <DependentUpon>ModifyProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Master\Product\ModifyProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Master\Product\Product.Designer.vb">
+      <DependentUpon>Product.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Master\Product\Product.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pos\Case\CaseOperation.Designer.vb">
+      <DependentUpon>CaseOperation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pos\Case\CaseOperation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\DailySummary.Designer.vb">
+      <DependentUpon>DailySummary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\DailySummary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\PieceCaseProduct.Designer.vb">
+      <DependentUpon>PieceCaseProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\PieceCaseProduct.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\LotFrm.Designer.vb">
+      <DependentUpon>LotFrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\LotFrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\PieceOperation.Designer.vb">
+      <DependentUpon>PieceOperation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\PieceOperation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\weigtingFrm.Designer.vb">
+      <DependentUpon>weigtingFrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pos\Piece\weigtingFrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Report\PieceSummary.Designer.vb">
+      <DependentUpon>PieceSummary.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Report\PieceSummary.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\CommonMethod.vb" />
+    <Compile Include="Module\EnumSettings.vb" />
+    <Compile Include="Module\OErpShared.vb" />
+    <Compile Include="Module\Variables.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Report\CaseLabel1.vb">
+      <DependentUpon>CaseLabel1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\CaseLabel.vb">
+      <DependentUpon>CaseLabel.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\Case_Summary.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Case_Summary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\CasePriceLabel.vb">
+      <DependentUpon>CasePriceLabel.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\PiecePriceLabel.vb">
+      <DependentUpon>PiecePriceLabel.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\PieceLabel2.vb">
+      <DependentUpon>PieceLabel2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\PieceSummaryLabel.vb">
+      <DependentUpon>PieceSummaryLabel.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\PiecePriceLabel1.vb">
+      <DependentUpon>PiecePriceLabel1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\of PieceLabel.vb">
+      <DependentUpon>of PieceLabel.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\PieceLabel.vb">
+      <DependentUpon>PieceLabel.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\Summary.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Summary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Settings.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Class\AuthorCodeImageGalleryVB.resx">
+      <DependentUpon>AuthorCodeImageGalleryVB.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Class\PictureDescription.resx">
+      <DependentUpon>PictureDescription.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\General\BaseForm.resx">
+      <DependentUpon>BaseForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\General\ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\General\LoginForm.resx">
+      <DependentUpon>LoginForm.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Master\Product\AddProduct.resx">
+      <DependentUpon>AddProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Master\Product\CaseProduct.resx">
+      <DependentUpon>CaseProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Master\Product\ModifyProduct.resx">
+      <DependentUpon>ModifyProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Master\Product\Product.resx">
+      <DependentUpon>Product.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pos\Case\CaseOperation.resx">
+      <DependentUpon>CaseOperation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pos\Piece\DailySummary.resx">
+      <DependentUpon>DailySummary.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pos\Piece\PieceCaseProduct.resx">
+      <DependentUpon>PieceCaseProduct.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pos\Piece\LotFrm.resx">
+      <DependentUpon>LotFrm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pos\Piece\PieceOperation.resx">
+      <DependentUpon>PieceOperation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Pos\Piece\weigtingFrm.resx">
+      <DependentUpon>weigtingFrm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Report\PieceSummary.resx">
+      <DependentUpon>PieceSummary.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CaseLabel1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CaseLabel1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CaseLabel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CaseLabel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Case_Summary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Case_Summary.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\CasePriceLabel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CasePriceLabel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PiecePriceLabel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PiecePriceLabel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PieceLabel2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PieceLabel2.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PieceSummaryLabel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PieceSummaryLabel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PiecePriceLabel1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PiecePriceLabel1.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\of PieceLabel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>of PieceLabel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PieceLabel.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PieceLabel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Summary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Summary.vb</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Database\filedb.fdb" />
+    <None Include="Database\MrpPos.sdf1" />
+    <None Include="Dataset\MrpPos.xsc">
+      <DependentUpon>MrpPos.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\MrpPos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MrpPos.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Dataset\MrpPos.xss">
+      <DependentUpon>MrpPos.xsd</DependentUpon>
+    </None>
+    <None Include="ITUPOS_TemporaryKey.pfx" />
+    <None Include="Lib\policy.2.0.Npgsql.config" />
+    <None Include="My Project\app.manifest" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\OpenErp.Net.MrpOrderLine.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\images\background.JPG" />
+    <None Include="Resources\images\add.png" />
+    <None Include="Resources\images\asrs activity.png" />
+    <None Include="Resources\images\clear.png" />
+    <None Include="Resources\images\confirm.png" />
+    <None Include="Resources\icons\asrs activity icon.ico" />
+    <None Include="Resources\icons\icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\refresh.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\uncheck.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\check.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\grid size.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons\new.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
+      <Visible>False</Visible>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AMD64\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\MrpPos.sdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\FileDB.dll" />
+    <Content Include="Lib\Mono.Security.dll" />
+    <Content Include="Lib\Npgsql.dll" />
+    <Content Include="Lib\policy.2.0.Npgsql.dll" />
+    <None Include="Resources\icons\Gnome-edit-delete.svg.png" />
+    <Content Include="x86\sqlceca35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlcecompact35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlceer35EN.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlceme35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlceoledb35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlceqp35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\sqlcese35.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\icons\Box-icon.png" />
+    <Content Include="newlogo.ico" />
+    <Content Include="Resources\icons\cancel-icon.png" />
+    <None Include="Resources\icons\scale-48x48.png" />
+    <None Include="Resources\icons\go-next.png" />
+    <None Include="Resources\icons\shopsavvy_icon.jpg" />
+    <None Include="Resources\icons\report-icon.png" />
+    <None Include="Resources\icons\report.png" />
+    <None Include="Resources\icons\go-previous.png" />
+    <Content Include="Resources\icons\validate.png" />
+    <None Include="Resources\images\banner4.png" />
+    <None Include="Resources\images\banner12.png" />
+    <None Include="Resources\images\box.png" />
+    <None Include="Resources\images\box-320x320.png" />
+    <Content Include="Resources\images\placeholder.png" />
+    <Content Include="Resources\images\printer.png" />
+    <Content Include="Resources\images\scale-320x320.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenErp.Net\OpenErp.Net.vbproj">
+      <Project>{62F9248F-00AC-4780-B9F8-26502F928C69}</Project>
+      <Name>OpenErp.Net</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Database\MrpPos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MrpPos.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\x86\*.*" "$(TargetDir)x86"
+    if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+    xcopy /s /y "$(SolutionDir)packages\Microsoft.SqlServer.Compact.4.0.8876.1\NativeBinaries\amd64\*.*" "$(TargetDir)amd64"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

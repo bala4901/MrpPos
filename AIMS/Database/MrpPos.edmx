@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MrpPosModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MrpPosModelStoreContainer">
+          <EntitySet Name="mrp_case_piece" EntityType="MrpPosModel.Store.mrp_case_piece" store:Type="Tables" />
+          <EntitySet Name="mrp_order" EntityType="MrpPosModel.Store.mrp_order" store:Type="Tables" />
+          <EntitySet Name="mrp_order_case" EntityType="MrpPosModel.Store.mrp_order_case" store:Type="Tables" />
+          <EntitySet Name="mrp_order_line" EntityType="MrpPosModel.Store.mrp_order_line" store:Type="Tables" />
+          <EntitySet Name="mrp_prod_lot" EntityType="MrpPosModel.Store.mrp_prod_lot" store:Type="Tables" />
+          <EntitySet Name="product_case" EntityType="MrpPosModel.Store.product_case" store:Type="Tables" />
+          <EntitySet Name="product_product" EntityType="MrpPosModel.Store.product_product" store:Type="Tables" />
+          <EntitySet Name="user_user" EntityType="MrpPosModel.Store.user_user" store:Type="Tables" />
+        </EntityContainer>
+        <EntityType Name="mrp_case_piece">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="case_id" Type="bigint" />
+          <Property Name="order_id" Type="bigint" />
+          <Property Name="create_by" Type="bigint" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="write_by" Type="bigint" />
+          <Property Name="write_date" Type="datetime" />
+          <Property Name="line_id" Type="bigint" />
+        </EntityType>
+        <EntityType Name="mrp_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="workstation_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="date_order" Type="datetime" />
+          <Property Name="nb_print" Type="nvarchar" MaxLength="100" />
+          <Property Name="lot_id" Type="int" />
+          <Property Name="state" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="create_uid" Type="int" />
+          <Property Name="write_date" Type="datetime" />
+          <Property Name="write_uid" Type="int" />
+          <Property Name="product_id" Type="bigint" />
+          <Property Name="total_pcs" Type="bigint" />
+          <Property Name="total_weight" Type="bigint" />
+          <Property Name="total_cases" Type="bigint" />
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="printPrice" Type="int" />
+          <Property Name="printCase" Type="int" />
+          <Property Name="case_product_id" Type="int" />
+          <Property Name="pcs_per_case" Type="int" />
+          <Property Name="printSlogan" Type="int" />
+          <Property Name="caseprice" Type="int" />
+          <Property Name="print_summary" Type="int" />
+        </EntityType>
+        <EntityType Name="mrp_order_case">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="no_of_pcs" Type="int" />
+          <Property Name="qty" Type="bigint" />
+          <Property Name="order_id" Type="bigint" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="create_id" Type="int" />
+          <Property Name="write_date" Type="datetime" />
+          <Property Name="write_id" Type="int" />
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="product_id" Type="bigint" />
+          <Property Name="serial_no" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="mrp_order_line">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="product_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="order_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="prodlot_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="qty" Type="nvarchar" MaxLength="100" />
+          <Property Name="box_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="create_uid" Type="int" />
+          <Property Name="write_date" Type="datetime" />
+          <Property Name="write_uid" Type="int" />
+          <Property Name="price" Type="numeric" />
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="serial_no" Type="nvarchar" MaxLength="100" />
+          <Property Name="prefix" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="mrp_prod_lot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="expired_date" Type="datetime" />
+          <Property Name="manufacturing_date" Type="nvarchar" MaxLength="100" />
+          <Property Name="day_to_expiry" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_uid" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="write_uid" Type="int" />
+          <Property Name="write_date" Type="datetime" />
+          <Property Name="id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_case">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="product_id" Type="bigint" />
+          <Property Name="pcs_per_case" Type="int" />
+          <Property Name="case_product_id" Type="bigint" />
+          <Property Name="write_uid" Type="int" />
+          <Property Name="write_date" Type="datetime" />
+          <Property Name="create_uid" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="40" />
+          <Property Name="name2" Type="nvarchar" MaxLength="40" />
+          <Property Name="ean13" Type="nvarchar" MaxLength="14" />
+          <Property Name="code" Type="nvarchar" MaxLength="5" />
+          <Property Name="price_per_kg" Type="bigint" />
+          <Property Name="is_case_product" Type="int" />
+          <Property Name="image" Type="nvarchar" MaxLength="100" />
+          <Property Name="day_to_expire" Type="int" />
+          <Property Name="weight_type" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="create_uid" Type="int" />
+          <Property Name="write_date" Type="datetime" />
+          <Property Name="write_uid" Type="int" />
+          <Property Name="ean13font" Type="nvarchar" MaxLength="100" />
+          <Property Name="no_of_barcode" Type="int" />
+        </EntityType>
+        <EntityType Name="user_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="user_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_ean13" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_uid" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="write_uid" Type="int" />
+          <Property Name="write_Date" Type="datetime" />
+          <Property Name="id" Type="bigint" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MrpPosModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="MrpPosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mrp_prod_lot" EntityType="MrpPosModel.mrp_prod_lot" />
+          <EntitySet Name="product_case" EntityType="MrpPosModel.product_case" />
+          <EntitySet Name="user_user" EntityType="MrpPosModel.user_user" />
+          <EntitySet Name="product_product" EntityType="MrpPosModel.product_product" />
+          <EntitySet Name="mrp_order_line" EntityType="MrpPosModel.mrp_order_line" />
+          <EntitySet Name="mrp_order_case" EntityType="MrpPosModel.mrp_order_case" />
+          <EntitySet Name="mrp_order" EntityType="MrpPosModel.mrp_order" />
+          <EntitySet Name="mrp_case_piece" EntityType="MrpPosModel.mrp_case_piece" />
+        </EntityContainer>
+        <EntityType Name="mrp_prod_lot">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="expired_date" Type="DateTime" />
+          <Property Name="manufacturing_date" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="day_to_expiry" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="create_uid" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" />
+          <Property Name="write_uid" Type="Int32" />
+          <Property Name="write_date" Type="DateTime" />
+          <Property Name="id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_case">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="product_id" Type="Int64" />
+          <Property Name="pcs_per_case" Type="Int32" />
+          <Property Name="case_product_id" Type="Int64" />
+          <Property Name="write_uid" Type="Int32" />
+          <Property Name="write_date" Type="DateTime" />
+          <Property Name="create_uid" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" />
+          <Property Name="id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="user_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="user_id" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="password" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="user_ean13" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="create_uid" Type="Int32" />
+          <Property Name="create_date" Type="DateTime" />
+          <Property Name="write_uid" Type="Int32" />
+          <Property Name="write_Date" Type="DateTime" />
+          <Property Name="id" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product_product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="name2" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ean13" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="code" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="price_per_kg" />
+          <Property Type="Int32" Name="is_case_product" />
+          <Property Type="String" Name="image" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="day_to_expire" />
+          <Property Type="Int32" Name="weight_type" />
+          <Property Type="DateTime" Name="create_date" />
+          <Property Type="Int32" Name="create_uid" />
+          <Property Type="DateTime" Name="write_date" />
+          <Property Type="Int32" Name="write_uid" />
+          <Property Type="String" Name="ean13font" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="no_of_barcode" />
+        </EntityType>
+        <EntityType Name="mrp_order_line">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="String" Name="product_id" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="order_id" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="prodlot_id" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="qty" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="box_id" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="create_date" />
+          <Property Type="Int32" Name="create_uid" />
+          <Property Type="DateTime" Name="write_date" />
+          <Property Type="Int32" Name="write_uid" />
+          <Property Type="Decimal" Name="price" Precision="18" Scale="0" />
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="serial_no" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="prefix" MaxLength="3" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="mrp_order_case">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="no_of_pcs" />
+          <Property Type="Int64" Name="qty" />
+          <Property Type="Int64" Name="order_id" />
+          <Property Type="DateTime" Name="create_date" />
+          <Property Type="Int32" Name="create_id" />
+          <Property Type="DateTime" Name="write_date" />
+          <Property Type="Int32" Name="write_id" />
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int64" Name="product_id" />
+          <Property Type="String" Name="serial_no" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="mrp_order">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="String" Name="name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="workstation_id" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="date_order" />
+          <Property Type="String" Name="nb_print" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="lot_id" />
+          <Property Type="String" Name="state" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="create_date" />
+          <Property Type="Int32" Name="create_uid" />
+          <Property Type="DateTime" Name="write_date" />
+          <Property Type="Int32" Name="write_uid" />
+          <Property Type="Int64" Name="product_id" />
+          <Property Type="Int64" Name="total_pcs" />
+          <Property Type="Int64" Name="total_weight" />
+          <Property Type="Int64" Name="total_cases" />
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="printPrice" />
+          <Property Type="Int32" Name="printCase" />
+          <Property Type="Int32" Name="case_product_id" />
+          <Property Type="Int32" Name="pcs_per_case" />
+          <Property Type="Int32" Name="printSlogan" />
+          <Property Type="Int32" Name="caseprice" />
+          <Property Type="Int32" Name="print_summary" />
+        </EntityType>
+        <EntityType Name="mrp_case_piece">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int64" Name="case_id" />
+          <Property Type="Int64" Name="order_id" />
+          <Property Type="Int64" Name="create_by" />
+          <Property Type="DateTime" Name="create_date" />
+          <Property Type="Int64" Name="write_by" />
+          <Property Type="DateTime" Name="write_date" />
+          <Property Type="Int64" Name="line_id" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MrpPosModelStoreContainer" CdmEntityContainer="MrpPosEntities">
+          <EntitySetMapping Name="mrp_prod_lot"><EntityTypeMapping TypeName="MrpPosModel.mrp_prod_lot"><MappingFragment StoreEntitySet="mrp_prod_lot">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="expired_date" ColumnName="expired_date" />
+            <ScalarProperty Name="manufacturing_date" ColumnName="manufacturing_date" />
+            <ScalarProperty Name="day_to_expiry" ColumnName="day_to_expiry" />
+            <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+            <ScalarProperty Name="create_date" ColumnName="create_date" />
+            <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+            <ScalarProperty Name="write_date" ColumnName="write_date" />
+            <ScalarProperty Name="id" ColumnName="id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="product_case"><EntityTypeMapping TypeName="MrpPosModel.product_case"><MappingFragment StoreEntitySet="product_case">
+            <ScalarProperty Name="product_id" ColumnName="product_id" />
+            <ScalarProperty Name="pcs_per_case" ColumnName="pcs_per_case" />
+            <ScalarProperty Name="case_product_id" ColumnName="case_product_id" />
+            <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+            <ScalarProperty Name="write_date" ColumnName="write_date" />
+            <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+            <ScalarProperty Name="create_date" ColumnName="create_date" />
+            <ScalarProperty Name="id" ColumnName="id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="user_user"><EntityTypeMapping TypeName="MrpPosModel.user_user"><MappingFragment StoreEntitySet="user_user">
+            <ScalarProperty Name="user_name" ColumnName="user_name" />
+            <ScalarProperty Name="user_id" ColumnName="user_id" />
+            <ScalarProperty Name="password" ColumnName="password" />
+            <ScalarProperty Name="user_ean13" ColumnName="user_ean13" />
+            <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+            <ScalarProperty Name="create_date" ColumnName="create_date" />
+            <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+            <ScalarProperty Name="write_Date" ColumnName="write_Date" />
+            <ScalarProperty Name="id" ColumnName="id" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="product_product">
+            <EntityTypeMapping TypeName="MrpPosModel.product_product">
+              <MappingFragment StoreEntitySet="product_product">
+                <ScalarProperty Name="no_of_barcode" ColumnName="no_of_barcode" />
+                <ScalarProperty Name="ean13font" ColumnName="ean13font" />
+                <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="weight_type" ColumnName="weight_type" />
+                <ScalarProperty Name="day_to_expire" ColumnName="day_to_expire" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="is_case_product" ColumnName="is_case_product" />
+                <ScalarProperty Name="price_per_kg" ColumnName="price_per_kg" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="ean13" ColumnName="ean13" />
+                <ScalarProperty Name="name2" ColumnName="name2" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mrp_order_line">
+            <EntityTypeMapping TypeName="MrpPosModel.mrp_order_line">
+              <MappingFragment StoreEntitySet="mrp_order_line">
+                <ScalarProperty Name="prefix" ColumnName="prefix" />
+                <ScalarProperty Name="serial_no" ColumnName="serial_no" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="box_id" ColumnName="box_id" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="prodlot_id" ColumnName="prodlot_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mrp_order_case">
+            <EntityTypeMapping TypeName="MrpPosModel.mrp_order_case">
+              <MappingFragment StoreEntitySet="mrp_order_case">
+                <ScalarProperty Name="serial_no" ColumnName="serial_no" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="write_id" ColumnName="write_id" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="no_of_pcs" ColumnName="no_of_pcs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mrp_order">
+            <EntityTypeMapping TypeName="MrpPosModel.mrp_order">
+              <MappingFragment StoreEntitySet="mrp_order">
+                <ScalarProperty Name="print_summary" ColumnName="print_summary" />
+                <ScalarProperty Name="caseprice" ColumnName="caseprice" />
+                <ScalarProperty Name="printSlogan" ColumnName="printSlogan" />
+                <ScalarProperty Name="pcs_per_case" ColumnName="pcs_per_case" />
+                <ScalarProperty Name="case_product_id" ColumnName="case_product_id" />
+                <ScalarProperty Name="printCase" ColumnName="printCase" />
+                <ScalarProperty Name="printPrice" ColumnName="printPrice" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="total_cases" ColumnName="total_cases" />
+                <ScalarProperty Name="total_weight" ColumnName="total_weight" />
+                <ScalarProperty Name="total_pcs" ColumnName="total_pcs" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="lot_id" ColumnName="lot_id" />
+                <ScalarProperty Name="nb_print" ColumnName="nb_print" />
+                <ScalarProperty Name="date_order" ColumnName="date_order" />
+                <ScalarProperty Name="workstation_id" ColumnName="workstation_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mrp_case_piece">
+            <EntityTypeMapping TypeName="MrpPosModel.mrp_case_piece">
+              <MappingFragment StoreEntitySet="mrp_case_piece">
+                <ScalarProperty Name="line_id" ColumnName="line_id" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="write_by" ColumnName="write_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="case_id" ColumnName="case_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="MrpPos" ZoomLevel="76">
+        <EntityTypeShape EntityType="MrpPosModel.mrp_prod_lot" Width="1.5" PointX="2.75" PointY="4.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MrpPosModel.product_case" Width="1.5" PointX="4.75" PointY="4.75" Height="2.5571907552083335" IsExpanded="true" />
+        <EntityTypeShape EntityType="MrpPosModel.user_user" Width="1.5" PointX="6.75" PointY="5.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MrpPosModel.product_product" Width="1.5" PointX="7.375" PointY="0.75" Height="4.0956022135416674" />
+        <EntityTypeShape EntityType="MrpPosModel.mrp_order_line" Width="1.5" PointX="0.75" PointY="8.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="MrpPosModel.mrp_order_case" Width="1.5" PointX="3.375" PointY="0.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="MrpPosModel.mrp_order" Width="1.5" PointX="3.375" PointY="8.75" Height="5.2494108072916674" />
+        <EntityTypeShape EntityType="MrpPosModel.mrp_case_piece" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5571907552083317" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
