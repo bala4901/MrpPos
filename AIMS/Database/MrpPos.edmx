@@ -27,6 +27,7 @@
           <Property Name="write_by" Type="bigint" />
           <Property Name="write_date" Type="datetime" />
           <Property Name="line_id" Type="bigint" />
+          <Property Name="status" Type="int" />
         </EntityType>
         <EntityType Name="mrp_order">
           <Key>
@@ -156,12 +157,12 @@
       <Schema Namespace="MrpPosModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="MrpPosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="mrp_prod_lot" EntityType="MrpPosModel.mrp_prod_lot" />
-          <EntitySet Name="product_case" EntityType="MrpPosModel.product_case" />
           <EntitySet Name="user_user" EntityType="MrpPosModel.user_user" />
           <EntitySet Name="product_product" EntityType="MrpPosModel.product_product" />
           <EntitySet Name="mrp_order_line" EntityType="MrpPosModel.mrp_order_line" />
           <EntitySet Name="mrp_order_case" EntityType="MrpPosModel.mrp_order_case" />
           <EntitySet Name="mrp_order" EntityType="MrpPosModel.mrp_order" />
+          <EntitySet Name="product_case" EntityType="MrpPosModel.product_case" />
           <EntitySet Name="mrp_case_piece" EntityType="MrpPosModel.mrp_case_piece" />
         </EntityContainer>
         <EntityType Name="mrp_prod_lot">
@@ -176,19 +177,6 @@
           <Property Name="create_date" Type="DateTime" />
           <Property Name="write_uid" Type="Int32" />
           <Property Name="write_date" Type="DateTime" />
-          <Property Name="id" Type="Int64" Nullable="false" />
-        </EntityType>
-        <EntityType Name="product_case">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="product_id" Type="Int64" />
-          <Property Name="pcs_per_case" Type="Int32" />
-          <Property Name="case_product_id" Type="Int64" />
-          <Property Name="write_uid" Type="Int32" />
-          <Property Name="write_date" Type="DateTime" />
-          <Property Name="create_uid" Type="Int32" />
-          <Property Name="create_date" Type="DateTime" />
           <Property Name="id" Type="Int64" Nullable="false" />
         </EntityType>
         <EntityType Name="user_user">
@@ -286,6 +274,19 @@
           <Property Type="Int32" Name="caseprice" />
           <Property Type="Int32" Name="print_summary" />
         </EntityType>
+        <EntityType Name="product_case">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="product_id" />
+          <Property Type="Int32" Name="pcs_per_case" />
+          <Property Type="Int64" Name="case_product_id" />
+          <Property Type="Int32" Name="write_uid" />
+          <Property Type="DateTime" Name="write_date" />
+          <Property Type="Int32" Name="create_uid" />
+          <Property Type="DateTime" Name="create_date" />
+          <Property Type="Int64" Name="id" Nullable="false" />
+        </EntityType>
         <EntityType Name="mrp_case_piece">
           <Key>
             <PropertyRef Name="id" />
@@ -298,6 +299,7 @@
           <Property Type="Int64" Name="write_by" />
           <Property Type="DateTime" Name="write_date" />
           <Property Type="Int64" Name="line_id" />
+          <Property Type="Int32" Name="status" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -314,16 +316,6 @@
             <ScalarProperty Name="create_date" ColumnName="create_date" />
             <ScalarProperty Name="write_uid" ColumnName="write_uid" />
             <ScalarProperty Name="write_date" ColumnName="write_date" />
-            <ScalarProperty Name="id" ColumnName="id" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="product_case"><EntityTypeMapping TypeName="MrpPosModel.product_case"><MappingFragment StoreEntitySet="product_case">
-            <ScalarProperty Name="product_id" ColumnName="product_id" />
-            <ScalarProperty Name="pcs_per_case" ColumnName="pcs_per_case" />
-            <ScalarProperty Name="case_product_id" ColumnName="case_product_id" />
-            <ScalarProperty Name="write_uid" ColumnName="write_uid" />
-            <ScalarProperty Name="write_date" ColumnName="write_date" />
-            <ScalarProperty Name="create_uid" ColumnName="create_uid" />
-            <ScalarProperty Name="create_date" ColumnName="create_date" />
             <ScalarProperty Name="id" ColumnName="id" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="user_user"><EntityTypeMapping TypeName="MrpPosModel.user_user"><MappingFragment StoreEntitySet="user_user">
@@ -422,9 +414,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="product_case">
+            <EntityTypeMapping TypeName="MrpPosModel.product_case">
+              <MappingFragment StoreEntitySet="product_case">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_uid" ColumnName="create_uid" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="write_uid" ColumnName="write_uid" />
+                <ScalarProperty Name="case_product_id" ColumnName="case_product_id" />
+                <ScalarProperty Name="pcs_per_case" ColumnName="pcs_per_case" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="mrp_case_piece">
             <EntityTypeMapping TypeName="MrpPosModel.mrp_case_piece">
               <MappingFragment StoreEntitySet="mrp_case_piece">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="line_id" ColumnName="line_id" />
                 <ScalarProperty Name="write_date" ColumnName="write_date" />
                 <ScalarProperty Name="write_by" ColumnName="write_by" />
@@ -456,15 +463,15 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="MrpPos" ZoomLevel="76">
-        <EntityTypeShape EntityType="MrpPosModel.mrp_prod_lot" Width="1.5" PointX="2.75" PointY="4.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="MrpPosModel.product_case" Width="1.5" PointX="4.75" PointY="4.75" Height="2.5571907552083335" IsExpanded="true" />
-        <EntityTypeShape EntityType="MrpPosModel.user_user" Width="1.5" PointX="6.75" PointY="5.75" Height="2.7494921874999996" IsExpanded="true" />
+      <Diagram Name="MrpPos" ZoomLevel="87">
+        <EntityTypeShape EntityType="MrpPosModel.mrp_prod_lot" Width="1.5" PointX="1.5" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="MrpPosModel.user_user" Width="1.5" PointX="6.5" PointY="5" Height="2.7494921874999996" IsExpanded="true" />
         <EntityTypeShape EntityType="MrpPosModel.product_product" Width="1.5" PointX="7.375" PointY="0.75" Height="4.0956022135416674" />
-        <EntityTypeShape EntityType="MrpPosModel.mrp_order_line" Width="1.5" PointX="0.75" PointY="8.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="MrpPosModel.mrp_order_line" Width="1.5" PointX="2.75" PointY="3.875" Height="3.5186979166666674" />
         <EntityTypeShape EntityType="MrpPosModel.mrp_order_case" Width="1.5" PointX="3.375" PointY="0.75" Height="2.9417936197916674" />
-        <EntityTypeShape EntityType="MrpPosModel.mrp_order" Width="1.5" PointX="3.375" PointY="8.75" Height="5.2494108072916674" />
-        <EntityTypeShape EntityType="MrpPosModel.mrp_case_piece" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="MrpPosModel.mrp_order" Width="1.5" PointX="4.5" PointY="4.125" Height="5.2494108072916674" />
+        <EntityTypeShape EntityType="MrpPosModel.product_case" Width="1.5" PointX="0.75" PointY="8.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="MrpPosModel.mrp_case_piece" Width="1.5" PointX="7.375" PointY="8.75" Height="2.7494921874999996" />
       </Diagram>
     </Diagrams>
   </Designer>

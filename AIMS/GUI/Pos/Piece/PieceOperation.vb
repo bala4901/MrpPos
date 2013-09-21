@@ -746,6 +746,7 @@ Public Class PieceOperation
                         case_piece.create_by = loginUser.id
                         case_piece.write_date = Now
                         case_piece.create_date = Now
+                        case_piece.status = 1
 
                         If rwCnt > 0 Then
                             case_piece.id = getNextId(db.mrp_case_piece.Select(Function(x) x.id).Max)

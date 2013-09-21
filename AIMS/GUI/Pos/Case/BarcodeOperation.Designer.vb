@@ -110,7 +110,7 @@ Partial Class BarcodeOperation
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.tbWeight = New System.Windows.Forms.TextBox()
+        Me.tbBarcode = New System.Windows.Forms.TextBox()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.btnWeight = New System.Windows.Forms.Button()
         Me.btnValidateWeight = New System.Windows.Forms.Button()
@@ -883,24 +883,22 @@ Partial Class BarcodeOperation
         '
         'Panel7
         '
-        Me.Panel7.Controls.Add(Me.tbWeight)
+        Me.Panel7.Controls.Add(Me.tbBarcode)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel7.Location = New System.Drawing.Point(3, 174)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(385, 100)
         Me.Panel7.TabIndex = 4
         '
-        'tbWeight
+        'tbBarcode
         '
-        Me.tbWeight.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tbWeight.Enabled = False
-        Me.tbWeight.Font = New System.Drawing.Font("Tahoma", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbWeight.Location = New System.Drawing.Point(0, 0)
-        Me.tbWeight.Name = "tbWeight"
-        Me.tbWeight.Size = New System.Drawing.Size(385, 85)
-        Me.tbWeight.TabIndex = 2
-        Me.tbWeight.Text = "000"
-        Me.tbWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.tbBarcode.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.tbBarcode.Font = New System.Drawing.Font("Tahoma", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbBarcode.Location = New System.Drawing.Point(0, 0)
+        Me.tbBarcode.Name = "tbBarcode"
+        Me.tbBarcode.Size = New System.Drawing.Size(385, 85)
+        Me.tbBarcode.TabIndex = 2
+        Me.tbBarcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Panel6
         '
@@ -1042,7 +1040,7 @@ Partial Class BarcodeOperation
     Friend WithEvents MrpPos As AIMS.MrpPos
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
-    Friend WithEvents tbWeight As System.Windows.Forms.TextBox
+    Friend WithEvents tbBarcode As System.Windows.Forms.TextBox
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents btnWeight As System.Windows.Forms.Button

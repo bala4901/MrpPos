@@ -16,7 +16,7 @@ Imports System.ComponentModel
 Imports System.Xml.Serialization
 Imports System.Runtime.Serialization
 
-<Assembly: EdmSchemaAttribute("bf138042-2a60-41b2-b633-426320ca78bb")>
+<Assembly: EdmSchemaAttribute("4d7ec033-39a0-41fe-b74d-ca5135115d6d")>
 
 #Region "Contexts"
 
@@ -79,20 +79,6 @@ Public Partial Class MrpPosEntities
     End Property
 
     Private _mrp_prod_lot As ObjectSet(Of mrp_prod_lot)
-
-    ''' <summary>
-    ''' No Metadata Documentation available.
-    ''' </summary>
-    Public ReadOnly Property product_case() As ObjectSet(Of product_case)
-        Get
-            If (_product_case Is Nothing) Then
-                _product_case = MyBase.CreateObjectSet(Of product_case)("product_case")
-            End If
-            Return _product_case
-        End Get
-    End Property
-
-    Private _product_case As ObjectSet(Of product_case)
 
     ''' <summary>
     ''' No Metadata Documentation available.
@@ -167,6 +153,20 @@ Public Partial Class MrpPosEntities
     ''' <summary>
     ''' No Metadata Documentation available.
     ''' </summary>
+    Public ReadOnly Property product_case() As ObjectSet(Of product_case)
+        Get
+            If (_product_case Is Nothing) Then
+                _product_case = MyBase.CreateObjectSet(Of product_case)("product_case")
+            End If
+            Return _product_case
+        End Get
+    End Property
+
+    Private _product_case As ObjectSet(Of product_case)
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
     Public ReadOnly Property mrp_case_piece() As ObjectSet(Of mrp_case_piece)
         Get
             If (_mrp_case_piece Is Nothing) Then
@@ -186,13 +186,6 @@ Public Partial Class MrpPosEntities
     ''' </summary>
     Public Sub AddTomrp_prod_lot(ByVal mrp_prod_lot As mrp_prod_lot)
         MyBase.AddObject("mrp_prod_lot", mrp_prod_lot)
-    End Sub
-
-    ''' <summary>
-    ''' Deprecated Method for adding a new object to the product_case EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
-    ''' </summary>
-    Public Sub AddToproduct_case(ByVal product_case As product_case)
-        MyBase.AddObject("product_case", product_case)
     End Sub
 
     ''' <summary>
@@ -228,6 +221,13 @@ Public Partial Class MrpPosEntities
     ''' </summary>
     Public Sub AddTomrp_order(ByVal mrp_order As mrp_order)
         MyBase.AddObject("mrp_order", mrp_order)
+    End Sub
+
+    ''' <summary>
+    ''' Deprecated Method for adding a new object to the product_case EntitySet. Consider using the .Add method of the associated ObjectSet(Of T) property instead.
+    ''' </summary>
+    Public Sub AddToproduct_case(ByVal product_case As product_case)
+        MyBase.AddObject("product_case", product_case)
     End Sub
 
     ''' <summary>
@@ -466,6 +466,31 @@ Public Partial Class mrp_case_piece
     End Sub
 
     Private Partial Sub Online_idChanged()
+    End Sub
+
+    ''' <summary>
+    ''' No Metadata Documentation available.
+    ''' </summary>
+    <EdmScalarPropertyAttribute(EntityKeyProperty:=false, IsNullable:=true)>
+    <DataMemberAttribute()>
+    Public Property status() As Nullable(Of Global.System.Int32)
+        Get
+            Return _status
+        End Get
+        Set
+            OnstatusChanging(value)
+            ReportPropertyChanging("status")
+            _status = StructuralObject.SetValidValue(value)
+            ReportPropertyChanged("status")
+            OnstatusChanged()
+        End Set
+    End Property
+
+    Private _status As Nullable(Of Global.System.Int32)
+    Private Partial Sub OnstatusChanging(value As Nullable(Of Global.System.Int32))
+    End Sub
+
+    Private Partial Sub OnstatusChanged()
     End Sub
 
     #End Region
