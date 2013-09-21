@@ -77,11 +77,7 @@ Public Class BaseForm
         Call ShowTabForm(Product)
     End Sub
 
-    Private Sub TestToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Sub Button1_Click(sender As System.Object, e As System.EventArgs)
-
+    Private Sub ToolStripMenuItem2_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItem2.Click
+        Call ShowTabForm(BarcodeOperation)
     End Sub
 End Class

@@ -143,7 +143,7 @@ Partial Class LoginForm
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(796, 287)
+        Me.PictureBox1.Size = New System.Drawing.Size(792, 287)
         Me.PictureBox1.TabIndex = 23
         Me.PictureBox1.TabStop = False
         '
@@ -197,7 +197,7 @@ Partial Class LoginForm
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CancelButton = Me.ExitButton
-        Me.ClientSize = New System.Drawing.Size(796, 640)
+        Me.ClientSize = New System.Drawing.Size(792, 636)
         Me.ControlBox = False
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.tbUserEan13)
