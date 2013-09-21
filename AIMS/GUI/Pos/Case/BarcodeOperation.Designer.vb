@@ -64,7 +64,6 @@ Partial Class BarcodeOperation
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnCasePrint = New System.Windows.Forms.Button()
-        Me.btnReprint = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.lvProductImage = New System.Windows.Forms.ListView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -75,8 +74,6 @@ Partial Class BarcodeOperation
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.tbBarcode = New System.Windows.Forms.TextBox()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.btnWeight = New System.Windows.Forms.Button()
-        Me.btnValidateWeight = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.MrpordercaseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -113,7 +110,6 @@ Partial Class BarcodeOperation
         Me.Panel2.SuspendLayout()
         CType(Me.pctWeightImage, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
-        Me.Panel6.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.MrpordercaseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrporderlineBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -425,7 +421,6 @@ Partial Class BarcodeOperation
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel5.Controls.Add(Me.btnDelete)
         Me.Panel5.Controls.Add(Me.btnCasePrint)
-        Me.Panel5.Controls.Add(Me.btnReprint)
         Me.Panel5.Controls.Add(Me.btnCancel)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel5.Location = New System.Drawing.Point(0, 498)
@@ -438,7 +433,7 @@ Partial Class BarcodeOperation
         Me.btnDelete.BackgroundImage = Global.AIMS.My.Resources.Resources.Gnome_edit_delete_svg
         Me.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnDelete.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnDelete.Location = New System.Drawing.Point(198, 0)
+        Me.btnDelete.Location = New System.Drawing.Point(99, 0)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(99, 98)
         Me.btnDelete.TabIndex = 10
@@ -451,26 +446,13 @@ Partial Class BarcodeOperation
         Me.btnCasePrint.BackgroundImage = Global.AIMS.My.Resources.Resources.Box_icon
         Me.btnCasePrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCasePrint.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnCasePrint.Location = New System.Drawing.Point(99, 0)
+        Me.btnCasePrint.Location = New System.Drawing.Point(0, 0)
         Me.btnCasePrint.Name = "btnCasePrint"
         Me.btnCasePrint.Size = New System.Drawing.Size(99, 98)
         Me.btnCasePrint.TabIndex = 9
         Me.btnCasePrint.Text = "Case Print"
         Me.btnCasePrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnCasePrint.UseVisualStyleBackColor = True
-        '
-        'btnReprint
-        '
-        Me.btnReprint.BackgroundImage = Global.AIMS.My.Resources.Resources.printer
-        Me.btnReprint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnReprint.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnReprint.Location = New System.Drawing.Point(0, 0)
-        Me.btnReprint.Name = "btnReprint"
-        Me.btnReprint.Size = New System.Drawing.Size(99, 98)
-        Me.btnReprint.TabIndex = 8
-        Me.btnReprint.Text = "Reprint"
-        Me.btnReprint.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnReprint.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
@@ -565,39 +547,11 @@ Partial Class BarcodeOperation
         '
         'Panel6
         '
-        Me.Panel6.Controls.Add(Me.btnWeight)
-        Me.Panel6.Controls.Add(Me.btnValidateWeight)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel6.Location = New System.Drawing.Point(3, 274)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(385, 101)
         Me.Panel6.TabIndex = 3
-        '
-        'btnWeight
-        '
-        Me.btnWeight.BackgroundImage = Global.AIMS.My.Resources.Resources.scale_48x48
-        Me.btnWeight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnWeight.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnWeight.Location = New System.Drawing.Point(99, 0)
-        Me.btnWeight.Name = "btnWeight"
-        Me.btnWeight.Size = New System.Drawing.Size(99, 101)
-        Me.btnWeight.TabIndex = 7
-        Me.btnWeight.Text = "Weight Scale"
-        Me.btnWeight.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnWeight.UseVisualStyleBackColor = True
-        '
-        'btnValidateWeight
-        '
-        Me.btnValidateWeight.BackgroundImage = Global.AIMS.My.Resources.Resources.validate
-        Me.btnValidateWeight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnValidateWeight.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnValidateWeight.Location = New System.Drawing.Point(0, 0)
-        Me.btnValidateWeight.Name = "btnValidateWeight"
-        Me.btnValidateWeight.Size = New System.Drawing.Size(99, 101)
-        Me.btnValidateWeight.TabIndex = 5
-        Me.btnValidateWeight.Text = "Validate"
-        Me.btnValidateWeight.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnValidateWeight.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -800,7 +754,6 @@ Partial Class BarcodeOperation
         CType(Me.pctWeightImage, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
-        Me.Panel6.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.MrpordercaseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrporderlineBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -828,14 +781,11 @@ Partial Class BarcodeOperation
     Friend WithEvents tbBarcode As System.Windows.Forms.TextBox
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents btnWeight As System.Windows.Forms.Button
-    Friend WithEvents btnValidateWeight As System.Windows.Forms.Button
     Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
     Friend WithEvents pnlImageScan As System.Windows.Forms.Panel
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents btnCasePrint As System.Windows.Forms.Button
-    Friend WithEvents btnReprint As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents pctWeightImage As System.Windows.Forms.PictureBox
     Friend WithEvents Panel8 As System.Windows.Forms.Panel

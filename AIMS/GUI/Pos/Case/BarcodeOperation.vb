@@ -90,7 +90,7 @@ Public Class BarcodeOperation
                                                                       Join pp In db.product_product On ol.product_id Equals pp.id
                                                                       Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
                                                                       Where (cp.case_id = 0 And cp.order_id = 0)
-                                                                      Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
+                                                                      Select New With {.id = cp.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
                                                                                        .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg, .prodlot_id = lot.id,
                                                                                        .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no, .product_id = pp.id}) _
                                                                            .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = x.eancode, .prodlot_id = x.prodlot_id, _
@@ -438,5 +438,31 @@ Public Class BarcodeOperation
             cbCaseProduct.DataSource = prod.ToList
        
         End Using
+    End Sub
+
+    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
+        If MsgBox("Are you sure you want to delete?", MsgBoxStyle.YesNo, "Delete") = MsgBoxResult.Yes Then
+            Using db As New MrpPosEntities
+                Dim cnt As Integer = 0
+                For Each row As DataGridViewRow In dgvScanning.Rows
+                    If row.Cells(1).Value Then
+                        Dim oLid As Integer = row.Cells(0).Value
+
+                        Dim orderLine As mrp_case_piece = (From ol In db.mrp_case_piece Where ol.id = oLid).SingleOrDefault
+
+                        db.mrp_case_piece.DeleteObject(orderLine)
+                        cnt += 1
+
+                    End If
+                Next
+                If cnt > 0 Then
+                    db.SaveChanges()
+                    Call loadDgvLine()
+                    Call setSummary()
+                Else
+                    MsgBox("Please select a record to delete!", MsgBoxStyle.Information, "Delete Weight")
+                End If
+            End Using
+        End If
     End Sub
 End Class
