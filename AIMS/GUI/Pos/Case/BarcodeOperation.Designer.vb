@@ -27,14 +27,6 @@ Partial Class BarcodeOperation
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BarcodeOperation))
         Me.TitleToolStrip = New System.Windows.Forms.ToolStrip()
         Me.TitleToolStripLabel = New System.Windows.Forms.ToolStripLabel()
@@ -43,33 +35,6 @@ Partial Class BarcodeOperation
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.pnlImageScan = New System.Windows.Forms.Panel()
         Me.pnlOrder = New System.Windows.Forms.Panel()
-        Me.pnlBoxInfo = New System.Windows.Forms.SplitContainer()
-        Me.dgCaseData = New System.Windows.Forms.DataGridView()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SerialnoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NoofpcsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.QtyDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OrderidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CreatedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CreateidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WritedateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.WriteidDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CheckDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.MrpordercaseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.MrpPos3 = New AIMS.MrpPos()
-        Me.dgBoxLine = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgvScanning = New System.Windows.Forms.DataGridView()
         Me.IdDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CheckDataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
@@ -95,13 +60,11 @@ Partial Class BarcodeOperation
         Me.TotalweightDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrefixDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MrporderlineBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MrpPos3 = New AIMS.MrpPos()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.btnConfirm = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnCasePrint = New System.Windows.Forms.Button()
         Me.btnReprint = New System.Windows.Forms.Button()
-        Me.btnNext = New System.Windows.Forms.Button()
-        Me.btnBack = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.lvProductImage = New System.Windows.Forms.ListView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -116,11 +79,23 @@ Partial Class BarcodeOperation
         Me.btnValidateWeight = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.MrpordercaseBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MrporderlineBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MrpPos = New AIMS.MrpPos()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.MrpPos1 = New AIMS.MrpPos()
         Me.MrpPos2 = New AIMS.MrpPos()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cbPrice = New System.Windows.Forms.ComboBox()
+        Me.cbPrintSummary = New System.Windows.Forms.ComboBox()
+        Me.cbSlogan = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.gbGroupProduct = New System.Windows.Forms.GroupBox()
+        Me.cbCaseProduct = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.chkCaseProduct = New System.Windows.Forms.CheckBox()
         Me.TitleToolStrip.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -130,16 +105,9 @@ Partial Class BarcodeOperation
         Me.Panel4.SuspendLayout()
         Me.pnlImageScan.SuspendLayout()
         Me.pnlOrder.SuspendLayout()
-        CType(Me.pnlBoxInfo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlBoxInfo.Panel1.SuspendLayout()
-        Me.pnlBoxInfo.Panel2.SuspendLayout()
-        Me.pnlBoxInfo.SuspendLayout()
-        CType(Me.dgCaseData, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MrpordercaseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.MrpPos3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgBoxLine, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvScanning, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrporderlineBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MrpPos3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -147,10 +115,13 @@ Partial Class BarcodeOperation
         Me.Panel7.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.MrpordercaseBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrporderlineBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrpPos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrpPos1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrpPos2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel9.SuspendLayout()
+        Me.gbGroupProduct.SuspendLayout()
         Me.SuspendLayout()
         '
         'TitleToolStrip
@@ -227,44 +198,27 @@ Partial Class BarcodeOperation
         '
         'pnlOrder
         '
-        Me.pnlOrder.Controls.Add(Me.pnlBoxInfo)
         Me.pnlOrder.Controls.Add(Me.dgvScanning)
+        Me.pnlOrder.Controls.Add(Me.Panel9)
         Me.pnlOrder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlOrder.Location = New System.Drawing.Point(0, 0)
         Me.pnlOrder.Name = "pnlOrder"
         Me.pnlOrder.Size = New System.Drawing.Size(738, 498)
         Me.pnlOrder.TabIndex = 13
         '
-        'pnlBoxInfo
+        'dgvScanning
         '
-        Me.pnlBoxInfo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlBoxInfo.Location = New System.Drawing.Point(0, 254)
-        Me.pnlBoxInfo.Name = "pnlBoxInfo"
-        '
-        'pnlBoxInfo.Panel1
-        '
-        Me.pnlBoxInfo.Panel1.Controls.Add(Me.dgCaseData)
-        '
-        'pnlBoxInfo.Panel2
-        '
-        Me.pnlBoxInfo.Panel2.Controls.Add(Me.dgBoxLine)
-        Me.pnlBoxInfo.Size = New System.Drawing.Size(738, 244)
-        Me.pnlBoxInfo.SplitterDistance = 246
-        Me.pnlBoxInfo.TabIndex = 2
-        '
-        'dgCaseData
-        '
-        Me.dgCaseData.AllowUserToAddRows = False
-        Me.dgCaseData.AllowUserToDeleteRows = False
-        Me.dgCaseData.AllowUserToResizeRows = False
+        Me.dgvScanning.AllowUserToAddRows = False
+        Me.dgvScanning.AllowUserToDeleteRows = False
+        Me.dgvScanning.AllowUserToResizeRows = False
         DataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black
-        Me.dgCaseData.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgCaseData.AutoGenerateColumns = False
-        Me.dgCaseData.BackgroundColor = System.Drawing.Color.White
-        Me.dgCaseData.ColumnHeadersHeight = 28
-        Me.dgCaseData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgCaseData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NoDataGridViewTextBoxColumn, Me.SerialnoDataGridViewTextBoxColumn, Me.NoofpcsDataGridViewTextBoxColumn, Me.QtyDataGridViewTextBoxColumn, Me.OrderidDataGridViewTextBoxColumn, Me.CreatedateDataGridViewTextBoxColumn, Me.CreateidDataGridViewTextBoxColumn, Me.WritedateDataGridViewTextBoxColumn, Me.WriteidDataGridViewTextBoxColumn, Me.CheckDataGridViewCheckBoxColumn})
-        Me.dgCaseData.DataSource = Me.MrpordercaseBindingSource
+        Me.dgvScanning.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgvScanning.AutoGenerateColumns = False
+        Me.dgvScanning.BackgroundColor = System.Drawing.Color.White
+        Me.dgvScanning.ColumnHeadersHeight = 28
+        Me.dgvScanning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvScanning.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn1, Me.CheckDataGridViewCheckBoxColumn1, Me.NoDataGridViewTextBoxColumn1, Me.SerialnoDataGridViewTextBoxColumn1, Me.CodeDataGridViewTextBoxColumn, Me.QtyDataGridViewTextBoxColumn1, Me.Line1DataGridViewTextBoxColumn, Me.Line2DataGridViewTextBoxColumn, Me.LotnoDataGridViewTextBoxColumn, Me.ExpdateDataGridViewTextBoxColumn, Me.EancodeDataGridViewTextBoxColumn, Me.PriceDataGridViewTextBoxColumn, Me.UnitpriceDataGridViewTextBoxColumn, Me.ProductidDataGridViewTextBoxColumn, Me.OrderidDataGridViewTextBoxColumn1, Me.ProdlotidDataGridViewTextBoxColumn, Me.BoxidDataGridViewTextBoxColumn, Me.CreatedateDataGridViewTextBoxColumn1, Me.WritedateDataGridViewTextBoxColumn1, Me.WriteuidDataGridViewTextBoxColumn, Me.BarcodeDataGridViewTextBoxColumn, Me.TotalweightDataGridViewTextBoxColumn, Me.PrefixDataGridViewTextBoxColumn})
+        Me.dgvScanning.DataSource = Me.MrporderlineBindingSource1
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
@@ -272,12 +226,12 @@ Partial Class BarcodeOperation
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgCaseData.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dgCaseData.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgCaseData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgCaseData.Location = New System.Drawing.Point(0, 0)
-        Me.dgCaseData.MultiSelect = False
-        Me.dgCaseData.Name = "dgCaseData"
+        Me.dgvScanning.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgvScanning.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dgvScanning.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvScanning.Location = New System.Drawing.Point(0, 151)
+        Me.dgvScanning.MultiSelect = False
+        Me.dgvScanning.Name = "dgvScanning"
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
@@ -285,274 +239,20 @@ Partial Class BarcodeOperation
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgCaseData.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgCaseData.RowHeadersVisible = False
-        Me.dgCaseData.RowHeadersWidth = 70
-        Me.dgCaseData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Cyan
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        Me.dgCaseData.RowsDefaultCellStyle = DataGridViewCellStyle4
-        Me.dgCaseData.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.dgCaseData.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black
-        Me.dgCaseData.RowTemplate.Height = 24
-        Me.dgCaseData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgCaseData.ShowEditingIcon = False
-        Me.dgCaseData.Size = New System.Drawing.Size(246, 244)
-        Me.dgCaseData.StandardTab = True
-        Me.dgCaseData.TabIndex = 2
-        Me.dgCaseData.TabStop = False
-        Me.dgCaseData.VirtualMode = True
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "id"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.Visible = False
-        '
-        'NoDataGridViewTextBoxColumn
-        '
-        Me.NoDataGridViewTextBoxColumn.DataPropertyName = "no"
-        Me.NoDataGridViewTextBoxColumn.HeaderText = "No"
-        Me.NoDataGridViewTextBoxColumn.Name = "NoDataGridViewTextBoxColumn"
-        Me.NoDataGridViewTextBoxColumn.Width = 35
-        '
-        'SerialnoDataGridViewTextBoxColumn
-        '
-        Me.SerialnoDataGridViewTextBoxColumn.DataPropertyName = "serial_no"
-        Me.SerialnoDataGridViewTextBoxColumn.HeaderText = "Serial No"
-        Me.SerialnoDataGridViewTextBoxColumn.Name = "SerialnoDataGridViewTextBoxColumn"
-        '
-        'NoofpcsDataGridViewTextBoxColumn
-        '
-        Me.NoofpcsDataGridViewTextBoxColumn.DataPropertyName = "no_of_pcs"
-        Me.NoofpcsDataGridViewTextBoxColumn.HeaderText = "No. Pcs"
-        Me.NoofpcsDataGridViewTextBoxColumn.Name = "NoofpcsDataGridViewTextBoxColumn"
-        '
-        'QtyDataGridViewTextBoxColumn
-        '
-        Me.QtyDataGridViewTextBoxColumn.DataPropertyName = "qty"
-        Me.QtyDataGridViewTextBoxColumn.HeaderText = "Weight"
-        Me.QtyDataGridViewTextBoxColumn.Name = "QtyDataGridViewTextBoxColumn"
-        '
-        'OrderidDataGridViewTextBoxColumn
-        '
-        Me.OrderidDataGridViewTextBoxColumn.DataPropertyName = "order_id"
-        Me.OrderidDataGridViewTextBoxColumn.HeaderText = "order_id"
-        Me.OrderidDataGridViewTextBoxColumn.Name = "OrderidDataGridViewTextBoxColumn"
-        Me.OrderidDataGridViewTextBoxColumn.Visible = False
-        '
-        'CreatedateDataGridViewTextBoxColumn
-        '
-        Me.CreatedateDataGridViewTextBoxColumn.DataPropertyName = "create_date"
-        Me.CreatedateDataGridViewTextBoxColumn.HeaderText = "create_date"
-        Me.CreatedateDataGridViewTextBoxColumn.Name = "CreatedateDataGridViewTextBoxColumn"
-        Me.CreatedateDataGridViewTextBoxColumn.Visible = False
-        '
-        'CreateidDataGridViewTextBoxColumn
-        '
-        Me.CreateidDataGridViewTextBoxColumn.DataPropertyName = "create_id"
-        Me.CreateidDataGridViewTextBoxColumn.HeaderText = "create_id"
-        Me.CreateidDataGridViewTextBoxColumn.Name = "CreateidDataGridViewTextBoxColumn"
-        Me.CreateidDataGridViewTextBoxColumn.Visible = False
-        '
-        'WritedateDataGridViewTextBoxColumn
-        '
-        Me.WritedateDataGridViewTextBoxColumn.DataPropertyName = "write_date"
-        Me.WritedateDataGridViewTextBoxColumn.HeaderText = "write_date"
-        Me.WritedateDataGridViewTextBoxColumn.Name = "WritedateDataGridViewTextBoxColumn"
-        Me.WritedateDataGridViewTextBoxColumn.Visible = False
-        '
-        'WriteidDataGridViewTextBoxColumn
-        '
-        Me.WriteidDataGridViewTextBoxColumn.DataPropertyName = "write_id"
-        Me.WriteidDataGridViewTextBoxColumn.HeaderText = "write_id"
-        Me.WriteidDataGridViewTextBoxColumn.Name = "WriteidDataGridViewTextBoxColumn"
-        Me.WriteidDataGridViewTextBoxColumn.Visible = False
-        '
-        'CheckDataGridViewCheckBoxColumn
-        '
-        Me.CheckDataGridViewCheckBoxColumn.DataPropertyName = "check"
-        Me.CheckDataGridViewCheckBoxColumn.HeaderText = "check"
-        Me.CheckDataGridViewCheckBoxColumn.Name = "CheckDataGridViewCheckBoxColumn"
-        Me.CheckDataGridViewCheckBoxColumn.Visible = False
-        '
-        'MrpordercaseBindingSource
-        '
-        Me.MrpordercaseBindingSource.DataMember = "mrp_order_case"
-        Me.MrpordercaseBindingSource.DataSource = Me.MrpPos3
-        '
-        'MrpPos3
-        '
-        Me.MrpPos3.DataSetName = "MrpPos"
-        Me.MrpPos3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'dgBoxLine
-        '
-        Me.dgBoxLine.AllowUserToAddRows = False
-        Me.dgBoxLine.AllowUserToDeleteRows = False
-        Me.dgBoxLine.AllowUserToResizeRows = False
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
-        Me.dgBoxLine.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
-        Me.dgBoxLine.BackgroundColor = System.Drawing.Color.White
-        Me.dgBoxLine.ColumnHeadersHeight = 28
-        Me.dgBoxLine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgBoxLine.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn9, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11})
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgBoxLine.DefaultCellStyle = DataGridViewCellStyle6
-        Me.dgBoxLine.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgBoxLine.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgBoxLine.Location = New System.Drawing.Point(0, 0)
-        Me.dgBoxLine.MultiSelect = False
-        Me.dgBoxLine.Name = "dgBoxLine"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgBoxLine.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
-        Me.dgBoxLine.RowHeadersVisible = False
-        Me.dgBoxLine.RowHeadersWidth = 70
-        Me.dgBoxLine.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Cyan
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
-        Me.dgBoxLine.RowsDefaultCellStyle = DataGridViewCellStyle8
-        Me.dgBoxLine.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        Me.dgBoxLine.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black
-        Me.dgBoxLine.RowTemplate.Height = 24
-        Me.dgBoxLine.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgBoxLine.ShowEditingIcon = False
-        Me.dgBoxLine.Size = New System.Drawing.Size(488, 244)
-        Me.dgBoxLine.StandardTab = True
-        Me.dgBoxLine.TabIndex = 2
-        Me.dgBoxLine.TabStop = False
-        Me.dgBoxLine.VirtualMode = True
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "no"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "No"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 35
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Serial No"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "code"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Code"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "line1"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Name"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "line2"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Name2"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "qty"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Weight"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "eancode"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Ean13"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "lot_no"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Lot No"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "exp_date"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Exp. Date"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "unit_price"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Price/Kg"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "price"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "U. Price"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        '
-        'dgvScanning
-        '
-        Me.dgvScanning.AllowUserToAddRows = False
-        Me.dgvScanning.AllowUserToDeleteRows = False
-        Me.dgvScanning.AllowUserToResizeRows = False
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black
-        Me.dgvScanning.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle9
-        Me.dgvScanning.AutoGenerateColumns = False
-        Me.dgvScanning.BackgroundColor = System.Drawing.Color.White
-        Me.dgvScanning.ColumnHeadersHeight = 28
-        Me.dgvScanning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvScanning.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn1, Me.CheckDataGridViewCheckBoxColumn1, Me.NoDataGridViewTextBoxColumn1, Me.SerialnoDataGridViewTextBoxColumn1, Me.CodeDataGridViewTextBoxColumn, Me.QtyDataGridViewTextBoxColumn1, Me.Line1DataGridViewTextBoxColumn, Me.Line2DataGridViewTextBoxColumn, Me.LotnoDataGridViewTextBoxColumn, Me.ExpdateDataGridViewTextBoxColumn, Me.EancodeDataGridViewTextBoxColumn, Me.PriceDataGridViewTextBoxColumn, Me.UnitpriceDataGridViewTextBoxColumn, Me.ProductidDataGridViewTextBoxColumn, Me.OrderidDataGridViewTextBoxColumn1, Me.ProdlotidDataGridViewTextBoxColumn, Me.BoxidDataGridViewTextBoxColumn, Me.CreatedateDataGridViewTextBoxColumn1, Me.WritedateDataGridViewTextBoxColumn1, Me.WriteuidDataGridViewTextBoxColumn, Me.BarcodeDataGridViewTextBoxColumn, Me.TotalweightDataGridViewTextBoxColumn, Me.PrefixDataGridViewTextBoxColumn})
-        Me.dgvScanning.DataSource = Me.MrporderlineBindingSource1
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvScanning.DefaultCellStyle = DataGridViewCellStyle10
-        Me.dgvScanning.Dock = System.Windows.Forms.DockStyle.Top
-        Me.dgvScanning.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgvScanning.Location = New System.Drawing.Point(0, 0)
-        Me.dgvScanning.MultiSelect = False
-        Me.dgvScanning.Name = "dgvScanning"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvScanning.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        Me.dgvScanning.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvScanning.RowHeadersVisible = False
         Me.dgvScanning.RowHeadersWidth = 70
         Me.dgvScanning.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Cyan
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
-        Me.dgvScanning.RowsDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Cyan
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.dgvScanning.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dgvScanning.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel)
         Me.dgvScanning.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black
         Me.dgvScanning.RowTemplate.Height = 24
         Me.dgvScanning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvScanning.ShowEditingIcon = False
-        Me.dgvScanning.Size = New System.Drawing.Size(738, 254)
+        Me.dgvScanning.Size = New System.Drawing.Size(738, 347)
         Me.dgvScanning.StandardTab = True
         Me.dgvScanning.TabIndex = 1
         Me.dgvScanning.TabStop = False
@@ -714,16 +414,18 @@ Partial Class BarcodeOperation
         Me.MrporderlineBindingSource1.DataMember = "mrp_order_line"
         Me.MrporderlineBindingSource1.DataSource = Me.MrpPos3
         '
+        'MrpPos3
+        '
+        Me.MrpPos3.DataSetName = "MrpPos"
+        Me.MrpPos3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.White
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel5.Controls.Add(Me.btnConfirm)
         Me.Panel5.Controls.Add(Me.btnDelete)
         Me.Panel5.Controls.Add(Me.btnCasePrint)
         Me.Panel5.Controls.Add(Me.btnReprint)
-        Me.Panel5.Controls.Add(Me.btnNext)
-        Me.Panel5.Controls.Add(Me.btnBack)
         Me.Panel5.Controls.Add(Me.btnCancel)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel5.Location = New System.Drawing.Point(0, 498)
@@ -731,25 +433,12 @@ Partial Class BarcodeOperation
         Me.Panel5.Size = New System.Drawing.Size(738, 100)
         Me.Panel5.TabIndex = 12
         '
-        'btnConfirm
-        '
-        Me.btnConfirm.BackgroundImage = Global.AIMS.My.Resources.Resources.validate
-        Me.btnConfirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnConfirm.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnConfirm.Location = New System.Drawing.Point(538, 0)
-        Me.btnConfirm.Name = "btnConfirm"
-        Me.btnConfirm.Size = New System.Drawing.Size(99, 98)
-        Me.btnConfirm.TabIndex = 11
-        Me.btnConfirm.Text = "Close Production"
-        Me.btnConfirm.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnConfirm.UseVisualStyleBackColor = True
-        '
         'btnDelete
         '
         Me.btnDelete.BackgroundImage = Global.AIMS.My.Resources.Resources.Gnome_edit_delete_svg
         Me.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnDelete.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnDelete.Location = New System.Drawing.Point(396, 0)
+        Me.btnDelete.Location = New System.Drawing.Point(198, 0)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(99, 98)
         Me.btnDelete.TabIndex = 10
@@ -762,7 +451,7 @@ Partial Class BarcodeOperation
         Me.btnCasePrint.BackgroundImage = Global.AIMS.My.Resources.Resources.Box_icon
         Me.btnCasePrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCasePrint.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnCasePrint.Location = New System.Drawing.Point(297, 0)
+        Me.btnCasePrint.Location = New System.Drawing.Point(99, 0)
         Me.btnCasePrint.Name = "btnCasePrint"
         Me.btnCasePrint.Size = New System.Drawing.Size(99, 98)
         Me.btnCasePrint.TabIndex = 9
@@ -775,39 +464,13 @@ Partial Class BarcodeOperation
         Me.btnReprint.BackgroundImage = Global.AIMS.My.Resources.Resources.printer
         Me.btnReprint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnReprint.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnReprint.Location = New System.Drawing.Point(198, 0)
+        Me.btnReprint.Location = New System.Drawing.Point(0, 0)
         Me.btnReprint.Name = "btnReprint"
         Me.btnReprint.Size = New System.Drawing.Size(99, 98)
         Me.btnReprint.TabIndex = 8
         Me.btnReprint.Text = "Reprint"
         Me.btnReprint.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btnReprint.UseVisualStyleBackColor = True
-        '
-        'btnNext
-        '
-        Me.btnNext.BackgroundImage = Global.AIMS.My.Resources.Resources.go_next
-        Me.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnNext.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnNext.Location = New System.Drawing.Point(99, 0)
-        Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(99, 98)
-        Me.btnNext.TabIndex = 7
-        Me.btnNext.Text = "Next"
-        Me.btnNext.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnNext.UseVisualStyleBackColor = True
-        '
-        'btnBack
-        '
-        Me.btnBack.BackgroundImage = Global.AIMS.My.Resources.Resources.go_previous
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnBack.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnBack.Location = New System.Drawing.Point(0, 0)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(99, 98)
-        Me.btnBack.TabIndex = 6
-        Me.btnBack.Text = "Previous"
-        Me.btnBack.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.btnBack.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
@@ -957,6 +620,11 @@ Partial Class BarcodeOperation
         Me.RichTextBox1.TabIndex = 1
         Me.RichTextBox1.Text = ""
         '
+        'MrpordercaseBindingSource
+        '
+        Me.MrpordercaseBindingSource.DataMember = "mrp_order_case"
+        Me.MrpordercaseBindingSource.DataSource = Me.MrpPos3
+        '
         'MrporderlineBindingSource
         '
         Me.MrporderlineBindingSource.DataMember = "mrp_order_line"
@@ -982,6 +650,125 @@ Partial Class BarcodeOperation
         Me.MrpPos2.DataSetName = "MrpPos"
         Me.MrpPos2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'Panel9
+        '
+        Me.Panel9.Controls.Add(Me.chkCaseProduct)
+        Me.Panel9.Controls.Add(Me.gbGroupProduct)
+        Me.Panel9.Controls.Add(Me.cbSlogan)
+        Me.Panel9.Controls.Add(Me.Label3)
+        Me.Panel9.Controls.Add(Me.cbPrintSummary)
+        Me.Panel9.Controls.Add(Me.cbPrice)
+        Me.Panel9.Controls.Add(Me.Label2)
+        Me.Panel9.Controls.Add(Me.Label1)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel9.Location = New System.Drawing.Point(0, 0)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(738, 151)
+        Me.Panel9.TabIndex = 2
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(11, 18)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(105, 24)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Print Price :"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(11, 55)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(142, 24)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Print Summary :"
+        '
+        'cbPrice
+        '
+        Me.cbPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPrice.FormattingEnabled = True
+        Me.cbPrice.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbPrice.Location = New System.Drawing.Point(159, 12)
+        Me.cbPrice.Name = "cbPrice"
+        Me.cbPrice.Size = New System.Drawing.Size(85, 32)
+        Me.cbPrice.TabIndex = 2
+        '
+        'cbPrintSummary
+        '
+        Me.cbPrintSummary.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPrintSummary.FormattingEnabled = True
+        Me.cbPrintSummary.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbPrintSummary.Location = New System.Drawing.Point(159, 52)
+        Me.cbPrintSummary.Name = "cbPrintSummary"
+        Me.cbPrintSummary.Size = New System.Drawing.Size(85, 32)
+        Me.cbPrintSummary.TabIndex = 3
+        '
+        'cbSlogan
+        '
+        Me.cbSlogan.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSlogan.FormattingEnabled = True
+        Me.cbSlogan.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbSlogan.Location = New System.Drawing.Point(159, 93)
+        Me.cbSlogan.Name = "cbSlogan"
+        Me.cbSlogan.Size = New System.Drawing.Size(85, 32)
+        Me.cbSlogan.TabIndex = 5
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(11, 93)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(121, 24)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Print Slogan :"
+        '
+        'gbGroupProduct
+        '
+        Me.gbGroupProduct.Controls.Add(Me.cbCaseProduct)
+        Me.gbGroupProduct.Controls.Add(Me.Label4)
+        Me.gbGroupProduct.Enabled = False
+        Me.gbGroupProduct.Location = New System.Drawing.Point(297, 46)
+        Me.gbGroupProduct.Name = "gbGroupProduct"
+        Me.gbGroupProduct.Size = New System.Drawing.Size(390, 72)
+        Me.gbGroupProduct.TabIndex = 8
+        Me.gbGroupProduct.TabStop = False
+        Me.gbGroupProduct.Text = "Case Product"
+        '
+        'cbCaseProduct
+        '
+        Me.cbCaseProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCaseProduct.FormattingEnabled = True
+        Me.cbCaseProduct.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbCaseProduct.Location = New System.Drawing.Point(166, 22)
+        Me.cbCaseProduct.Name = "cbCaseProduct"
+        Me.cbCaseProduct.Size = New System.Drawing.Size(194, 32)
+        Me.cbCaseProduct.TabIndex = 9
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(18, 25)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(133, 24)
+        Me.Label4.TabIndex = 8
+        Me.Label4.Text = "Case Product :"
+        '
+        'chkCaseProduct
+        '
+        Me.chkCaseProduct.AutoSize = True
+        Me.chkCaseProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkCaseProduct.Location = New System.Drawing.Point(297, 12)
+        Me.chkCaseProduct.Name = "chkCaseProduct"
+        Me.chkCaseProduct.Size = New System.Drawing.Size(236, 28)
+        Me.chkCaseProduct.TabIndex = 9
+        Me.chkCaseProduct.Text = "Print with Other Product?"
+        Me.chkCaseProduct.UseVisualStyleBackColor = True
+        '
         'BarcodeOperation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1004,16 +791,9 @@ Partial Class BarcodeOperation
         Me.Panel4.ResumeLayout(False)
         Me.pnlImageScan.ResumeLayout(False)
         Me.pnlOrder.ResumeLayout(False)
-        Me.pnlBoxInfo.Panel1.ResumeLayout(False)
-        Me.pnlBoxInfo.Panel2.ResumeLayout(False)
-        CType(Me.pnlBoxInfo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlBoxInfo.ResumeLayout(False)
-        CType(Me.dgCaseData, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MrpordercaseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.MrpPos3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgBoxLine, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvScanning, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrporderlineBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MrpPos3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel5.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
@@ -1022,10 +802,15 @@ Partial Class BarcodeOperation
         Me.Panel7.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
+        CType(Me.MrpordercaseBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrporderlineBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrpPos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrpPos1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrpPos2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel9.ResumeLayout(False)
+        Me.Panel9.PerformLayout()
+        Me.gbGroupProduct.ResumeLayout(False)
+        Me.gbGroupProduct.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1051,11 +836,8 @@ Partial Class BarcodeOperation
     Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents btnCasePrint As System.Windows.Forms.Button
     Friend WithEvents btnReprint As System.Windows.Forms.Button
-    Friend WithEvents btnNext As System.Windows.Forms.Button
-    Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents pctWeightImage As System.Windows.Forms.PictureBox
-    Friend WithEvents btnConfirm As System.Windows.Forms.Button
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents MrporderlineBindingSource As System.Windows.Forms.BindingSource
@@ -1064,33 +846,7 @@ Partial Class BarcodeOperation
     Friend WithEvents MrpordercaseBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents MrpPos3 As AIMS.MrpPos
     Friend WithEvents MrporderlineBindingSource1 As System.Windows.Forms.BindingSource
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents pnlOrder As System.Windows.Forms.Panel
-    Friend WithEvents pnlBoxInfo As System.Windows.Forms.SplitContainer
-    Friend WithEvents dgCaseData As System.Windows.Forms.DataGridView
-    Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents NoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents SerialnoDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents NoofpcsDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents QtyDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents OrderidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CreatedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CreateidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents WritedateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents WriteidDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents CheckDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
-    Friend WithEvents dgBoxLine As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn9 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn8 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn10 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn11 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dgvScanning As System.Windows.Forms.DataGridView
     Friend WithEvents IdDataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents CheckDataGridViewCheckBoxColumn1 As System.Windows.Forms.DataGridViewCheckBoxColumn
@@ -1115,5 +871,17 @@ Partial Class BarcodeOperation
     Friend WithEvents BarcodeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents TotalweightDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents PrefixDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Panel9 As System.Windows.Forms.Panel
+    Friend WithEvents cbPrintSummary As System.Windows.Forms.ComboBox
+    Friend WithEvents cbPrice As System.Windows.Forms.ComboBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents cbSlogan As System.Windows.Forms.ComboBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents chkCaseProduct As System.Windows.Forms.CheckBox
+    Friend WithEvents gbGroupProduct As System.Windows.Forms.GroupBox
+    Friend WithEvents cbCaseProduct As System.Windows.Forms.ComboBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

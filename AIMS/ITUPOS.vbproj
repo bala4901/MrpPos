@@ -255,10 +255,10 @@
     <Compile Include="GUI\Pos\Piece\DailySummary.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Pos\Piece\PieceCaseProduct.Designer.vb">
-      <DependentUpon>PieceCaseProduct.vb</DependentUpon>
+    <Compile Include="GUI\Pos\Case\CheckCaseProduct.Designer.vb">
+      <DependentUpon>CheckCaseProduct.vb</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Pos\Piece\PieceCaseProduct.vb">
+    <Compile Include="GUI\Pos\Case\CheckCaseProduct.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\Pos\Piece\LotFrm.Designer.vb">
@@ -411,8 +411,8 @@
     <EmbeddedResource Include="GUI\Pos\Piece\DailySummary.resx">
       <DependentUpon>DailySummary.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Pos\Piece\PieceCaseProduct.resx">
-      <DependentUpon>PieceCaseProduct.vb</DependentUpon>
+    <EmbeddedResource Include="GUI\Pos\Case\CheckCaseProduct.resx">
+      <DependentUpon>CheckCaseProduct.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Pos\Piece\LotFrm.resx">
       <DependentUpon>LotFrm.vb</DependentUpon>

@@ -28,10 +28,10 @@ Partial Class BaseForm
         Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PieceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ItemInventoryMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.VersionToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
@@ -110,6 +110,13 @@ Partial Class BaseForm
         Me.PieceToolStripMenuItem.Size = New System.Drawing.Size(59, 44)
         Me.PieceToolStripMenuItem.Text = "Scaling"
         '
+        'ToolStripMenuItem2
+        '
+        Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.Indigo
+        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(65, 44)
+        Me.ToolStripMenuItem2.Text = "Barcode"
+        '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemInventoryMToolStripMenuItem})
@@ -124,7 +131,7 @@ Partial Class BaseForm
         Me.ItemInventoryMToolStripMenuItem.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ItemInventoryMToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ItemInventoryMToolStripMenuItem.Name = "ItemInventoryMToolStripMenuItem"
-        Me.ItemInventoryMToolStripMenuItem.Size = New System.Drawing.Size(152, 24)
+        Me.ItemInventoryMToolStripMenuItem.Size = New System.Drawing.Size(139, 24)
         Me.ItemInventoryMToolStripMenuItem.Text = "Product"
         '
         'SummaryToolStripMenuItem
@@ -133,13 +140,7 @@ Partial Class BaseForm
         Me.SummaryToolStripMenuItem.Name = "SummaryToolStripMenuItem"
         Me.SummaryToolStripMenuItem.Size = New System.Drawing.Size(74, 44)
         Me.SummaryToolStripMenuItem.Text = "Summary"
-        '
-        'ToolStripMenuItem2
-        '
-        Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.Indigo
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(65, 44)
-        Me.ToolStripMenuItem2.Text = "Barcode"
+        Me.SummaryToolStripMenuItem.Visible = False
         '
         'PictureBox2
         '

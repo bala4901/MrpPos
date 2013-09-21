@@ -759,10 +759,10 @@ Public Class PieceOperation
 
                     Next
 
-                    'For Each line As mrp_order_line In orderLine.ToList
-                    '    line.box_id = box_id
-                    '    db.mrp_order_line.ApplyCurrentValues(line)
-                    'Next
+                    For Each line As mrp_order_line In orderLine.ToList
+                        line.box_id = box_id
+                        db.mrp_order_line.ApplyCurrentValues(line)
+                    Next
 
                   
                     Try
@@ -794,14 +794,14 @@ Public Class PieceOperation
                         If _printCasePrice Then
                             Using crPrice As New CasePriceLabel
                                 crPrice.SetDataSource(dt2)
-                                For i As Integer = 1 To _product.no_of_barcode
+                                For i As Integer = 1 To case_prod.no_of_barcode
                                     crPrice.PrintToPrinter(1, False, 0, 0)
                                 Next
                             End Using
                         Else
                             Using cr As New CaseLabel
                                 cr.SetDataSource(dt2)
-                                For i As Integer = 1 To _product.no_of_barcode
+                                For i As Integer = 1 To case_prod.no_of_barcode
                                     cr.PrintToPrinter(1, False, 0, 0)
                                 Next
                             End Using
