@@ -191,6 +191,7 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Database\MrpSummaryObj.vb" />
     <Compile Include="Database\PartialClass.vb" />
     <Compile Include="Dataset\MrpLineSummary.vb" />
     <Compile Include="Dataset\MrpPos.Designer.vb">
@@ -306,12 +307,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Report\CaseLabel1.vb">
-      <DependentUpon>CaseLabel1.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Report\CaseLabel.vb">
       <DependentUpon>CaseLabel.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -330,6 +325,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Report\MrpSummary.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MrpSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Report\pSummary.vb">
       <DependentUpon>pSummary.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -341,12 +342,6 @@
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Report\PdfSummary.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PdfSummary.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Report\PiecePriceLabel.vb">
       <DependentUpon>PiecePriceLabel.rpt</DependentUpon>
@@ -368,12 +363,6 @@
     </Compile>
     <Compile Include="Report\PiecePriceLabel1.vb">
       <DependentUpon>PiecePriceLabel1.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Report\of PieceLabel.vb">
-      <DependentUpon>of PieceLabel.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -450,10 +439,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\CaseLabel1.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CaseLabel1.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Report\CaseLabel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CaseLabel.vb</LastGenOutput>
@@ -466,6 +451,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CasePriceLabel.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\MrpSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MrpSummary.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report\pSummary.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>pSummary.vb</LastGenOutput>
@@ -473,10 +462,6 @@
     <EmbeddedResource Include="Report\cSummary.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>cSummary.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\PdfSummary.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>PdfSummary.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\PiecePriceLabel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -493,10 +478,6 @@
     <EmbeddedResource Include="Report\PiecePriceLabel1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PiecePriceLabel1.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\of PieceLabel.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>of PieceLabel.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\PieceLabel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

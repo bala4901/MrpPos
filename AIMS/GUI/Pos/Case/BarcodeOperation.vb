@@ -10,11 +10,13 @@ Public Class BarcodeOperation
 
     Private _prd_id As Integer = 0
     Private _lot_id As Integer = 0
+    Private _isPhotoLoad As Boolean = False
 
     Private Sub BarcodeOperation_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
         cbPrice.SelectedText = "Yes"
         cbPrintSummary.SelectedText = "Yes"
         cbSlogan.SelectedText = "Yes"
+        pctWeightImage.Image = My.Resources.placeholder
         Call loadDgvLine()
         Call setSummary()
     End Sub
@@ -100,6 +102,16 @@ Public Class BarcodeOperation
             If lines.ToList.Count > 0 Then
                 _prd_id = lines(0).product_id
                 _lot_id = lines(0).prodlot_id
+
+                If Not _isPhotoLoad Then
+                    Dim prod As product_product = (From p In db.product_product Where p.id = _prd_id).FirstOrDefault
+                    Dim appPath As String = getFileDbPath()
+                    Dim outputStream As New MemoryStream
+                    Dim info = FileDB.Read(appPath, Guid.Parse(prod.image), outputStream)
+                    pctWeightImage.Image = Image.FromStream(outputStream)
+                    _isPhotoLoad = True
+                End If
+
                 Dim rowNo As Integer = 1
                 Dim lst As New List(Of mrp_order_line)
                 For Each ol As mrp_order_line In lines.ToList
@@ -112,6 +124,7 @@ Public Class BarcodeOperation
             Else
                 _prd_id = 0
                 _lot_id = 0
+                pctWeightImage.Image = My.Resources.placeholder
                 dgvScanning.DataSource = DBNull.Value
                 dgvScanning.Refresh()
             End If

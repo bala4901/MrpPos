@@ -138,7 +138,6 @@ Partial Class PieceOperation
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.MrpPos1 = New AIMS.MrpPos()
         Me.MrpPos2 = New AIMS.MrpPos()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.TitleToolStrip.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1112,7 +1111,6 @@ Partial Class PieceOperation
         '
         'Panel6
         '
-        Me.Panel6.Controls.Add(Me.Button1)
         Me.Panel6.Controls.Add(Me.btnWeight)
         Me.Panel6.Controls.Add(Me.btnValidateWeight)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
@@ -1192,15 +1190,6 @@ Partial Class PieceOperation
         '
         Me.MrpPos2.DataSetName = "MrpPos"
         Me.MrpPos2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(220, 7)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'PieceOperation
         '
@@ -1357,5 +1346,4 @@ Partial Class PieceOperation
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents cbCasePrice As System.Windows.Forms.ComboBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

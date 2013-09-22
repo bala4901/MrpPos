@@ -1213,34 +1213,34 @@ Public Class PieceOperation
 
 
     Private Sub btnWeight_Click1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWeight.Click
-        'Dim isOpen As Boolean = False
-        'Dim cnt As Integer = 0
-        'Dim errmsg As String = ""
-        'btnWeight.Enabled = False
+        Dim isOpen As Boolean = False
+        Dim cnt As Integer = 0
+        Dim errmsg As String = ""
+        btnWeight.Enabled = False
 
-        'If Not Port.IsOpen Then
-        '    While isOpen = False
-        '        Try
-        '            cnt += 1
-        '            If Port.IsOpen = False Then
-        '                Port.Open()
-        '                isOpen = True
-        '            End If
+        If Not Port.IsOpen Then
+            While isOpen = False
+                Try
+                    cnt += 1
+                    If Port.IsOpen = False Then
+                        Port.Open()
+                        isOpen = True
+                    End If
 
-        '        Catch ex As Exception
-        '            errmsg = ex.Message
-        '        Finally
-        '            If cnt = 300 Then
-        '                MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
-        '                btnWeight.Enabled = True
-        '                isOpen = True
-        '            End If
-        '        End Try
+                Catch ex As Exception
+                    errmsg = ex.Message
+                Finally
+                    If cnt = 300 Then
+                        MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
+                        btnWeight.Enabled = True
+                        isOpen = True
+                    End If
+                End Try
 
 
-        '    End While
-        'End If
-        tbWeight.Text = "9999"
+            End While
+        End If
+        ' tbWeight.Text = "9999"
 
     End Sub
 
@@ -1307,11 +1307,22 @@ Public Class PieceOperation
             Using db As New MrpPosEntities
                 Dim order As mrp_order = (From o In db.mrp_order Where o.id = _orderId Select o).SingleOrDefault
 
+                Dim orLine As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Where ol.order_id = _orderId Select ol)
 
-                Dim orderLine As mrp_order_line = getSummaryOrder()
-                order.total_weight = orderLine.total_weight
-                order.total_pcs = orderLine.no_of_pcs
-                order.total_cases = orderLine.no_of_box
+                Dim cLine As IEnumerable(Of mrp_order_case) = (From ol In db.mrp_order_case Where ol.order_id = _orderId Select ol)
+
+                Dim ttl_pcs As Integer = orLine.ToList.Count
+                Dim ttl_case As Integer = cLine.ToList.Count
+                Dim ttl_weight As Integer = 0
+                For Each jj As mrp_order_line In orLine
+                    ttl_weight += jj.qty
+
+                Next
+
+
+                order.total_weight = ttl_weight
+                order.total_pcs = ttl_pcs
+                order.total_cases = ttl_case
                 order.write_date = Now
                 order.write_uid = loginUser.id
 
@@ -1324,6 +1335,7 @@ Public Class PieceOperation
             If MsgBox("Do you want to print the summary Report?", MsgBoxStyle.YesNo, "Print Summary") = MsgBoxResult.Yes Then
                 Call printSummaryLabel()
             End If
+            Call printSummaryPdf(_orderId)
             MsgBox("Production Finish. Please start again new production!", MsgBoxStyle.Information, "Success")
             Call cleanUp()
             Call setTouchImage()
@@ -1966,9 +1978,86 @@ Public Class PieceOperation
 #End Region
 
 
-    Private Sub Button1_Click_1(sender As System.Object, e As System.EventArgs) Handles Button1.Click
-        printCaseSummary(7)
+    Private Sub printSummaryPdf(ByVal orderId As Integer)
+
+        Using db As New MrpPosEntities
+            Dim summ1 As IEnumerable(Of MrpSummaryObj) = (From od In db.mrp_order
+                       Join ol In db.mrp_order_line On ol.order_id Equals od.id
+                       Join oc In db.mrp_order_case On oc.id Equals ol.box_id
+                       Join pp In db.product_product On pp.id Equals od.product_id
+                       Join lot In db.mrp_prod_lot On lot.id Equals od.lot_id
+                       Where od.id = orderId
+                        Select New With {.order_serial_no = od.name, .case_serial_no = oc.serial_no, .lot_no = lot.name, .line1 = pp.name, .line2 = pp.name2, _
+                       .serial_no = ol.serial_no, .qty = ol.qty, .total_weight = od.total_weight, .total_case = od.total_cases, .total_pcs = od.total_pcs, .exp_date = lot.expired_date}). _
+            AsEnumerable().Select(Function(x) New MrpSummaryObj With {.order_serial_no = x.order_serial_no, .case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
+            .line1 = x.line1, .Line2 = x.line2, .lot_no = x.lot_no, .pcs = x.total_case & " / " & x.total_pcs, .total_weight = x.total_weight, .exp_date = Format(x.exp_date, "ddMMyy")})
+
+
+            Dim summ2 As IEnumerable(Of MrpSummaryObj) = (From od In db.mrp_order
+                                                          Join ol In db.mrp_order_line On ol.order_id Equals od.id
+                                                          Join pp In db.product_product On pp.id Equals od.product_id
+                                                          Join lot In db.mrp_prod_lot On lot.id Equals od.lot_id
+                                                          Where od.id = orderId And ol.box_id = 0
+                                                          Select New With {.order_serial_no = od.name, .case_serial_no = "", .lot_no = lot.name, .line1 = pp.name, .line2 = pp.name2, _
+                                                                           .serial_no = ol.serial_no, .qty = ol.qty, .total_weight = od.total_weight, .total_case = od.total_cases, .total_pcs = od.total_pcs, .exp_date = lot.expired_date}). _
+                                                                   AsEnumerable().Select(Function(x) New MrpSummaryObj With {.order_serial_no = x.order_serial_no, .case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
+                                                                                                                             .line1 = x.line1, .Line2 = x.line2, .lot_no = x.lot_no, .pcs = x.total_case & " / " & x.total_pcs, .total_weight = x.total_weight, .exp_date = Format(x.exp_date, "ddMMyy")})
+
+
+
+            Dim qty1 As Integer = 0
+            Dim qty2 As Integer = 0
+
+
+            Dim res1 As DataTable = summ1.ToADOTable
+            Dim res2 As DataTable = summ2.ToADOTable
+
+
+            Dim dt1 As New DataTable
+            dt1 = res1.Clone
+
+            For Each row As DataRow In res1.Rows
+
+                dt1.Rows.Add(row.ItemArray)
+
+            Next
+            For Each row As DataRow In res2.Rows
+
+                dt1.Rows.Add(row.ItemArray)
+
+            Next
+
+            Using cr As New MrpSummary
+                Try
+
+                    cr.SetDataSource(dt1)
+
+                    Dim CrExportOptions As ExportOptions
+                    Dim CrDiskFileDestinationOptions As New  _
+                    DiskFileDestinationOptions()
+                    Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions()
+                    CrDiskFileDestinationOptions.DiskFileName = My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf"
+                    CrExportOptions = cr.ExportOptions
+                    With CrExportOptions
+                        .ExportDestinationType = ExportDestinationType.DiskFile
+                        .ExportFormatType = ExportFormatType.PortableDocFormat
+                        .DestinationOptions = CrDiskFileDestinationOptions
+                        .FormatOptions = CrFormatTypeOptions
+                    End With
+                    cr.Export()
+
+                    If System.IO.File.Exists(My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf") Then
+                        Process.Start(My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf")
+                    End If
+
+                Catch ex As Exception
+
+                End Try
+            End Using
+
+        End Using
     End Sub
 
   
+
 End Class

@@ -62,5 +62,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">provider=System.Data.SqlServerCe.3.5;provider connection string="Data Source=|DataDirectory|\Database\MrpPos.sdf"</Value>
     </Setting>
+    <Setting Name="exportSummaryPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\Public\Documents\mrppos\</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

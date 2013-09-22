@@ -229,6 +229,18 @@ Namespace My
                 Return CType(Me("MrpPosConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("C:\Users\Public\Documents\mrppos\")>  _
+        Public Property exportSummaryPath() As String
+            Get
+                Return CType(Me("exportSummaryPath"),String)
+            End Get
+            Set
+                Me("exportSummaryPath") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
