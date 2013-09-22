@@ -966,38 +966,38 @@ Public Class PieceOperation
 
 
     Private Sub btnWeight_Click1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWeight.Click
-        'Dim isOpen As Boolean = False
-        'Dim cnt As Integer = 0
-        'Dim errmsg As String = ""
-        'btnWeight.Enabled = False
+        Dim isOpen As Boolean = False
+        Dim cnt As Integer = 0
+        Dim errmsg As String = ""
+        btnWeight.Enabled = False
 
-        'If Not Port.IsOpen Then
-        '    While isOpen = False
-        '        Try
-        '            cnt += 1
-        '            If Port.IsOpen = False Then
-        '                Port.Open()
-        '                isOpen = True
-        '            End If
+        If Not Port.IsOpen Then
+            While isOpen = False
+                Try
+                    cnt += 1
+                    If Port.IsOpen = False Then
+                        Port.Open()
+                        isOpen = True
+                    End If
 
-        '        Catch ex As Exception
-        '            errmsg = ex.Message
-        '        Finally
-        '            If cnt = 300 Then
-        '                MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
-        '                isOpen = True
-        '            End If
-        '        End Try
+                Catch ex As Exception
+                    errmsg = ex.Message
+                Finally
+                    If cnt = 300 Then
+                        MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
+                        isOpen = True
+                    End If
+                End Try
 
 
-        '    End While
-        'End If
-        tbWeight.Text = "9999"
+            End While
+        End If
+        ' tbWeight.Text = "9999"
 
     End Sub
 
     Private Sub btnValidateWeight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnValidateWeight.Click
-        'If Port.IsOpen = True Then Port.Close()
+        If Port.IsOpen = True Then Port.Close()
 
         ' btnWeight.Enabled = True
 
