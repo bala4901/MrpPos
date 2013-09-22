@@ -61,6 +61,17 @@ Partial Class BarcodeOperation
         Me.PrefixDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.MrporderlineBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me.MrpPos3 = New AIMS.MrpPos()
+        Me.Panel9 = New System.Windows.Forms.Panel()
+        Me.chkCaseProduct = New System.Windows.Forms.CheckBox()
+        Me.gbGroupProduct = New System.Windows.Forms.GroupBox()
+        Me.cbCaseProduct = New System.Windows.Forms.ComboBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cbSlogan = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.cbPrintSummary = New System.Windows.Forms.ComboBox()
+        Me.cbPrice = New System.Windows.Forms.ComboBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnCasePrint = New System.Windows.Forms.Button()
@@ -82,17 +93,6 @@ Partial Class BarcodeOperation
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.MrpPos1 = New AIMS.MrpPos()
         Me.MrpPos2 = New AIMS.MrpPos()
-        Me.Panel9 = New System.Windows.Forms.Panel()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.cbPrice = New System.Windows.Forms.ComboBox()
-        Me.cbPrintSummary = New System.Windows.Forms.ComboBox()
-        Me.cbSlogan = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.gbGroupProduct = New System.Windows.Forms.GroupBox()
-        Me.cbCaseProduct = New System.Windows.Forms.ComboBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.chkCaseProduct = New System.Windows.Forms.CheckBox()
         Me.TitleToolStrip.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,6 +105,8 @@ Partial Class BarcodeOperation
         CType(Me.dgvScanning, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrporderlineBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrpPos3, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel9.SuspendLayout()
+        Me.gbGroupProduct.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -116,8 +118,6 @@ Partial Class BarcodeOperation
         CType(Me.MrpPos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrpPos1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrpPos2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel9.SuspendLayout()
-        Me.gbGroupProduct.SuspendLayout()
         Me.SuspendLayout()
         '
         'TitleToolStrip
@@ -415,6 +415,125 @@ Partial Class BarcodeOperation
         Me.MrpPos3.DataSetName = "MrpPos"
         Me.MrpPos3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'Panel9
+        '
+        Me.Panel9.Controls.Add(Me.chkCaseProduct)
+        Me.Panel9.Controls.Add(Me.gbGroupProduct)
+        Me.Panel9.Controls.Add(Me.cbSlogan)
+        Me.Panel9.Controls.Add(Me.Label3)
+        Me.Panel9.Controls.Add(Me.cbPrintSummary)
+        Me.Panel9.Controls.Add(Me.cbPrice)
+        Me.Panel9.Controls.Add(Me.Label2)
+        Me.Panel9.Controls.Add(Me.Label1)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel9.Location = New System.Drawing.Point(0, 0)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(738, 151)
+        Me.Panel9.TabIndex = 2
+        '
+        'chkCaseProduct
+        '
+        Me.chkCaseProduct.AutoSize = True
+        Me.chkCaseProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkCaseProduct.Location = New System.Drawing.Point(297, 12)
+        Me.chkCaseProduct.Name = "chkCaseProduct"
+        Me.chkCaseProduct.Size = New System.Drawing.Size(236, 28)
+        Me.chkCaseProduct.TabIndex = 9
+        Me.chkCaseProduct.Text = "Print with Other Product?"
+        Me.chkCaseProduct.UseVisualStyleBackColor = True
+        '
+        'gbGroupProduct
+        '
+        Me.gbGroupProduct.Controls.Add(Me.cbCaseProduct)
+        Me.gbGroupProduct.Controls.Add(Me.Label4)
+        Me.gbGroupProduct.Enabled = False
+        Me.gbGroupProduct.Location = New System.Drawing.Point(297, 46)
+        Me.gbGroupProduct.Name = "gbGroupProduct"
+        Me.gbGroupProduct.Size = New System.Drawing.Size(390, 72)
+        Me.gbGroupProduct.TabIndex = 8
+        Me.gbGroupProduct.TabStop = False
+        Me.gbGroupProduct.Text = "Case Product"
+        '
+        'cbCaseProduct
+        '
+        Me.cbCaseProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCaseProduct.FormattingEnabled = True
+        Me.cbCaseProduct.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbCaseProduct.Location = New System.Drawing.Point(166, 22)
+        Me.cbCaseProduct.Name = "cbCaseProduct"
+        Me.cbCaseProduct.Size = New System.Drawing.Size(194, 32)
+        Me.cbCaseProduct.TabIndex = 9
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(18, 25)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(133, 24)
+        Me.Label4.TabIndex = 8
+        Me.Label4.Text = "Case Product :"
+        '
+        'cbSlogan
+        '
+        Me.cbSlogan.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSlogan.FormattingEnabled = True
+        Me.cbSlogan.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbSlogan.Location = New System.Drawing.Point(159, 93)
+        Me.cbSlogan.Name = "cbSlogan"
+        Me.cbSlogan.Size = New System.Drawing.Size(85, 32)
+        Me.cbSlogan.TabIndex = 5
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(11, 93)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(121, 24)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Print Slogan :"
+        '
+        'cbPrintSummary
+        '
+        Me.cbPrintSummary.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPrintSummary.FormattingEnabled = True
+        Me.cbPrintSummary.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbPrintSummary.Location = New System.Drawing.Point(159, 52)
+        Me.cbPrintSummary.Name = "cbPrintSummary"
+        Me.cbPrintSummary.Size = New System.Drawing.Size(85, 32)
+        Me.cbPrintSummary.TabIndex = 3
+        '
+        'cbPrice
+        '
+        Me.cbPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbPrice.FormattingEnabled = True
+        Me.cbPrice.Items.AddRange(New Object() {"Yes", "No"})
+        Me.cbPrice.Location = New System.Drawing.Point(159, 12)
+        Me.cbPrice.Name = "cbPrice"
+        Me.cbPrice.Size = New System.Drawing.Size(85, 32)
+        Me.cbPrice.TabIndex = 2
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(11, 55)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(142, 24)
+        Me.Label2.TabIndex = 1
+        Me.Label2.Text = "Print Summary :"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(11, 18)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(105, 24)
+        Me.Label1.TabIndex = 0
+        Me.Label1.Text = "Print Price :"
+        '
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.White
@@ -604,125 +723,6 @@ Partial Class BarcodeOperation
         Me.MrpPos2.DataSetName = "MrpPos"
         Me.MrpPos2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'Panel9
-        '
-        Me.Panel9.Controls.Add(Me.chkCaseProduct)
-        Me.Panel9.Controls.Add(Me.gbGroupProduct)
-        Me.Panel9.Controls.Add(Me.cbSlogan)
-        Me.Panel9.Controls.Add(Me.Label3)
-        Me.Panel9.Controls.Add(Me.cbPrintSummary)
-        Me.Panel9.Controls.Add(Me.cbPrice)
-        Me.Panel9.Controls.Add(Me.Label2)
-        Me.Panel9.Controls.Add(Me.Label1)
-        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel9.Location = New System.Drawing.Point(0, 0)
-        Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(738, 151)
-        Me.Panel9.TabIndex = 2
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(11, 18)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 24)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Print Price :"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(11, 55)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(142, 24)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Print Summary :"
-        '
-        'cbPrice
-        '
-        Me.cbPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPrice.FormattingEnabled = True
-        Me.cbPrice.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbPrice.Location = New System.Drawing.Point(159, 12)
-        Me.cbPrice.Name = "cbPrice"
-        Me.cbPrice.Size = New System.Drawing.Size(85, 32)
-        Me.cbPrice.TabIndex = 2
-        '
-        'cbPrintSummary
-        '
-        Me.cbPrintSummary.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbPrintSummary.FormattingEnabled = True
-        Me.cbPrintSummary.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbPrintSummary.Location = New System.Drawing.Point(159, 52)
-        Me.cbPrintSummary.Name = "cbPrintSummary"
-        Me.cbPrintSummary.Size = New System.Drawing.Size(85, 32)
-        Me.cbPrintSummary.TabIndex = 3
-        '
-        'cbSlogan
-        '
-        Me.cbSlogan.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSlogan.FormattingEnabled = True
-        Me.cbSlogan.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbSlogan.Location = New System.Drawing.Point(159, 93)
-        Me.cbSlogan.Name = "cbSlogan"
-        Me.cbSlogan.Size = New System.Drawing.Size(85, 32)
-        Me.cbSlogan.TabIndex = 5
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(11, 93)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(121, 24)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Print Slogan :"
-        '
-        'gbGroupProduct
-        '
-        Me.gbGroupProduct.Controls.Add(Me.cbCaseProduct)
-        Me.gbGroupProduct.Controls.Add(Me.Label4)
-        Me.gbGroupProduct.Enabled = False
-        Me.gbGroupProduct.Location = New System.Drawing.Point(297, 46)
-        Me.gbGroupProduct.Name = "gbGroupProduct"
-        Me.gbGroupProduct.Size = New System.Drawing.Size(390, 72)
-        Me.gbGroupProduct.TabIndex = 8
-        Me.gbGroupProduct.TabStop = False
-        Me.gbGroupProduct.Text = "Case Product"
-        '
-        'cbCaseProduct
-        '
-        Me.cbCaseProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbCaseProduct.FormattingEnabled = True
-        Me.cbCaseProduct.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbCaseProduct.Location = New System.Drawing.Point(166, 22)
-        Me.cbCaseProduct.Name = "cbCaseProduct"
-        Me.cbCaseProduct.Size = New System.Drawing.Size(194, 32)
-        Me.cbCaseProduct.TabIndex = 9
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(18, 25)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(133, 24)
-        Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Case Product :"
-        '
-        'chkCaseProduct
-        '
-        Me.chkCaseProduct.AutoSize = True
-        Me.chkCaseProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkCaseProduct.Location = New System.Drawing.Point(297, 12)
-        Me.chkCaseProduct.Name = "chkCaseProduct"
-        Me.chkCaseProduct.Size = New System.Drawing.Size(236, 28)
-        Me.chkCaseProduct.TabIndex = 9
-        Me.chkCaseProduct.Text = "Print with Other Product?"
-        Me.chkCaseProduct.UseVisualStyleBackColor = True
-        '
         'BarcodeOperation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -748,6 +748,10 @@ Partial Class BarcodeOperation
         CType(Me.dgvScanning, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrporderlineBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrpPos3, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel9.ResumeLayout(False)
+        Me.Panel9.PerformLayout()
+        Me.gbGroupProduct.ResumeLayout(False)
+        Me.gbGroupProduct.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
@@ -760,10 +764,6 @@ Partial Class BarcodeOperation
         CType(Me.MrpPos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrpPos1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrpPos2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel9.ResumeLayout(False)
-        Me.Panel9.PerformLayout()
-        Me.gbGroupProduct.ResumeLayout(False)
-        Me.gbGroupProduct.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

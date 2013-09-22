@@ -110,6 +110,8 @@ Public Class BarcodeOperation
                 dgvScanning.DataSource = lst
                 dgvScanning.Refresh()
             Else
+                _prd_id = 0
+                _lot_id = 0
                 dgvScanning.DataSource = DBNull.Value
                 dgvScanning.Refresh()
             End If
@@ -320,37 +322,10 @@ Public Class BarcodeOperation
 
 
 
-        If _printSlogan Then
-            If box_id > 0 Then
+            If _printSummary Then
+                If box_id > 0 Then
 
-                Dim cr As New Case_Summary
-                    Dim casePiece As IEnumerable(Of mrp_order_line) = (From cp In db.mrp_case_piece
-                                                               Join ol In db.mrp_order_line On cp.line_id Equals ol.id
-                                                               Join oc In db.mrp_order_case On cp.case_id Equals oc.id
-                                                               Where (cp.case_id = box_id)
-                                                                      Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs}) _
-                                                                           .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
-                                                                                                                                      .total_weight = x.total_qty, .unit_price = x.unit_price})
-                    Dim dt3 As DataTable = casePiece.ToADOTable
-                    Dim dt4 As New DataTable
-                    dt4 = dt3.Clone
-
-                    For Each row As DataRow In dt3.Rows
-
-
-                        dt4.Rows.Add(row.ItemArray)
-                        ' Exit For
-                    Next
-
-                Try
-                        cr.SetDataSource(dt4)
-                    cr.PrintToPrinter(1, False, 0, 0)
-                Catch ex As Exception
-
-                End Try
-
-
-
+                    printCaseSummary(box_id)
 
                 End If
 
@@ -363,6 +338,54 @@ Public Class BarcodeOperation
         End Using
 
 
+    End Sub
+
+    Private Sub printCaseSummary(ByVal box_id As Integer)
+        Using db As New MrpPosEntities
+            Dim cr As New cSummary
+            Dim casePiece As IEnumerable(Of mrp_order_line) = (From cp In db.mrp_case_piece
+                                                               Join ol In db.mrp_order_line On cp.line_id Equals ol.id
+                                                               Join oc In db.mrp_order_case On cp.case_id Equals oc.id
+                                                               Where (cp.case_id = box_id)
+                                                                      Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs}) _
+                                                                           .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
+                                                                                                                                      .total_weight = x.total_qty, .unit_price = x.unit_price})
+            Dim dt As DataTable = casePiece.ToADOTable
+
+            Dim tDt1 As New DataTable
+            Dim tDt2 As New DataTable
+            tDt1 = dt.Clone
+            tDt2 = dt.Clone
+
+            For i As Integer = 0 To dt.Rows.Count - 1
+                If i Mod 2 = 0 Then
+                    tDt1.Rows.Add(dt.Rows(i).ItemArray)
+                End If
+            Next
+
+            For i As Integer = 0 To dt.Rows.Count - 1
+                If i Mod 2 <> 0 Then
+                    tDt2.Rows.Add(dt.Rows(i).ItemArray)
+                End If
+            Next
+
+            Dim ct As Integer = tDt1.Rows.Count
+            Dim ct1 As Integer = tDt2.Rows.Count
+
+            For i As Integer = 0 To ct - 1
+                If ct1 > i Then
+                    tDt1.Rows(i)("serial_no1") = tDt2.Rows(i)("serial_no")
+                    tDt1.Rows(i)("qty1") = tDt2.Rows(i)("qty")
+                End If
+            Next
+
+            Try
+                cr.SetDataSource(tDt1)
+                cr.PrintToPrinter(1, False, 0, 0)
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+        End Using
     End Sub
 
     Private Function createCaseOrder(ByVal product_id As Integer, ByVal no_pcs As Integer, ByVal ttlWeight As Integer, ByRef serial_no As String) As Integer
@@ -463,6 +486,24 @@ Public Class BarcodeOperation
                     MsgBox("Please select a record to delete!", MsgBoxStyle.Information, "Delete Weight")
                 End If
             End Using
+        End If
+    End Sub
+
+    Private Sub dgvScanning_CellContentClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvScanning.CellContentClick
+        If e.ColumnIndex = 1 Then
+            If dgvScanning.Rows(e.RowIndex).Cells(1).FormattedValue Then
+                dgvScanning.Rows(e.RowIndex).Cells(1).Value = False
+            Else
+                dgvScanning.Rows(e.RowIndex).Cells(1).Value = True
+            End If
+        End If
+    End Sub
+
+    Private Sub btnCancel_Click(sender As System.Object, e As System.EventArgs) Handles btnCancel.Click
+        If MsgBox("Are you sure want to Exit from Barcode Scanning?", MsgBoxStyle.OkCancel, "Information") = MsgBoxResult.Ok Then
+            Me.Close()
+
+
         End If
     End Sub
 End Class

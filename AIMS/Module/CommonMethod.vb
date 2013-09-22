@@ -443,6 +443,26 @@ Module CommonMethod
         End If
     End Function
 
+    Public Function generateOrderSerialNo(ByVal id As String) As String
+        Dim sTrim As String = ""
+        Dim alpha As String = ""
+        Dim digitControl As Integer = 6
+
+        If id.Length > 6 Then
+            alpha = id.Substring(0, id.Length - digitControl)
+
+            alpha = Decimal2ExcelAZ(CType(alpha, Long))
+
+            sTrim = id.Substring(id.Length - digitControl)
+        Else
+            alpha = "A"
+            sTrim = id.PadLeft(digitControl, "0"c)
+        End If
+
+        Return "O" & alpha & sTrim
+
+
+    End Function
 
 
 End Module

@@ -2875,6 +2875,10 @@ Partial Public Class MrpPos
         
         Private columnunit_price As Global.System.Data.DataColumn
         
+        Private columnserial_no1 As Global.System.Data.DataColumn
+        
+        Private columnqty1 As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -2951,6 +2955,22 @@ Partial Public Class MrpPos
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property serial_no1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnserial_no1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property qty1Column() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnqty1
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -2987,9 +3007,9 @@ Partial Public Class MrpPos
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function Addcase_summaryRow(ByVal case_serial_no As String, ByVal serial_no As String, ByVal qty As String, ByVal total_weight As String, ByVal unit_price As String) As case_summaryRow
+        Public Overloads Function Addcase_summaryRow(ByVal case_serial_no As String, ByVal serial_no As String, ByVal qty As String, ByVal total_weight As String, ByVal unit_price As String, ByVal serial_no1 As String, ByVal qty1 As String) As case_summaryRow
             Dim rowcase_summaryRow As case_summaryRow = CType(Me.NewRow,case_summaryRow)
-            Dim columnValuesArray() As Object = New Object() {case_serial_no, serial_no, qty, total_weight, unit_price}
+            Dim columnValuesArray() As Object = New Object() {case_serial_no, serial_no, qty, total_weight, unit_price, serial_no1, qty1}
             rowcase_summaryRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowcase_summaryRow)
             Return rowcase_summaryRow
@@ -3017,6 +3037,8 @@ Partial Public Class MrpPos
             Me.columnqty = MyBase.Columns("qty")
             Me.columntotal_weight = MyBase.Columns("total_weight")
             Me.columnunit_price = MyBase.Columns("unit_price")
+            Me.columnserial_no1 = MyBase.Columns("serial_no1")
+            Me.columnqty1 = MyBase.Columns("qty1")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3032,6 +3054,10 @@ Partial Public Class MrpPos
             MyBase.Columns.Add(Me.columntotal_weight)
             Me.columnunit_price = New Global.System.Data.DataColumn("unit_price", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnunit_price)
+            Me.columnserial_no1 = New Global.System.Data.DataColumn("serial_no1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnserial_no1)
+            Me.columnqty1 = New Global.System.Data.DataColumn("qty1", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnqty1)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5480,6 +5506,36 @@ Partial Public Class MrpPos
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property serial_no1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablecase_summary.serial_no1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'serial_no1' in table 'case_summary' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablecase_summary.serial_no1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property qty1() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablecase_summary.qty1Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'qty1' in table 'case_summary' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablecase_summary.qty1Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function Iscase_serial_noNull() As Boolean
             Return Me.IsNull(Me.tablecase_summary.case_serial_noColumn)
         End Function
@@ -5536,6 +5592,30 @@ Partial Public Class MrpPos
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub Setunit_priceNull()
             Me(Me.tablecase_summary.unit_priceColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isserial_no1Null() As Boolean
+            Return Me.IsNull(Me.tablecase_summary.serial_no1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setserial_no1Null()
+            Me(Me.tablecase_summary.serial_no1Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Isqty1Null() As Boolean
+            Return Me.IsNull(Me.tablecase_summary.qty1Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Setqty1Null()
+            Me(Me.tablecase_summary.qty1Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     

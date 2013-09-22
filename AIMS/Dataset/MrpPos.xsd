@@ -325,6 +325,8 @@ order by name</CommandText>
               <xs:element name="qty" msprop:Generator_ColumnVarNameInTable="columnqty" msprop:Generator_ColumnPropNameInRow="qty" msprop:Generator_ColumnPropNameInTable="qtyColumn" msprop:Generator_UserColumnName="qty" type="xs:string" minOccurs="0" />
               <xs:element name="total_weight" msprop:Generator_ColumnVarNameInTable="columntotal_weight" msprop:Generator_ColumnPropNameInRow="total_weight" msprop:Generator_ColumnPropNameInTable="total_weightColumn" msprop:Generator_UserColumnName="total_weight" type="xs:string" minOccurs="0" />
               <xs:element name="unit_price" msprop:Generator_ColumnVarNameInTable="columnunit_price" msprop:Generator_ColumnPropNameInRow="unit_price" msprop:Generator_ColumnPropNameInTable="unit_priceColumn" msprop:Generator_UserColumnName="unit_price" type="xs:string" minOccurs="0" />
+              <xs:element name="serial_no1" msprop:Generator_ColumnVarNameInTable="columnserial_no1" msprop:Generator_ColumnPropNameInRow="serial_no1" msprop:Generator_ColumnPropNameInTable="serial_no1Column" msprop:Generator_UserColumnName="serial_no1" type="xs:string" minOccurs="0" />
+              <xs:element name="qty1" msprop:Generator_ColumnVarNameInTable="columnqty1" msprop:Generator_ColumnPropNameInRow="qty1" msprop:Generator_ColumnPropNameInTable="qty1Column" msprop:Generator_UserColumnName="qty1" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

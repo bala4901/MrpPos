@@ -25,6 +25,8 @@ Partial Public Class mrp_order_line
     Public Property no_of_box As String
     Public Property isPrintComp As Boolean
     Public Property case_serial_no As String
+    Public Property serial_no1 As String
+    Public Property qty1 As String
 
 End Class
 

@@ -214,9 +214,18 @@ Public Class PieceOperation
 
 
 #Region "Innitalize"
+
+    Private Sub PieceOperation_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        If MsgBox("Are you sure want to Exit from weighting?", MsgBoxStyle.OkCancel, "Information") = MsgBoxResult.Ok Then
+            If Port.IsOpen Then Port.Close()
+
+
+        End If
+    End Sub
     Private Sub PieceOperation_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
+        If Port.IsOpen Then Port.Close()
+        tbWeight.Text = "000"
         initialize()
     End Sub
 
@@ -304,7 +313,7 @@ Public Class PieceOperation
                     Call setLotNoView()
                     Return
                 End If
-                End If
+            End If
         End Using
         btnReprint.Visible = True
         btnCasePrint.Visible = True
@@ -510,6 +519,11 @@ Public Class PieceOperation
             Dim rwCnt As Integer = (From p In db.mrp_order Select p).Count
 
             Dim mrpOrder As New mrp_order
+            If rwCnt > 0 Then
+                mrpOrder.id = getNextId(db.mrp_order.Select(Function(x) x.id).Max)
+            Else
+                mrpOrder.id = 1
+            End If
             mrpOrder.create_date = Now
             mrpOrder.create_uid = loginUser.id
             mrpOrder.write_date = Now
@@ -522,6 +536,7 @@ Public Class PieceOperation
             mrpOrder.nb_print = 0
             mrpOrder.case_product_id = _case_product_id
             mrpOrder.pcs_per_case = _pcs_per_case
+            mrpOrder.name = generateOrderSerialNo(mrpOrder.id)
 
             If _printCase Then
                 mrpOrder.printCase = 1
@@ -548,11 +563,7 @@ Public Class PieceOperation
                 mrpOrder.caseprice = 0
             End If
 
-            If rwCnt > 0 Then
-                mrpOrder.id = getNextId(db.mrp_order.Select(Function(x) x.id).Max)
-            Else
-                mrpOrder.id = 1
-            End If
+     
 
             db.mrp_order.AddObject(mrpOrder)
             db.SaveChanges()
@@ -822,35 +833,267 @@ Public Class PieceOperation
         End Using
 
         If box_id > 0 Then
-            Using db As New MrpPosEntities
-                Dim cr As New Case_Summary
-                Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join oc In db.mrp_order_case
-                                                                     On ol.box_id Equals oc.id
-                                                                      Where oc.id = box_id
-                                                                      Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs}) _
-                                                                           .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
-                                                                                                                                      .total_weight = x.total_qty, .unit_price = x.unit_price})
-                Dim dt As DataTable = lines.ToADOTable
-                Dim dt2 As New DataTable
-                dt2 = dt.Clone
+            If MsgBox("Do you want print Case Summary?", MsgBoxStyle.YesNo, "Case Summary") = MsgBoxResult.Yes Then
+                Using db As New MrpPosEntities
+                    Dim cr As New cSummary
+                    Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join oc In db.mrp_order_case
+                                                                         On ol.box_id Equals oc.id
+                                                                          Where oc.id = box_id
+                                                                          Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs}) _
+                                                                               .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
+                                                                                                                                          .total_weight = x.total_qty, .unit_price = x.unit_price, .serial_no1 = "", .qty1 = ""})
+                    Dim dt As DataTable = lines.ToADOTable
 
-                For Each row As DataRow In dt.Rows
+                    Dim tDt1 As New DataTable
+                    Dim tDt2 As New DataTable
+                    tDt1 = dt.Clone
+                    tDt2 = dt.Clone
 
+                    For i As Integer = 0 To dt.Rows.Count - 1
+                        If i Mod 2 = 0 Then
+                            tDt1.Rows.Add(dt.Rows(i).ItemArray)
+                        End If
+                    Next
 
-                    dt2.Rows.Add(row.ItemArray)
-                    ' Exit For
-                Next
+                    For i As Integer = 0 To dt.Rows.Count - 1
+                        If i Mod 2 <> 0 Then
+                            tDt2.Rows.Add(dt.Rows(i).ItemArray)
+                        End If
+                    Next
 
-                Try
-                    cr.SetDataSource(dt2)
-                    cr.PrintToPrinter(1, False, 0, 0)
-                Catch ex As Exception
+                    Dim ct As Integer = tDt1.Rows.Count
+                    Dim ct1 As Integer = tDt2.Rows.Count
 
-                End Try
-            End Using
+                    For i As Integer = 0 To ct - 1
+                        If ct1 > i Then
+                            tDt1.Rows(i)("serial_no1") = tDt2.Rows(i)("serial_no")
+                            tDt1.Rows(i)("qty1") = tDt2.Rows(i)("qty")
+                        End If
+                    Next
+
+                    Try
+                        cr.SetDataSource(tDt1)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+                End Using
+            End If
         End If
 
 
+    End Sub
+
+    Private Sub printCaseSummary(ByVal orderId As Integer)
+        Using db As New MrpPosEntities
+            Dim cr As New cSummary
+            Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join oc In db.mrp_order_case
+                                                                 On ol.box_id Equals oc.id
+                                                                 Join od In db.mrp_order On od.id Equals ol.order_id
+                                                                  Where ol.order_id = orderId
+                                                                  Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs, .ordername = od.name}) _
+                                                                       .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no & "-" & x.ordername, .serial_no = x.serial_no, .qty = x.qty, _
+                                                                                                                                   .total_weight = x.total_qty, .unit_price = x.unit_price, .serial_no1 = "", .qty1 = ""})
+
+
+            If lines.ToList.Count <= 0 Then Return
+
+            Dim dt As DataTable = lines.ToADOTable
+
+            Dim case_serial_nos As New List(Of String)
+
+            Dim initCase As String = ""
+
+            For Each k As mrp_order_line In lines.ToList
+                If case_serial_nos.Count <= 0 Then
+                    case_serial_nos.Add(k.case_serial_no)
+                Else
+                    If Not case_serial_nos.Contains(k.case_serial_no) Then
+                        case_serial_nos.Add(k.case_serial_no)
+                    End If
+                End If
+
+
+            Next
+
+            Dim tDt1 As New DataTable
+            Dim tDt2 As New DataTable
+            tDt1 = dt.Clone
+            tDt2 = dt.Clone
+
+            For Each cs As String In case_serial_nos
+                tDt1.Clear()
+                tDt2.Clear()
+
+                For i As Integer = 0 To dt.Rows.Count - 1
+
+                    If i Mod 2 = 0 Then
+                        If dt.Rows(i)("case_serial_no") = cs Then
+                            tDt1.Rows.Add(dt.Rows(i).ItemArray)
+                        End If
+                    End If
+                Next
+
+                For i As Integer = 0 To dt.Rows.Count - 1
+                    If i Mod 2 <> 0 Then
+                        If dt.Rows(i)("case_serial_no") = cs Then
+                            tDt2.Rows.Add(dt.Rows(i).ItemArray)
+                        End If
+                    End If
+                Next
+
+                Dim ct As Integer = tDt1.Rows.Count
+                Dim ct1 As Integer = tDt2.Rows.Count
+
+                If ct >= ct1 Then
+                    For i As Integer = 0 To ct - 1
+                        If ct1 > i Then
+                            tDt1.Rows(i)("serial_no1") = tDt2.Rows(i)("serial_no")
+                            tDt1.Rows(i)("qty1") = tDt2.Rows(i)("qty")
+                        End If
+                    Next
+                    Try
+                        cr.SetDataSource(tDt1)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+                Else
+                    For i As Integer = 0 To ct - 1
+                        If ct1 > i Then
+                            tDt2.Rows(i)("serial_no1") = tDt1.Rows(i)("serial_no")
+                            tDt2.Rows(i)("qty1") = tDt1.Rows(i)("qty")
+                        End If
+                    Next
+                    Try
+                        cr.SetDataSource(tDt2)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+                End If
+
+              
+            Next
+            
+
+     
+
+        End Using
+    End Sub
+
+    Private Sub printPieceSummary(ByVal orderId As Integer)
+        Using db As New MrpPosEntities
+            Dim cr As New cSummary
+            Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line
+                                                           Join od In db.mrp_order On od.id Equals ol.order_id
+                                                           Where (ol.order_id = orderId And ol.box_id = 0)
+                                                                  Select New With {.case_serial_no = od.name, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = 0, .unit_price = 0}) _
+                                                                       .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
+                                                                                                                                   .total_weight = x.total_qty, .unit_price = x.unit_price, .serial_no1 = "", .qty1 = ""})
+
+            Dim rowCnt As Integer = lines.ToList.Count
+            If rowCnt <= 0 Then Return
+
+            Dim sumQty As Integer
+            For Each ol As mrp_order_line In lines.ToList
+                sumQty += ol.qty
+            Next
+
+            If sumQty > 999 Then
+                sumQty = sumQty / 1000
+            End If
+
+
+
+            Dim dt As DataTable = lines.ToADOTable
+
+            For Each row As DataRow In dt.Rows
+                row("total_weight") = sumQty
+                row("unit_price") = rowCnt
+            Next
+
+
+            Dim case_serial_nos As New List(Of String)
+
+            Dim initCase As String = ""
+
+            For Each k As mrp_order_line In lines.ToList
+                If case_serial_nos.Count <= 0 Then
+                    case_serial_nos.Add(k.case_serial_no)
+                Else
+                    If Not case_serial_nos.Contains(k.case_serial_no) Then
+                        case_serial_nos.Add(k.case_serial_no)
+                    End If
+                End If
+
+
+            Next
+
+            Dim tDt1 As New DataTable
+            Dim tDt2 As New DataTable
+            tDt1 = dt.Clone
+            tDt2 = dt.Clone
+
+            For Each cs As String In case_serial_nos
+                tDt1.Clear()
+                tDt2.Clear()
+
+                For i As Integer = 0 To dt.Rows.Count - 1
+
+                    If i Mod 2 = 0 Then
+                        If dt.Rows(i)("case_serial_no") = cs Then
+                            tDt1.Rows.Add(dt.Rows(i).ItemArray)
+                        End If
+                    End If
+                Next
+
+                For i As Integer = 0 To dt.Rows.Count - 1
+                    If i Mod 2 <> 0 Then
+                        If dt.Rows(i)("case_serial_no") = cs Then
+                            tDt2.Rows.Add(dt.Rows(i).ItemArray)
+                        End If
+                    End If
+                Next
+
+                Dim ct As Integer = tDt1.Rows.Count
+                Dim ct1 As Integer = tDt2.Rows.Count
+
+                If ct >= ct1 Then
+                    For i As Integer = 0 To ct - 1
+                        If ct1 > i Then
+                            tDt1.Rows(i)("serial_no1") = tDt2.Rows(i)("serial_no")
+                            tDt1.Rows(i)("qty1") = tDt2.Rows(i)("qty")
+                        End If
+                    Next
+                    Try
+                        cr.SetDataSource(tDt1)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+                Else
+                    For i As Integer = 0 To ct - 1
+                        If ct1 > i Then
+                            tDt2.Rows(i)("serial_no1") = tDt1.Rows(i)("serial_no")
+                            tDt2.Rows(i)("qty1") = tDt1.Rows(i)("qty")
+                        End If
+                    Next
+                    Try
+                        cr.SetDataSource(tDt2)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                    Catch ex As Exception
+                        MsgBox(ex.Message)
+                    End Try
+                End If
+
+
+            Next
+
+
+
+
+        End Using
     End Sub
 
     Private Sub printSummaryLabel()
@@ -859,17 +1102,17 @@ Public Class PieceOperation
         Using db As New MrpPosEntities
 
 
-            Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product
-                                                                 On ol.product_id Equals pp.id
-                                                                  Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
+            Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product On ol.product_id Equals pp.id
+                                                                 Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
+                                                                 Join od In db.mrp_order On od.id Equals ol.order_id
                                                                   Where ol.order_id = _orderId
                                                                   Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
                                                                                    .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
-                                                                                   .exp_date = lot.expired_date, .eanCodeFont = pp.ean13}) _
-                                                                       .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = x.eancode, _
+                                                                                   .exp_date = lot.expired_date, .eanCodeFont = od.name}) _
+                                                                       .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = x.eanCodeFont, _
                                                                           .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = toDispCurrency(x.unit_price), .exp_date = Format(x.exp_date, "ddMMyy"), _
                                                                                                                                    .barcode = "*" & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "." & x.id.ToString.PadLeft(8, "0"c) & "*", _
-                                                                                                                         .eanCodeFont = setEAN13Code(x.eanCodeFont), .no = 0, .check = False})
+                                                                                                                         .eanCodeFont = x.eanCodeFont, .no = 0, .check = False})
             Dim no_of_box As Integer = (From b In db.mrp_order_case Where b.order_id = _orderId Select b).Count
 
             If lines.ToList.Count > 0 Then
@@ -892,7 +1135,7 @@ Public Class PieceOperation
                 For Each row As DataRow In dt.Rows
 
                     row("qty") = cnt
-                    row("unit_price") = no_of_pcs & " Pcs" & " / " & no_of_box & " Case(s)"
+                    row("unit_price") = no_of_pcs & " Pcs" & vbNewLine & no_of_box & " Case(s)"
                     dt2.Rows.Add(row.ItemArray)
                     Exit For
                 Next
@@ -901,6 +1144,10 @@ Public Class PieceOperation
                     cr.SetDataSource(dt2)
 
                     cr.PrintToPrinter(1, False, 0, 0)
+
+                    printCaseSummary(_orderId)
+
+                    printPieceSummary(_orderId)
                 Catch ex As Exception
 
                 End Try
@@ -966,38 +1213,39 @@ Public Class PieceOperation
 
 
     Private Sub btnWeight_Click1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWeight.Click
-        Dim isOpen As Boolean = False
-        Dim cnt As Integer = 0
-        Dim errmsg As String = ""
-        btnWeight.Enabled = False
+        'Dim isOpen As Boolean = False
+        'Dim cnt As Integer = 0
+        'Dim errmsg As String = ""
+        'btnWeight.Enabled = False
 
-        If Not Port.IsOpen Then
-            While isOpen = False
-                Try
-                    cnt += 1
-                    If Port.IsOpen = False Then
-                        Port.Open()
-                        isOpen = True
-                    End If
+        'If Not Port.IsOpen Then
+        '    While isOpen = False
+        '        Try
+        '            cnt += 1
+        '            If Port.IsOpen = False Then
+        '                Port.Open()
+        '                isOpen = True
+        '            End If
 
-                Catch ex As Exception
-                    errmsg = ex.Message
-                Finally
-                    If cnt = 300 Then
-                        MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
-                        isOpen = True
-                    End If
-                End Try
+        '        Catch ex As Exception
+        '            errmsg = ex.Message
+        '        Finally
+        '            If cnt = 300 Then
+        '                MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
+        '                btnWeight.Enabled = True
+        '                isOpen = True
+        '            End If
+        '        End Try
 
 
-            End While
-        End If
-        ' tbWeight.Text = "9999"
+        '    End While
+        'End If
+        tbWeight.Text = "9999"
 
     End Sub
 
     Private Sub btnValidateWeight_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnValidateWeight.Click
-        If Port.IsOpen = True Then Port.Close()
+        ' If Port.IsOpen = True Then Port.Close()
 
         ' btnWeight.Enabled = True
 
@@ -1038,7 +1286,7 @@ Public Class PieceOperation
                                                                    .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
                                                                                                                             .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
 
-            btnWeight.Enabled = True
+
             tbWeight.BackColor = Color.FromKnownColor(KnownColor.Window)
             tbWeight.Text = "000"
 
@@ -1116,11 +1364,11 @@ Public Class PieceOperation
                                                                Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
                                                                Where ol.box_id = 0 And ol.order_id = _orderId And records.Contains(ol.id)
                                                                Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
-                                                                                .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
-                                                                                .exp_date = lot.expired_date, .eanCodeFont = pp.ean13}) _
-                                                                    .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code & "(RE)", .line1 = x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), _
-                                                                       .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), _
-                                                                                                                                .barcode = "*" & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "." & x.id & "*"})
+                                                                            .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
+                                                                            .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
+                                                                .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = "(RE)" & x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
+                                                                   .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
+                                                                                                                            .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
 
                 If lines.ToList.Count > 0 Then
                     Call printLabel(lines.ToADOTable)
@@ -1718,4 +1966,9 @@ Public Class PieceOperation
 #End Region
 
 
+    Private Sub Button1_Click_1(sender As System.Object, e As System.EventArgs) Handles Button1.Click
+        printCaseSummary(7)
+    End Sub
+
+  
 End Class
