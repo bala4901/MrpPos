@@ -211,6 +211,8 @@ Public Class BarcodeOperation
 
             Call printCaseLabel()
             Call loadDgvLine()
+            _lot_id = 0
+            _prd_id = 0
 
         End If
     End Sub

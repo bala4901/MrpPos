@@ -590,9 +590,7 @@
     <Folder Include="AMD64\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\MrpPos.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Database\MrpPos.sdf" />
     <Content Include="Lib\FileDB.dll" />
     <Content Include="Lib\Mono.Security.dll" />
     <Content Include="Lib\Npgsql.dll" />

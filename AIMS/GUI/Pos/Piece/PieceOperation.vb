@@ -300,13 +300,13 @@ Public Class PieceOperation
     Private Sub setWeighting()
         Using db As New MrpPosEntities
             If txtLotNo.Text.Length > 0 Then
-                Dim lots As Integer = (From l In db.mrp_prod_lot Where l.name = txtLotNo.Text).Count
+                'Dim lots As Integer = (From l In db.mrp_prod_lot Where l.name = txtLotNo.Text).Count
 
-                If lots > 0 Then
-                    MsgBox("This lot has been used before. Please enter a new one!", MsgBoxStyle.Exclamation, "Lot No")
-                    Call setLotNoView()
-                    Return
-                End If
+                'If lots > 0 Then
+                '    MsgBox("This lot has been used before. Please enter a new one!", MsgBoxStyle.Exclamation, "Lot No")
+                '    Call setLotNoView()
+                '    Return
+                'End If
             Else
                 If _orderId <= 0 Then
                     MsgBox("Must Enter Lot No!", MsgBoxStyle.Exclamation, "Lot No")
@@ -658,31 +658,38 @@ Public Class PieceOperation
     Private Sub printLabel(ByVal line As DataTable)
 
         If Not _printPrice Then
-            Dim cr As New PieceLabel
+            Using cr As New PieceLabel
+                '   Dim cr As New PieceLabel
 
-            Try
 
-                cr.SetDataSource(line)
+                Try
 
-                cr.PrintToPrinter(1, False, 0, 0)
+                    cr.SetDataSource(line)
 
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
+                    cr.PrintToPrinter(1, False, 0, 0)
+
+
+
+
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
+            End Using
         Else
-            Dim cr As New PiecePriceLabel
+            Using cr As New PiecePriceLabel
 
-            Try
+                Try
 
-                cr.SetDataSource(line)
+                    cr.SetDataSource(line)
 
-                cr.PrintToPrinter(1, False, 0, 0)
+                    cr.PrintToPrinter(1, False, 0, 0)
 
-                cr.Close()
+                    cr.Close()
 
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
+                Catch ex As Exception
+                    MsgBox(ex.ToString)
+                End Try
+            End Using
         End If
 
     End Sub
@@ -1240,7 +1247,7 @@ Public Class PieceOperation
 
             End While
         End If
-        ' tbWeight.Text = "9999"
+        'tbWeight.Text = "9999"
 
     End Sub
 
@@ -1363,28 +1370,51 @@ Public Class PieceOperation
     Private Sub btnReprint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnReprint.Click
         If MsgBox("Are you sure to reprint the checked record(s)? ", MsgBoxStyle.YesNo, "Reprint") = MsgBoxResult.Yes Then
             Using db As New MrpPosEntities
+                'Dim records As New List(Of Integer)
+                'For Each row As DataGridViewRow In dgvScanning.Rows
+                '    If row.Cells(1).Value Then
+                '        Dim oLid As Integer = row.Cells(0).Value
+                '        records.Add(oLid)
+                '    End If
+                'Next
+
+                'Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product
+                '                                              On ol.product_id Equals pp.id
+                '                                               Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
+                '                                               Where ol.box_id = 0 And ol.order_id = _orderId And records.Contains(ol.id)
+                '                                               Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
+                '                                                            .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
+                '                                                            .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
+                '                                                .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = "(RE)" & x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
+                '                                                   .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
+                '                                                                                                            .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
+
+                'If lines.ToList.Count > 0 Then
+                '    Call printLabel(lines.ToADOTable)
+                'End If
                 Dim records As New List(Of Integer)
                 For Each row As DataGridViewRow In dgvScanning.Rows
                     If row.Cells(1).Value Then
                         Dim oLid As Integer = row.Cells(0).Value
-                        records.Add(oLid)
+                        Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product
+                                                             On ol.product_id Equals pp.id
+                                                              Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
+                                                              Where ol.box_id = 0 And ol.order_id = _orderId And ol.id = oLid
+                                                              Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
+                                                                           .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
+                                                                           .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
+                                                               .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = "(RE)" & x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
+                                                                  .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
+                                                                                                                           .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
+
+                        If lines.ToList.Count > 0 Then
+                            Call printLabel(lines.ToADOTable)
+                        End If
                     End If
                 Next
 
-                Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product
-                                                              On ol.product_id Equals pp.id
-                                                               Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
-                                                               Where ol.box_id = 0 And ol.order_id = _orderId And records.Contains(ol.id)
-                                                               Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
-                                                                            .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
-                                                                            .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
-                                                                .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = "(RE)" & x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
-                                                                   .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
-                                                                                                                            .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
-
-                If lines.ToList.Count > 0 Then
-                    Call printLabel(lines.ToADOTable)
-                End If
+               
+              
             End Using
 
 
@@ -2060,4 +2090,73 @@ Public Class PieceOperation
 
   
 
+    Private Sub Button1_Click_1(sender As System.Object, e As System.EventArgs)
+        For Each row As DataGridViewRow In dgvScanning.Rows
+            row.Cells(1).Value = True
+        Next
+
+    End Sub
+
+    Private Sub test(ByVal lala As Integer)
+        ' If Port.IsOpen = True Then Port.Close()
+
+        ' btnWeight.Enabled = True
+        tbWeight.Text = lala
+
+        If tbWeight.Text = "000" Then
+            MsgBox("No Reading is given!", MsgBoxStyle.Exclamation, "Warning")
+            Return
+        End If
+
+        Try
+            Dim testInt As Integer = tbWeight.Text
+            If testInt <= 0 Then
+                MsgBox("Reading is less than zero.", MsgBoxStyle.Exclamation, "Warning")
+                Return
+            End If
+        Catch ex As Exception
+            MsgBox("Please check the Weighter!", MsgBoxStyle.Exclamation, "Warning")
+            Return
+        End Try
+
+
+
+        If _orderId <= 0 Then
+            Call createLot()
+            Call createOrder()
+        End If
+
+        Dim lineId As Integer = createWeightOrderLine()
+
+        Using db As New MrpPosEntities
+            Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product
+                                                          On ol.product_id Equals pp.id
+                                                           Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
+                                                           Where ol.box_id = 0 And ol.order_id = _orderId And ol.id = lineId
+                                                           Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
+                                                                            .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
+                                                                            .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
+                                                                .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
+                                                                   .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
+                                                                                                                            .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
+
+
+            tbWeight.BackColor = Color.FromKnownColor(KnownColor.Window)
+            tbWeight.Text = "000"
+
+
+            Call refreshOrderLineGrid()
+            Call refreshBoxListGrid()
+            Call setSummary()
+
+            Call printLabel(lines.ToADOTable())
+            Call printCaseLabel()
+        End Using
+    End Sub
+
+    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs)
+        For i As Integer = 1 To 99
+            test(i * 857)
+        Next
+    End Sub
 End Class
