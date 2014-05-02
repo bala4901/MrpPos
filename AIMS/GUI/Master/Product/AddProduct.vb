@@ -47,7 +47,7 @@ Public Class AddProduct
 
                     If Not chkCaseProduct.Checked Then
                         If dgCaseProduct.RowCount > 0 Then
-                            Dim maxID As Integer = (From p In context.product_case Select p).Count
+                            Dim maxID As Integer = context.product_case.Select(Function(x) x.id).Max + 1
                             'context.product_case.Select(Function(x) x.id).Max
                             Dim dgvRow As DataGridViewRow
                             For Each dgvRow In dgCaseProduct.Rows
@@ -59,7 +59,7 @@ Public Class AddProduct
                                 caseProd.write_uid = loginUser.id
                                 caseProd.create_date = Now
                                 caseProd.create_uid = loginUser.id
-                                maxID += 1
+                                '  maxID += 1
 
                                 caseProd.id = maxID
 

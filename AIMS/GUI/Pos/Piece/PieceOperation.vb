@@ -1220,34 +1220,34 @@ Public Class PieceOperation
 
 
     Private Sub btnWeight_Click1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWeight.Click
-        Dim isOpen As Boolean = False
-        Dim cnt As Integer = 0
-        Dim errmsg As String = ""
-        btnWeight.Enabled = False
+        'Dim isOpen As Boolean = False
+        'Dim cnt As Integer = 0
+        'Dim errmsg As String = ""
+        'btnWeight.Enabled = False
 
-        If Not Port.IsOpen Then
-            While isOpen = False
-                Try
-                    cnt += 1
-                    If Port.IsOpen = False Then
-                        Port.Open()
-                        isOpen = True
-                    End If
+        'If Not Port.IsOpen Then
+        '    While isOpen = False
+        '        Try
+        '            cnt += 1
+        '            If Port.IsOpen = False Then
+        '                Port.Open()
+        '                isOpen = True
+        '            End If
 
-                Catch ex As Exception
-                    errmsg = ex.Message
-                Finally
-                    If cnt = 300 Then
-                        MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
-                        btnWeight.Enabled = True
-                        isOpen = True
-                    End If
-                End Try
+        '        Catch ex As Exception
+        '            errmsg = ex.Message
+        '        Finally
+        '            If cnt = 300 Then
+        '                MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
+        '                btnWeight.Enabled = True
+        '                isOpen = True
+        '            End If
+        '        End Try
 
 
-            End While
-        End If
-        'tbWeight.Text = "9999"
+        '    End While
+        'End If
+        tbWeight.Text = "9999"
 
     End Sub
 
@@ -1403,7 +1403,7 @@ Public Class PieceOperation
                                                               Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
                                                                            .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
                                                                            .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
-                                                               .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = "(RE)" & x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
+                                                               .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
                                                                   .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
                                                                                                                            .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
 
@@ -2066,16 +2066,17 @@ Public Class PieceOperation
                     Dim CrDiskFileDestinationOptions As New  _
                     DiskFileDestinationOptions()
                     Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions()
+                    ' Dim CrFormatTypeOptions As New pdf
                     CrDiskFileDestinationOptions.DiskFileName = My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf"
                     CrExportOptions = cr.ExportOptions
                     With CrExportOptions
                         .ExportDestinationType = ExportDestinationType.DiskFile
-                        .ExportFormatType = ExportFormatType.PortableDocFormat
+                        .ExportFormatType = ExportFormatType.Excel
                         .DestinationOptions = CrDiskFileDestinationOptions
                         .FormatOptions = CrFormatTypeOptions
                     End With
                     cr.Export()
-
+                    '.ExportFormatType = ExportFormatType.PortableDocFormat
                     If System.IO.File.Exists(My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf") Then
                         Process.Start(My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf")
                     End If
