@@ -6,6 +6,9 @@
     <edmx:StorageModels>
     <Schema Namespace="MrpPosModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.3.5" ProviderManifestToken="3.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="MrpPosModelStoreContainer">
+          <EntitySet Name="customer_customer" EntityType="MrpPosModel.Store.customer_customer" store:Type="Tables" />
+          <EntitySet Name="cutstyle" EntityType="MrpPosModel.Store.cutstyle" store:Type="Tables" />
+          <EntitySet Name="labelprintsales" EntityType="MrpPosModel.Store.labelprintsales" store:Type="Tables" />
           <EntitySet Name="mrp_case_piece" EntityType="MrpPosModel.Store.mrp_case_piece" store:Type="Tables" />
           <EntitySet Name="mrp_order" EntityType="MrpPosModel.Store.mrp_order" store:Type="Tables" />
           <EntitySet Name="mrp_order_case" EntityType="MrpPosModel.Store.mrp_order_case" store:Type="Tables" />
@@ -13,8 +16,65 @@
           <EntitySet Name="mrp_prod_lot" EntityType="MrpPosModel.Store.mrp_prod_lot" store:Type="Tables" />
           <EntitySet Name="product_case" EntityType="MrpPosModel.Store.product_case" store:Type="Tables" />
           <EntitySet Name="product_product" EntityType="MrpPosModel.Store.product_product" store:Type="Tables" />
+          <EntitySet Name="timbangan_sales" EntityType="MrpPosModel.Store.timbangan_sales" store:Type="Tables" />
           <EntitySet Name="user_user" EntityType="MrpPosModel.Store.user_user" store:Type="Tables" />
         </EntityContainer>
+        <EntityType Name="customer_customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="code" Type="nvarchar" MaxLength="100" />
+          <Property Name="address1" Type="nvarchar" MaxLength="100" />
+          <Property Name="address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="comment" Type="nvarchar" MaxLength="100" />
+          <Property Name="kode_pos" Type="nvarchar" MaxLength="100" />
+          <Property Name="write_date" Type="nvarchar" MaxLength="100" />
+          <Property Name="created_date" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="cutstyle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="charge" Type="numeric" />
+        </EntityType>
+        <EntityType Name="labelprintsales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="label_type" Type="nvarchar" MaxLength="100" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="customer_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="address1" Type="nvarchar" MaxLength="100" />
+          <Property Name="address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="postal_code" Type="nvarchar" MaxLength="100" />
+          <Property Name="comment" Type="nvarchar" MaxLength="100" />
+          <Property Name="customer_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="product_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="price_per_kg" Type="money" />
+          <Property Name="sum_price" Type="money" />
+          <Property Name="cut_id" Type="bigint" />
+          <Property Name="cut_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="cut_charges" Type="money" />
+          <Property Name="printed_on" Type="datetime" />
+          <Property Name="is_print" Type="tinyint" />
+          <Property Name="create_on" Type="datetime" />
+          <Property Name="write_on" Type="datetime" />
+          <Property Name="create_by" Type="bigint" />
+          <Property Name="write_by" Type="bigint" />
+          <Property Name="ean_code" Type="nvarchar" MaxLength="100" />
+          <Property Name="reference_id" Type="bigint" />
+          <Property Name="quantity" Type="numeric" />
+          <Property Name="unit_price" Type="numeric" />
+          <Property Name="uom" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_code" Type="nvarchar" MaxLength="100" />
+          <Property Name="telp" Type="nvarchar" MaxLength="100" />
+          <Property Name="product_code" Type="nvarchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="mrp_case_piece">
           <Key>
             <PropertyRef Name="id" />
@@ -137,6 +197,24 @@
           <Property Name="ean13font" Type="nvarchar" MaxLength="100" />
           <Property Name="no_of_barcode" Type="int" />
         </EntityType>
+        <EntityType Name="timbangan_sales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="product_id" Type="bigint" />
+          <Property Name="customer_id" Type="bigint" />
+          <Property Name="cut_id" Type="bigint" />
+          <Property Name="cutting_charge" Type="money" />
+          <Property Name="price" Type="money" />
+          <Property Name="write_id" Type="bigint" />
+          <Property Name="write_date" Type="datetime" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="create_id" Type="bigint" />
+          <Property Name="group_sale" Type="nvarchar" MaxLength="100" />
+          <Property Name="qty" Type="nvarchar" MaxLength="100" />
+          <Property Name="total_price" Type="money" />
+        </EntityType>
         <EntityType Name="user_user">
           <Key>
             <PropertyRef Name="id" />
@@ -164,7 +242,11 @@
           <EntitySet Name="mrp_order" EntityType="MrpPosModel.mrp_order" />
           <EntitySet Name="product_case" EntityType="MrpPosModel.product_case" />
           <EntitySet Name="mrp_case_piece" EntityType="MrpPosModel.mrp_case_piece" />
-        </EntityContainer>
+          <EntitySet Name="customer_customer" EntityType="MrpPosModel.customer_customer" />
+          <EntitySet Name="cutstyles" EntityType="MrpPosModel.cutstyle" />
+          <EntitySet Name="timbangan_sales" EntityType="MrpPosModel.timbangan_sales" />
+          <EntitySet Name="labelprintsales" EntityType="MrpPosModel.labelprintsale" />
+          </EntityContainer>
         <EntityType Name="mrp_prod_lot">
           <Key>
             <PropertyRef Name="id" />
@@ -301,7 +383,81 @@
           <Property Type="Int64" Name="line_id" />
           <Property Type="Int32" Name="status" />
         </EntityType>
-      </Schema>
+        <EntityType Name="customer_customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="code" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="address1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="address2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="comment" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="kode_pos" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="write_date" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="created_date" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="cutstyle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="charge" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="timbangan_sales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int64" Name="product_id" />
+          <Property Type="Int64" Name="customer_id" />
+          <Property Type="Int64" Name="cut_id" />
+          <Property Type="Decimal" Name="cutting_charge" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="price" Precision="19" Scale="4" />
+          <Property Type="Int64" Name="write_id" />
+          <Property Type="DateTime" Name="write_date" />
+          <Property Type="DateTime" Name="create_date" />
+          <Property Type="Int64" Name="create_id" />
+          <Property Type="String" Name="group_sale" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="qty" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="total_price" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="labelprintsale">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="String" Name="label_type" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="product_name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="customer_name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="address1" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="address2" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="postal_code" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="comment" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="customer_id" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="product_id" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="price_per_kg" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="sum_price" Precision="19" Scale="4" />
+          <Property Type="Int64" Name="cut_id" />
+          <Property Type="String" Name="cut_name" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="cut_charges" Precision="19" Scale="4" />
+          <Property Type="DateTime" Name="printed_on" />
+          <Property Type="Byte" Name="is_print" />
+          <Property Type="DateTime" Name="create_on" />
+          <Property Type="DateTime" Name="write_on" />
+          <Property Type="Int64" Name="create_by" />
+          <Property Type="Int64" Name="write_by" />
+          <Property Type="String" Name="ean_code" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="reference_id" />
+          <Property Type="Decimal" Name="quantity" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="unit_price" Precision="18" Scale="0" />
+          <Property Type="String" Name="uom" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="cust_code" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="telp" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="product_code" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -443,6 +599,84 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="customer_customer">
+            <EntityTypeMapping TypeName="MrpPosModel.customer_customer">
+              <MappingFragment StoreEntitySet="customer_customer">
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="kode_pos" ColumnName="kode_pos" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cutstyles">
+            <EntityTypeMapping TypeName="MrpPosModel.cutstyle">
+              <MappingFragment StoreEntitySet="cutstyle">
+                <ScalarProperty Name="charge" ColumnName="charge" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="timbangan_sales">
+            <EntityTypeMapping TypeName="MrpPosModel.timbangan_sales">
+              <MappingFragment StoreEntitySet="timbangan_sales">
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="group_sale" ColumnName="group_sale" />
+                <ScalarProperty Name="create_id" ColumnName="create_id" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="write_date" ColumnName="write_date" />
+                <ScalarProperty Name="write_id" ColumnName="write_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="cutting_charge" ColumnName="cutting_charge" />
+                <ScalarProperty Name="cut_id" ColumnName="cut_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="labelprintsales">
+            <EntityTypeMapping TypeName="MrpPosModel.labelprintsale">
+              <MappingFragment StoreEntitySet="labelprintsales">
+                <ScalarProperty Name="product_code" ColumnName="product_code" />
+                <ScalarProperty Name="telp" ColumnName="telp" />
+                <ScalarProperty Name="cust_code" ColumnName="cust_code" />
+                <ScalarProperty Name="uom" ColumnName="uom" />
+                <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="reference_id" ColumnName="reference_id" />
+                <ScalarProperty Name="ean_code" ColumnName="ean_code" />
+                <ScalarProperty Name="write_by" ColumnName="write_by" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="write_on" ColumnName="write_on" />
+                <ScalarProperty Name="create_on" ColumnName="create_on" />
+                <ScalarProperty Name="is_print" ColumnName="is_print" />
+                <ScalarProperty Name="printed_on" ColumnName="printed_on" />
+                <ScalarProperty Name="cut_charges" ColumnName="cut_charges" />
+                <ScalarProperty Name="cut_name" ColumnName="cut_name" />
+                <ScalarProperty Name="cut_id" ColumnName="cut_id" />
+                <ScalarProperty Name="sum_price" ColumnName="sum_price" />
+                <ScalarProperty Name="price_per_kg" ColumnName="price_per_kg" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="address1" ColumnName="address1" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="label_type" ColumnName="label_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -472,7 +706,11 @@
         <EntityTypeShape EntityType="MrpPosModel.mrp_order" Width="1.5" PointX="4.5" PointY="4.125" Height="5.2494108072916674" />
         <EntityTypeShape EntityType="MrpPosModel.product_case" Width="1.5" PointX="0.75" PointY="8.75" Height="2.5571907552083317" />
         <EntityTypeShape EntityType="MrpPosModel.mrp_case_piece" Width="1.5" PointX="7.375" PointY="8.75" Height="2.7494921874999996" />
-      </Diagram>
+        <EntityTypeShape EntityType="MrpPosModel.customer_customer" Width="1.5" PointX="9.375" PointY="0.75" Height="2.7494921874999996" />
+        <EntityTypeShape EntityType="MrpPosModel.cutstyle" Width="1.5" PointX="9.375" PointY="4.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="MrpPosModel.timbangan_sales" Width="1.5" PointX="3.375" PointY="10.75" Height="3.5186979166666674" />
+        <EntityTypeShape EntityType="MrpPosModel.labelprintsale" Width="1.5" PointX="9.375" PointY="7.75" Height="6.5955208333333317" />
+        </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>

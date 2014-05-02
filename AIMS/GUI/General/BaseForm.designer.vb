@@ -31,6 +31,8 @@ Partial Class BaseForm
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ItemInventoryMToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CustomerMasterMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CutStyleMenuStrip = New System.Windows.Forms.ToolStripMenuItem()
         Me.SummaryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -39,6 +41,7 @@ Partial Class BaseForm
         Me.WorkStationToolStripStatusLabel = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MainImageList = New System.Windows.Forms.ImageList(Me.components)
         Me.DockPanel = New WeifenLuo.WinFormsUI.DockPanel()
+        Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TopPanel.SuspendLayout()
         Me.MenuStrip.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -63,7 +66,7 @@ Partial Class BaseForm
         Me.MenuStrip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.MenuStrip.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MenuStrip.Font = New System.Drawing.Font("Tahoma", 11.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel)
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystemToolStripMenuItem, Me.PieceToolStripMenuItem, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.SummaryToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SystemToolStripMenuItem, Me.PieceToolStripMenuItem, Me.ToolStripMenuItem2, Me.ToolStripMenuItem1, Me.SummaryToolStripMenuItem, Me.ToolStripMenuItem3})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(858, 48)
@@ -119,7 +122,7 @@ Partial Class BaseForm
         '
         'ToolStripMenuItem1
         '
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemInventoryMToolStripMenuItem})
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ItemInventoryMToolStripMenuItem, Me.CustomerMasterMenuStrip, Me.CutStyleMenuStrip})
         Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.Indigo
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(59, 44)
@@ -131,8 +134,26 @@ Partial Class BaseForm
         Me.ItemInventoryMToolStripMenuItem.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ItemInventoryMToolStripMenuItem.ForeColor = System.Drawing.Color.White
         Me.ItemInventoryMToolStripMenuItem.Name = "ItemInventoryMToolStripMenuItem"
-        Me.ItemInventoryMToolStripMenuItem.Size = New System.Drawing.Size(139, 24)
+        Me.ItemInventoryMToolStripMenuItem.Size = New System.Drawing.Size(154, 24)
         Me.ItemInventoryMToolStripMenuItem.Text = "Product"
+        '
+        'CustomerMasterMenuStrip
+        '
+        Me.CustomerMasterMenuStrip.BackColor = System.Drawing.Color.MediumPurple
+        Me.CustomerMasterMenuStrip.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CustomerMasterMenuStrip.ForeColor = System.Drawing.Color.White
+        Me.CustomerMasterMenuStrip.Name = "CustomerMasterMenuStrip"
+        Me.CustomerMasterMenuStrip.Size = New System.Drawing.Size(154, 24)
+        Me.CustomerMasterMenuStrip.Text = "Customer"
+        '
+        'CutStyleMenuStrip
+        '
+        Me.CutStyleMenuStrip.BackColor = System.Drawing.Color.MediumPurple
+        Me.CutStyleMenuStrip.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CutStyleMenuStrip.ForeColor = System.Drawing.Color.White
+        Me.CutStyleMenuStrip.Name = "CutStyleMenuStrip"
+        Me.CutStyleMenuStrip.Size = New System.Drawing.Size(154, 24)
+        Me.CutStyleMenuStrip.Text = "Cut Style"
         '
         'SummaryToolStripMenuItem
         '
@@ -204,6 +225,13 @@ Partial Class BaseForm
         Me.DockPanel.Size = New System.Drawing.Size(858, 472)
         Me.DockPanel.TabIndex = 252
         '
+        'ToolStripMenuItem3
+        '
+        Me.ToolStripMenuItem3.ForeColor = System.Drawing.Color.Indigo
+        Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(49, 44)
+        Me.ToolStripMenuItem3.Text = "Sales"
+        '
         'BaseForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -251,5 +279,8 @@ Partial Class BaseForm
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ItemInventoryMToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CustomerMasterMenuStrip As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CutStyleMenuStrip As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem3 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

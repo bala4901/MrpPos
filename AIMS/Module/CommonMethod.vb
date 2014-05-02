@@ -305,6 +305,38 @@ Module CommonMethod
         Return CodeBarre
     End Function
 
+  
+    Public Function setEAN13CodeSales(ByVal productcode As String) As String
+        'V 1.0
+        'Parameters : a 12 digits length string
+        'Return : * a string which give the bar code when it is dispayed with EAN13.TTF font
+        '         * an empty string if the supplied parameter is no good
+        Dim i As Integer
+        Dim first As Integer
+        Dim checksum As Integer = 0
+        Dim CodeBarre As String = ""
+        Dim tableA As Boolean
+        Dim product_code As String = productcode.PadRight(5, "0"c)
+
+
+        Dim chaine As String = (product_code).PadRight(12, "0"c)
+        'Check for 12 characters
+        'And they are really digits
+        If Regex.IsMatch(chaine, "^\d{12}$") Then
+            ' Calculation of the checksum
+            For i = 1 To 11 Step 2
+                checksum += Convert.ToInt32(chaine.Substring(i, 1))
+            Next
+            checksum *= 3
+            For i = 0 To 11 Step 2
+                checksum += Convert.ToInt32(chaine.Substring(i, 1))
+            Next
+
+            chaine = chaine & "" & (10 - checksum Mod 10) Mod 10
+        End If
+        Return chaine
+    End Function
+
     Public Function setEAN13Code(ByVal productcode As String) As String
         'V 1.0
         'Parameters : a 12 digits length string
@@ -365,6 +397,11 @@ Module CommonMethod
           
             Return retVal
         End If
+    End Function
+
+    Public Function formatDecimal(ByVal val As String, Optional ByVal decPlace As Integer = 3) As Double
+
+        Return FormatNumber(CDbl(val), decPlace)
     End Function
 
     <System.Runtime.CompilerServices.Extension()> _

@@ -36,8 +36,6 @@ Partial Class PieceOperation
         Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PieceOperation))
-        Me.TitleToolStrip = New System.Windows.Forms.ToolStrip()
-        Me.TitleToolStripLabel = New System.Windows.Forms.ToolStripLabel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -138,7 +136,10 @@ Partial Class PieceOperation
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.MrpPos1 = New AIMS.MrpPos()
         Me.MrpPos2 = New AIMS.MrpPos()
-        Me.TitleToolStrip.SuspendLayout()
+        Me.TitleToolStripLabel = New System.Windows.Forms.ToolStripLabel()
+        Me.TitleToolStrip = New System.Windows.Forms.ToolStrip()
+        Me.cbSize = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -170,29 +171,8 @@ Partial Class PieceOperation
         CType(Me.MrpPos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrpPos1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MrpPos2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TitleToolStrip.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'TitleToolStrip
-        '
-        Me.TitleToolStrip.BackColor = System.Drawing.Color.Indigo
-        Me.TitleToolStrip.Font = New System.Drawing.Font("Verdana", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TitleToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.TitleToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TitleToolStripLabel})
-        Me.TitleToolStrip.Location = New System.Drawing.Point(0, 0)
-        Me.TitleToolStrip.Name = "TitleToolStrip"
-        Me.TitleToolStrip.Size = New System.Drawing.Size(1135, 28)
-        Me.TitleToolStrip.TabIndex = 6
-        Me.TitleToolStrip.Text = "ToolStrip3"
-        '
-        'TitleToolStripLabel
-        '
-        Me.TitleToolStripLabel.Font = New System.Drawing.Font("Verdana", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TitleToolStripLabel.ForeColor = System.Drawing.Color.White
-        Me.TitleToolStripLabel.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.TitleToolStripLabel.Name = "TitleToolStripLabel"
-        Me.TitleToolStripLabel.Size = New System.Drawing.Size(189, 25)
-        Me.TitleToolStripLabel.Text = "Piece Scanning"
-        Me.TitleToolStripLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         '
         'Panel1
         '
@@ -258,6 +238,8 @@ Partial Class PieceOperation
         Me.pnlLotNo.Controls.Add(Me.Label5)
         Me.pnlLotNo.Controls.Add(Me.cbSlogan)
         Me.pnlLotNo.Controls.Add(Me.cbCasePrice)
+        Me.pnlLotNo.Controls.Add(Me.cbSize)
+        Me.pnlLotNo.Controls.Add(Me.Label7)
         Me.pnlLotNo.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlLotNo.Location = New System.Drawing.Point(0, 0)
         Me.pnlLotNo.Name = "pnlLotNo"
@@ -901,12 +883,12 @@ Partial Class PieceOperation
         'cbCasePrice
         '
         Me.cbCasePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbCasePrice.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCasePrice.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCasePrice.FormattingEnabled = True
         Me.cbCasePrice.Items.AddRange(New Object() {"No", "Yes"})
-        Me.cbCasePrice.Location = New System.Drawing.Point(558, 140)
+        Me.cbCasePrice.Location = New System.Drawing.Point(548, 149)
         Me.cbCasePrice.Name = "cbCasePrice"
-        Me.cbCasePrice.Size = New System.Drawing.Size(110, 50)
+        Me.cbCasePrice.Size = New System.Drawing.Size(110, 37)
         Me.cbCasePrice.TabIndex = 133
         '
         'Panel5
@@ -1191,6 +1173,50 @@ Partial Class PieceOperation
         Me.MrpPos2.DataSetName = "MrpPos"
         Me.MrpPos2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'TitleToolStripLabel
+        '
+        Me.TitleToolStripLabel.Font = New System.Drawing.Font("Verdana", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TitleToolStripLabel.ForeColor = System.Drawing.Color.White
+        Me.TitleToolStripLabel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.TitleToolStripLabel.IsLink = True
+        Me.TitleToolStripLabel.Name = "TitleToolStripLabel"
+        Me.TitleToolStripLabel.Size = New System.Drawing.Size(189, 25)
+        Me.TitleToolStripLabel.Text = "Piece Scanning"
+        Me.TitleToolStripLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        '
+        'TitleToolStrip
+        '
+        Me.TitleToolStrip.BackColor = System.Drawing.Color.Indigo
+        Me.TitleToolStrip.Font = New System.Drawing.Font("Verdana", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TitleToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.TitleToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TitleToolStripLabel})
+        Me.TitleToolStrip.Location = New System.Drawing.Point(0, 0)
+        Me.TitleToolStrip.Name = "TitleToolStrip"
+        Me.TitleToolStrip.Size = New System.Drawing.Size(1135, 28)
+        Me.TitleToolStrip.TabIndex = 6
+        Me.TitleToolStrip.Text = "ToolStrip3"
+        '
+        'cbSize
+        '
+        Me.cbSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSize.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSize.FormattingEnabled = True
+        Me.cbSize.Items.AddRange(New Object() {"6cm x 6cm", "10cm x 6cm"})
+        Me.cbSize.Location = New System.Drawing.Point(548, 207)
+        Me.cbSize.Name = "cbSize"
+        Me.cbSize.Size = New System.Drawing.Size(147, 37)
+        Me.cbSize.TabIndex = 134
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(438, 201)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(103, 42)
+        Me.Label7.TabIndex = 135
+        Me.Label7.Text = "Size :"
+        '
         'PieceOperation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1203,8 +1229,6 @@ Partial Class PieceOperation
         Me.Name = "PieceOperation"
         Me.TabText = "Piece Operation"
         Me.Text = "Piece Operation"
-        Me.TitleToolStrip.ResumeLayout(False)
-        Me.TitleToolStrip.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
@@ -1239,12 +1263,12 @@ Partial Class PieceOperation
         CType(Me.MrpPos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrpPos1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MrpPos2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TitleToolStrip.ResumeLayout(False)
+        Me.TitleToolStrip.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents TitleToolStrip As System.Windows.Forms.ToolStrip
-    Friend WithEvents TitleToolStripLabel As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ImageList1 As System.Windows.Forms.ImageList
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
@@ -1346,4 +1370,8 @@ Partial Class PieceOperation
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents cbCasePrice As System.Windows.Forms.ComboBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents cbSize As System.Windows.Forms.ComboBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents TitleToolStripLabel As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents TitleToolStrip As System.Windows.Forms.ToolStrip
 End Class

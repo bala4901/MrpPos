@@ -23,7 +23,7 @@ Partial Class AddProduct
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddProduct))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AddCutStyle))
         Me.CancelBtn = New System.Windows.Forms.Button()
         Me.OKButton = New System.Windows.Forms.Button()
         Me.tbLine1 = New System.Windows.Forms.TextBox()

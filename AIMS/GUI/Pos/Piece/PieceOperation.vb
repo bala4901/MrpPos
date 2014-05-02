@@ -35,6 +35,8 @@ Public Class PieceOperation
     Private _printSlogan As Boolean = False
     Private _printCasePrice As Boolean = False
 
+    Private _printSize As Boolean = True  'TRUE = 6cm x 6cm, False = 10cm x 6cm
+
     Private _case_product_id As Integer = 0
     Private _pcs_per_case As Integer = 0
 
@@ -57,7 +59,7 @@ Public Class PieceOperation
         _case_product_id = 0
         _printCase = False
         _printPrice = False
- 
+
     End Sub
 
     Private Sub cleanUp()
@@ -215,7 +217,7 @@ Public Class PieceOperation
 
 #Region "Innitalize"
 
-    Private Sub PieceOperation_FormClosing(sender As Object, e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+    Private Sub PieceOperation_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
         If MsgBox("Are you sure want to Exit from weighting?", MsgBoxStyle.OkCancel, "Information") = MsgBoxResult.Ok Then
             If Port.IsOpen Then Port.Close()
 
@@ -293,6 +295,7 @@ Public Class PieceOperation
         cbCasePack.Text = IIf(_printCase, "By Case", "By Pcs")
         cbPrice.Text = IIf(_printPrice, "Yes", "No")
         cbCasePrice.Text = IIf(_printCasePrice, "Yes", "No")
+        cbSize.Text = IIf(_printSize, "6cm x 6cm", "10cm x 6cm")
         cbSlogan.Text = "Yes"
 
     End Sub
@@ -344,6 +347,9 @@ Public Class PieceOperation
             _printPrice = IIf(cbPrice.Text = "Yes", True, False)
             _printSlogan = IIf(cbSlogan.Text = "Yes", True, False)
             _printCasePrice = IIf(cbCasePrice.Text = "Yes", True, False)
+            _printSize = IIf(cbSize.Text = "6cm x 6cm", True, False)
+
+      
 
 
             If cbProductCode.Visible Then
@@ -437,7 +443,7 @@ Public Class PieceOperation
             reading = Port.ReadTo("ST0")
 
         Catch ex As Exception
-           
+
 
         End Try
 
@@ -563,7 +569,7 @@ Public Class PieceOperation
                 mrpOrder.caseprice = 0
             End If
 
-     
+
 
             db.mrp_order.AddObject(mrpOrder)
             db.SaveChanges()
@@ -649,7 +655,7 @@ Public Class PieceOperation
         End Using
     End Function
 
-  
+
 
 
 #End Region
@@ -657,40 +663,54 @@ Public Class PieceOperation
 #Region "Printing"
     Private Sub printLabel(ByVal line As DataTable)
 
-        If Not _printPrice Then
-            Using cr As New PieceLabel
-                '   Dim cr As New PieceLabel
+        If _printSize Then
+            If _printPrice Then
+                Using cr As New PiecePriceLabelSmall
+                    Try
+                        cr.SetDataSource(line)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                    Catch ex As Exception
+                        MsgBox(ex.ToString)
+                    End Try
+                End Using
 
-
-                Try
-
-                    cr.SetDataSource(line)
-
-                    cr.PrintToPrinter(1, False, 0, 0)
-
-
-
-
-                Catch ex As Exception
-                    MsgBox(ex.ToString)
-                End Try
-            End Using
+            Else
+                Using cr As New PieceNoPriceLabelSmall
+                    Try
+                        cr.SetDataSource(line)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                        cr.Close()
+                    Catch ex As Exception
+                        MsgBox(ex.ToString)
+                    End Try
+                End Using
+            End If
         Else
-            Using cr As New PiecePriceLabel
+            If Not _printPrice Then
+                Using cr As New PieceLabel
+                    Try
+                        cr.SetDataSource(line)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                        cr.Close()
+                    Catch ex As Exception
+                        MsgBox(ex.ToString)
+                    End Try
+                End Using
+            Else
+                Using cr As New PiecePriceLabel
+                    Try
+                        cr.SetDataSource(line)
+                        cr.PrintToPrinter(1, False, 0, 0)
+                        cr.Close()
 
-                Try
-
-                    cr.SetDataSource(line)
-
-                    cr.PrintToPrinter(1, False, 0, 0)
-
-                    cr.Close()
-
-                Catch ex As Exception
-                    MsgBox(ex.ToString)
-                End Try
-            End Using
+                    Catch ex As Exception
+                        MsgBox(ex.ToString)
+                    End Try
+                End Using
+            End If
         End If
+
+        
 
     End Sub
 
@@ -782,7 +802,7 @@ Public Class PieceOperation
                         db.mrp_order_line.ApplyCurrentValues(line)
                     Next
 
-                  
+
                     Try
                         Dim ord As mrp_order_line = lines.ToList()(0)
                         Dim listOrderLine As New List(Of mrp_order_line)
@@ -807,7 +827,7 @@ Public Class PieceOperation
                             dt2.Rows.Add(row.ItemArray)
                             Exit For
                         Next
- 
+
 
                         If _printCasePrice Then
                             Using crPrice As New CasePriceLabel
@@ -824,7 +844,7 @@ Public Class PieceOperation
                                 Next
                             End Using
                         End If
-              
+
                         db.SaveChanges()
 
 
@@ -980,11 +1000,11 @@ Public Class PieceOperation
                     End Try
                 End If
 
-              
-            Next
-            
 
-     
+            Next
+
+
+
 
         End Using
     End Sub
@@ -1146,7 +1166,7 @@ Public Class PieceOperation
                     dt2.Rows.Add(row.ItemArray)
                     Exit For
                 Next
-                
+
                 Try
                     cr.SetDataSource(dt2)
 
@@ -1158,7 +1178,7 @@ Public Class PieceOperation
                 Catch ex As Exception
 
                 End Try
-          
+
 
             End If
         End Using
@@ -1170,7 +1190,7 @@ Public Class PieceOperation
 #End Region
 
 #Region "Button Event"
-    Private Sub btnDelete_Click(sender As System.Object, e As System.EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
 
         If MsgBox("Are you sure you want to delete?", MsgBoxStyle.YesNo, "Delete") = MsgBoxResult.Yes Then
             Using db As New MrpPosEntities
@@ -1220,34 +1240,39 @@ Public Class PieceOperation
 
 
     Private Sub btnWeight_Click1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnWeight.Click
-        Dim isOpen As Boolean = False
-        Dim cnt As Integer = 0
-        Dim errmsg As String = ""
-        btnWeight.Enabled = False
+        If My.Settings.debug = 0 Then
+            Dim isOpen As Boolean = False
+            Dim cnt As Integer = 0
+            Dim errmsg As String = ""
+            btnWeight.Enabled = False
 
-        If Not Port.IsOpen Then
-            While isOpen = False
-                Try
-                    cnt += 1
-                    If Port.IsOpen = False Then
-                        Port.Open()
-                        isOpen = True
-                    End If
+            If Not Port.IsOpen Then
+                While isOpen = False
+                    Try
+                        cnt += 1
+                        If Port.IsOpen = False Then
+                            Port.Open()
+                            isOpen = True
+                        End If
 
-                Catch ex As Exception
-                    errmsg = ex.Message
-                Finally
-                    If cnt = 300 Then
-                        MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
-                        btnWeight.Enabled = True
-                        isOpen = True
-                    End If
-                End Try
+                    Catch ex As Exception
+                        errmsg = ex.Message
+                    Finally
+                        If cnt = 300 Then
+                            MsgBox(errmsg, MsgBoxStyle.Critical, "Error connect Port")
+                            btnWeight.Enabled = True
+                            isOpen = True
+                        End If
+                    End Try
 
 
-            End While
+                End While
+            End If
+        Else
+            tbWeight.Text = "9999"
         End If
-        'tbWeight.Text = "9999"
+       
+
 
     End Sub
 
@@ -1282,6 +1307,17 @@ Public Class PieceOperation
         Dim lineId As Integer = createWeightOrderLine()
 
         Using db As New MrpPosEntities
+            'Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product
+            '                                              On ol.product_id Equals pp.id
+            '                                               Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
+            '                                               Where ol.box_id = 0 And ol.order_id = _orderId And ol.id = lineId
+            '                                               Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
+            '                                                                .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
+            '                                                                .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
+            '                                                    .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
+            '                                                       .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
+            '                                                                                                                .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
+
             Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product
                                                           On ol.product_id Equals pp.id
                                                            Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
@@ -1291,7 +1327,7 @@ Public Class PieceOperation
                                                                             .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
                                                                 .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
                                                                    .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
-                                                                                                                            .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
+                                                                                                                            .barcode = "*" & setEAN13CodeSales("21" & x.code & x.qty.PadLeft(5, "0"c)) & "*"})
 
 
             tbWeight.BackColor = Color.FromKnownColor(KnownColor.Window)
@@ -1309,7 +1345,7 @@ Public Class PieceOperation
     End Sub
 
 
-    Private Sub btnConfirm_Click(sender As System.Object, e As System.EventArgs) Handles btnConfirm.Click
+    Private Sub btnConfirm_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnConfirm.Click
         If MsgBox("Are you sure want to finish this production?", MsgBoxStyle.OkCancel, "Finish Operation") = MsgBoxResult.Ok Then
             Using db As New MrpPosEntities
                 Dim order As mrp_order = (From o In db.mrp_order Where o.id = _orderId Select o).SingleOrDefault
@@ -1358,7 +1394,7 @@ Public Class PieceOperation
             Me.Close()
         End If
     End Sub
-    Private Sub btnCasePrint_Click(sender As System.Object, e As System.EventArgs) Handles btnCasePrint.Click
+    Private Sub btnCasePrint_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCasePrint.Click
         If MsgBox("It will do pack for all record! Are you sure you want to case print? ", MsgBoxStyle.YesNo, "Case pack") = MsgBoxResult.Yes Then
             Call printCaseLabel(True)
             Call refreshBoxListGrid()
@@ -1403,7 +1439,7 @@ Public Class PieceOperation
                                                               Select New With {.id = ol.id, .code = pp.code, .line1 = pp.name, .line2 = pp.name2, .eancode = pp.ean13, _
                                                                            .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
                                                                            .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
-                                                               .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = "(RE)" & x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
+                                                               .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
                                                                   .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
                                                                                                                            .barcode = "*" & x.serial_no & "." & x.lot_no & "." & x.qty.PadLeft(5, "0"c) & "*"})
 
@@ -1413,8 +1449,8 @@ Public Class PieceOperation
                     End If
                 Next
 
-               
-              
+
+
             End Using
 
 
@@ -1495,7 +1531,7 @@ Public Class PieceOperation
 
     End Sub
 
-    Private Sub dgvScanning_CellContentClick(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvScanning.CellContentClick
+    Private Sub dgvScanning_CellContentClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgvScanning.CellContentClick
         If e.ColumnIndex = 1 Then
             If dgvScanning.Rows(e.RowIndex).Cells(1).FormattedValue Then
                 dgvScanning.Rows(e.RowIndex).Cells(1).Value = False
@@ -1506,7 +1542,7 @@ Public Class PieceOperation
     End Sub
 
 
-    Private Sub dgCaseData_CellClick(sender As System.Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgCaseData.CellClick
+    Private Sub dgCaseData_CellClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles dgCaseData.CellClick
         If e.RowIndex >= 0 Then
             If dgCaseData.Rows(e.RowIndex).Cells(0).Value > 0 Then
                 Dim selectVal As Integer = dgCaseData.Rows(e.RowIndex).Cells(0).Value
@@ -1996,7 +2032,7 @@ Public Class PieceOperation
     End Sub
 
 
-  
+
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         DailySummary.Show()
@@ -2066,6 +2102,7 @@ Public Class PieceOperation
                     Dim CrDiskFileDestinationOptions As New  _
                     DiskFileDestinationOptions()
                     Dim CrFormatTypeOptions As New PdfRtfWordFormatOptions()
+                    ' Dim CrFormatTypeOptions As New pdf
                     CrDiskFileDestinationOptions.DiskFileName = My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf"
                     CrExportOptions = cr.ExportOptions
                     With CrExportOptions
@@ -2075,7 +2112,7 @@ Public Class PieceOperation
                         .FormatOptions = CrFormatTypeOptions
                     End With
                     cr.Export()
-
+                    '.ExportFormatType = ExportFormatType.PortableDocFormat
                     If System.IO.File.Exists(My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf") Then
                         Process.Start(My.Settings.exportSummaryPath & dt1.Rows(0)("order_serial_no") & ".pdf")
                     End If
@@ -2088,9 +2125,9 @@ Public Class PieceOperation
         End Using
     End Sub
 
-  
 
-    Private Sub Button1_Click_1(sender As System.Object, e As System.EventArgs)
+
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         For Each row As DataGridViewRow In dgvScanning.Rows
             row.Cells(1).Value = True
         Next
@@ -2154,7 +2191,7 @@ Public Class PieceOperation
         End Using
     End Sub
 
-    Private Sub Button2_Click(sender As System.Object, e As System.EventArgs)
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         For i As Integer = 1 To 99
             test(i * 857)
         Next

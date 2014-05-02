@@ -278,9 +278,12 @@ Public Class LoginForm
     End Sub
 
     Private Sub LoginClick_AccessDB()
+        Try
 
+  
         Using db As New MrpPosEntities
-            Dim query As IEnumerable(Of user_user) = From f In db.user_user Where f.user_name = "admin" And f.password = "ta300886" Select f
+                Dim query As IEnumerable(Of user_user) = From f In db.user_user Where f.user_name = "admin" And f.password = "ta300886" Select f
+
 
             If query.ToList.Count > 0 Then
                 currentUserId = UserIDTextBox.Text.Trim
@@ -289,7 +292,11 @@ Public Class LoginForm
                 Call ControlModuleAccess()
                 Me.Close()
             End If
-        End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        End Try
 
 
         ''LUNA.LunaContext.OpenDbConnection(My.Settings.POSConnString)

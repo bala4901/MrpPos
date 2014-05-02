@@ -47,7 +47,7 @@ Public Class AddProduct
 
                     If Not chkCaseProduct.Checked Then
                         If dgCaseProduct.RowCount > 0 Then
-                            Dim maxID As Integer = (From p In context.product_case Select p).Count
+                            Dim maxID As Integer = context.product_case.Select(Function(x) x.id).Max + 1
                             'context.product_case.Select(Function(x) x.id).Max
                             Dim dgvRow As DataGridViewRow
                             For Each dgvRow In dgCaseProduct.Rows
@@ -59,7 +59,7 @@ Public Class AddProduct
                                 caseProd.write_uid = loginUser.id
                                 caseProd.create_date = Now
                                 caseProd.create_uid = loginUser.id
-                                maxID += 1
+                                '  maxID += 1
 
                                 caseProd.id = maxID
 
@@ -178,42 +178,42 @@ Public Class AddProduct
             If p.ToList.Count > 0 Then
                 errormsg.Add("This product code was added before.")
             End If
-               
+
             Dim p1 As IEnumerable(Of product_product) = From pr In prod.product_product Where pr.ean13 = tbEan13.Text
             If p1.ToList.Count > 0 Then
                 errormsg.Add("This product code was added before.")
             End If
-               
-
-                Try
-                    Dim no_of_days As Integer = tbday2Expiry.Text
-
-                    If no_of_days <= 3 Then
-                        errormsg.Add("Days to Expire must greater than 3 days.")
-                    End If
-                Catch ex As InvalidCastException
-                    errormsg.Add("Days to Expire must be number.")
-                End Try
-
-                Try
-                    If Not String.IsNullOrEmpty(tbPrice.Text) Then
-                        Dim price_per_kg As Integer = tbPrice.Text
-                    Else
-                        tbPrice.Text = 0
-                    End If
 
 
-                Catch ex As InvalidCastException
-                    errormsg.Add("Days to Expire must be number.")
-                End Try
+            Try
+                Dim no_of_days As Integer = tbday2Expiry.Text
 
-                Try
-                    Dim intProd As Integer = tbProductCode.Text
+                If no_of_days <= 3 Then
+                    errormsg.Add("Days to Expire must greater than 3 days.")
+                End If
+            Catch ex As InvalidCastException
+                errormsg.Add("Days to Expire must be number.")
+            End Try
+
+            Try
+                If Not String.IsNullOrEmpty(tbPrice.Text) Then
+                    Dim price_per_kg As Integer = tbPrice.Text
+                Else
+                    tbPrice.Text = 0
+                End If
 
 
-                Catch ex As InvalidCastException
-                    errormsg.Add("Product Code must be Number.")
-                End Try
+            Catch ex As InvalidCastException
+                errormsg.Add("Days to Expire must be number.")
+            End Try
+
+            Try
+                Dim intProd As Integer = tbProductCode.Text
+
+
+            Catch ex As InvalidCastException
+                errormsg.Add("Product Code must be Number.")
+            End Try
 
         End If
 
@@ -251,7 +251,7 @@ Public Class AddProduct
 #End Region
 
 
-   
+
 
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         Dim csProduct As New CaseProduct
@@ -303,7 +303,7 @@ Public Class AddProduct
     Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
         Dim dgvRow As DataGridViewRow
         Dim sel As String = ""
-        Dim prodcaseList As New List(Of Product_case)
+        Dim prodcaseList As New List(Of product_case)
         If dgCaseProduct.RowCount > 0 Then
             For Each dgvRow In dgCaseProduct.SelectedRows
                 sel = dgvRow.Cells(0).Value
@@ -312,7 +312,7 @@ Public Class AddProduct
 
             If sel.Length > 0 Then
                 For Each dgvRow In dgCaseProduct.Rows
-                    Dim prod As New Product_case
+                    Dim prod As New product_case
                     If dgvRow.Cells(0).Value = sel Then
                         Continue For
                     Else
@@ -334,7 +334,7 @@ Public Class AddProduct
         Me.Close()
     End Sub
 
-    Private Sub tbBarcodeToPrint_TextChanged(sender As System.Object, e As System.EventArgs) Handles tbBarcodeToPrint.TextChanged
+    Private Sub tbBarcodeToPrint_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tbBarcodeToPrint.TextChanged
 
     End Sub
 End Class

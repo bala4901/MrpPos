@@ -220,6 +220,30 @@
     <Compile Include="GUI\General\LoginForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\Master\Customer\AddCustomer.Designer.vb">
+      <DependentUpon>AddCustomer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Master\Customer\AddCustomer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Master\Customer\Customer.Designer.vb">
+      <DependentUpon>Customer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Master\Customer\Customer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Master\Cutstyle\AddCutStyle.Designer.vb">
+      <DependentUpon>AddCutStyle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Master\Cutstyle\AddCutStyle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Master\Cutstyle\CutStyleFrm.Designer.vb">
+      <DependentUpon>CutStyleFrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Master\Cutstyle\CutStyleFrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI\Master\Product\AddProduct.Designer.vb">
       <DependentUpon>AddProduct.vb</DependentUpon>
     </Compile>
@@ -286,6 +310,18 @@
     <Compile Include="GUI\Report\PieceSummary.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\Timbangan\TimbanganOperasi.Designer.vb">
+      <DependentUpon>TimbanganOperasi.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Timbangan\TimbanganOperasi.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Timbangan\Register.Designer.vb">
+      <DependentUpon>Register.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Timbangan\Register.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\CommonMethod.vb" />
     <Compile Include="Module\EnumSettings.vb" />
     <Compile Include="Module\OErpShared.vb" />
@@ -321,6 +357,30 @@
     </Compile>
     <Compile Include="Report\CasePriceLabel.vb">
       <DependentUpon>CasePriceLabel.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\PieceNoPriceLabelSmall.vb">
+      <DependentUpon>PieceNoPriceLabelSmall.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\PiecePriceLabelSmall.vb">
+      <DependentUpon>PiecePriceLabelSmall.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\Sales1Customer.vb">
+      <DependentUpon>Sales1Customer.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\Sales1Kasir.vb">
+      <DependentUpon>Sales1Kasir.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -400,6 +460,18 @@
       <DependentUpon>LoginForm.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Master\Customer\AddCustomer.resx">
+      <DependentUpon>AddCustomer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Master\Customer\Customer.resx">
+      <DependentUpon>Customer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Master\Cutstyle\AddCutStyle.resx">
+      <DependentUpon>AddCutStyle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Master\Cutstyle\CutStyleFrm.resx">
+      <DependentUpon>CutStyleFrm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Master\Product\AddProduct.resx">
       <DependentUpon>AddProduct.vb</DependentUpon>
     </EmbeddedResource>
@@ -433,6 +505,12 @@
     <EmbeddedResource Include="GUI\Report\PieceSummary.resx">
       <DependentUpon>PieceSummary.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Timbangan\TimbanganOperasi.resx">
+      <DependentUpon>TimbanganOperasi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Timbangan\Register.resx">
+      <DependentUpon>Register.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -450,6 +528,22 @@
     <EmbeddedResource Include="Report\CasePriceLabel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CasePriceLabel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PieceNoPriceLabelSmall.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PieceNoPriceLabelSmall.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PiecePriceLabelSmall.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PiecePriceLabelSmall.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Sales1Customer.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Sales1Customer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\Sales1Kasir.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Sales1Kasir.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\MrpSummary.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -512,6 +606,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\MrpPosEntities.datasource" />
     <None Include="My Project\DataSources\OpenErp.Net.MrpOrderLine.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -590,7 +685,9 @@
     <Folder Include="AMD64\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\MrpPos.sdf" />
+    <Content Include="Database\MrpPos.sdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Lib\FileDB.dll" />
     <Content Include="Lib\Mono.Security.dll" />
     <Content Include="Lib\Npgsql.dll" />

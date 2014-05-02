@@ -26,6 +26,7 @@ Partial Class DailySummary
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.CachedSummary1 = New AIMS.CachedSummary()
         Me.SuspendLayout()
         '
         'RichTextBox1
@@ -63,4 +64,5 @@ Partial Class DailySummary
     Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
     Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
+    Friend WithEvents CachedSummary1 As AIMS.CachedSummary
 End Class

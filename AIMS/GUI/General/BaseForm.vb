@@ -80,4 +80,16 @@ Public Class BaseForm
     Private Sub ToolStripMenuItem2_Click(sender As System.Object, e As System.EventArgs) Handles ToolStripMenuItem2.Click
         Call ShowTabForm(BarcodeOperation)
     End Sub
+
+    Private Sub CustomerMasterMenuStrip_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CustomerMasterMenuStrip.Click
+        Call ShowTabForm(Customer)
+    End Sub
+
+    Private Sub CutStyleMenuStrip_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CutStyleMenuStrip.Click
+        Call ShowTabForm(CutStyleFrm)
+    End Sub
+
+    Private Sub ToolStripMenuItem3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem3.Click
+        Call ShowTabForm(TimbanganOperasi)
+    End Sub
 End Class
