@@ -109,6 +109,8 @@ Partial Class PieceOperation
         Me.Label5 = New System.Windows.Forms.Label()
         Me.cbSlogan = New System.Windows.Forms.ComboBox()
         Me.cbCasePrice = New System.Windows.Forms.ComboBox()
+        Me.cbSize = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.btnConfirm = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
@@ -138,8 +140,6 @@ Partial Class PieceOperation
         Me.MrpPos2 = New AIMS.MrpPos()
         Me.TitleToolStripLabel = New System.Windows.Forms.ToolStripLabel()
         Me.TitleToolStrip = New System.Windows.Forms.ToolStrip()
-        Me.cbSize = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -891,6 +891,27 @@ Partial Class PieceOperation
         Me.cbCasePrice.Size = New System.Drawing.Size(110, 37)
         Me.cbCasePrice.TabIndex = 133
         '
+        'cbSize
+        '
+        Me.cbSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbSize.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbSize.FormattingEnabled = True
+        Me.cbSize.Items.AddRange(New Object() {"6cm x 6cm", "10cm x 6cm"})
+        Me.cbSize.Location = New System.Drawing.Point(548, 207)
+        Me.cbSize.Name = "cbSize"
+        Me.cbSize.Size = New System.Drawing.Size(147, 37)
+        Me.cbSize.TabIndex = 134
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(438, 201)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(103, 42)
+        Me.Label7.TabIndex = 135
+        Me.Label7.Text = "Size :"
+        '
         'Panel5
         '
         Me.Panel5.BackColor = System.Drawing.Color.White
@@ -1195,27 +1216,6 @@ Partial Class PieceOperation
         Me.TitleToolStrip.Size = New System.Drawing.Size(1135, 28)
         Me.TitleToolStrip.TabIndex = 6
         Me.TitleToolStrip.Text = "ToolStrip3"
-        '
-        'cbSize
-        '
-        Me.cbSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbSize.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSize.FormattingEnabled = True
-        Me.cbSize.Items.AddRange(New Object() {"6cm x 6cm", "10cm x 6cm"})
-        Me.cbSize.Location = New System.Drawing.Point(548, 207)
-        Me.cbSize.Name = "cbSize"
-        Me.cbSize.Size = New System.Drawing.Size(147, 37)
-        Me.cbSize.TabIndex = 134
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(438, 201)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(103, 42)
-        Me.Label7.TabIndex = 135
-        Me.Label7.Text = "Size :"
         '
         'PieceOperation
         '
