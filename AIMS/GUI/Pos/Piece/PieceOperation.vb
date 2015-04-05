@@ -665,7 +665,7 @@ Public Class PieceOperation
 
         If _printSize Then
             If _printPrice Then
-                Using cr As New PiecePriceLabelSmall
+                Using cr As New PiecePriceLabelSmall_c
                     Try
                         cr.SetDataSource(line)
                         cr.PrintToPrinter(1, False, 0, 0)
@@ -675,7 +675,7 @@ Public Class PieceOperation
                 End Using
 
             Else
-                Using cr As New PieceNoPriceLabelSmall
+                Using cr As New PieceNoPriceLabelSmall_c
                     Try
                         cr.SetDataSource(line)
                         cr.PrintToPrinter(1, False, 0, 0)

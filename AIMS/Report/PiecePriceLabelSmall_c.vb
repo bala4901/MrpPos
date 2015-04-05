@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class PieceLabel
+Public Class PiecePriceLabelSmall_c
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class PieceLabel
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "PieceLabel.rpt"
+            Return "PiecePriceLabelSmall_c.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class PieceLabel
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "AIMS.PieceLabel.rpt"
+            Return "AIMS.PiecePriceLabelSmall_c.rpt"
         End Get
         Set
             'Do nothing
@@ -94,7 +94,7 @@ Public Class PieceLabel
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedPieceLabel
+Public Class CachedPiecePriceLabelSmall_c
     Inherits Component
     Implements ICachedReport
     
@@ -136,7 +136,7 @@ Public Class CachedPieceLabel
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As PieceLabel = New PieceLabel()
+        Dim rpt As PiecePriceLabelSmall_c = New PiecePriceLabelSmall_c()
         rpt.Site = Me.Site
         Return rpt
     End Function

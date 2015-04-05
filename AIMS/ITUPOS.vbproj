@@ -361,6 +361,18 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Report\PiecePriceLabelSmall_c.vb">
+      <DependentUpon>PiecePriceLabelSmall_c.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Report\PieceNoPriceLabelSmall_c.vb">
+      <DependentUpon>PieceNoPriceLabelSmall_c.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Report\PieceNoPriceLabelSmall.vb">
       <DependentUpon>PieceNoPriceLabelSmall.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -528,6 +540,14 @@
     <EmbeddedResource Include="Report\CasePriceLabel.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CasePriceLabel.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PiecePriceLabelSmall_c.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PiecePriceLabelSmall_c.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\PieceNoPriceLabelSmall_c.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PieceNoPriceLabelSmall_c.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\PieceNoPriceLabelSmall.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
