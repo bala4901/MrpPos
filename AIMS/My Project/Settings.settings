@@ -76,5 +76,8 @@
     <Setting Name="debug" Type="System.String" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="printer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Datamax-O'Neil E-4205A Mark III</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

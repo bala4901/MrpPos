@@ -128,7 +128,8 @@ Partial Class BarcodeOperation
         Me.TitleToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TitleToolStripLabel})
         Me.TitleToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.TitleToolStrip.Name = "TitleToolStrip"
-        Me.TitleToolStrip.Size = New System.Drawing.Size(1135, 28)
+        Me.TitleToolStrip.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
+        Me.TitleToolStrip.Size = New System.Drawing.Size(1702, 41)
         Me.TitleToolStrip.TabIndex = 6
         Me.TitleToolStrip.Text = "ToolStrip3"
         '
@@ -138,7 +139,7 @@ Partial Class BarcodeOperation
         Me.TitleToolStripLabel.ForeColor = System.Drawing.Color.White
         Me.TitleToolStripLabel.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TitleToolStripLabel.Name = "TitleToolStripLabel"
-        Me.TitleToolStripLabel.Size = New System.Drawing.Size(222, 25)
+        Me.TitleToolStripLabel.Size = New System.Drawing.Size(338, 38)
         Me.TitleToolStripLabel.Text = "Barcode Scanning"
         Me.TitleToolStripLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         '
@@ -146,15 +147,17 @@ Partial Class BarcodeOperation
         '
         Me.Panel1.Controls.Add(Me.SplitContainer1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 28)
+        Me.Panel1.Location = New System.Drawing.Point(0, 41)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1135, 600)
+        Me.Panel1.Size = New System.Drawing.Size(1702, 925)
         Me.Panel1.TabIndex = 7
         '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
@@ -165,8 +168,9 @@ Partial Class BarcodeOperation
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1135, 600)
-        Me.SplitContainer1.SplitterDistance = 740
+        Me.SplitContainer1.Size = New System.Drawing.Size(1702, 925)
+        Me.SplitContainer1.SplitterDistance = 1109
+        Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 0
         '
         'Panel4
@@ -175,8 +179,9 @@ Partial Class BarcodeOperation
         Me.Panel4.Controls.Add(Me.lvProductImage)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(740, 600)
+        Me.Panel4.Size = New System.Drawing.Size(1109, 925)
         Me.Panel4.TabIndex = 5
         '
         'pnlImageScan
@@ -188,8 +193,9 @@ Partial Class BarcodeOperation
         Me.pnlImageScan.Controls.Add(Me.Panel5)
         Me.pnlImageScan.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlImageScan.Location = New System.Drawing.Point(0, 0)
+        Me.pnlImageScan.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pnlImageScan.Name = "pnlImageScan"
-        Me.pnlImageScan.Size = New System.Drawing.Size(740, 600)
+        Me.pnlImageScan.Size = New System.Drawing.Size(1109, 925)
         Me.pnlImageScan.TabIndex = 3
         '
         'pnlOrder
@@ -198,8 +204,9 @@ Partial Class BarcodeOperation
         Me.pnlOrder.Controls.Add(Me.Panel9)
         Me.pnlOrder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlOrder.Location = New System.Drawing.Point(0, 0)
+        Me.pnlOrder.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pnlOrder.Name = "pnlOrder"
-        Me.pnlOrder.Size = New System.Drawing.Size(738, 498)
+        Me.pnlOrder.Size = New System.Drawing.Size(1107, 770)
         Me.pnlOrder.TabIndex = 13
         '
         'dgvScanning
@@ -225,7 +232,8 @@ Partial Class BarcodeOperation
         Me.dgvScanning.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvScanning.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvScanning.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgvScanning.Location = New System.Drawing.Point(0, 151)
+        Me.dgvScanning.Location = New System.Drawing.Point(0, 232)
+        Me.dgvScanning.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dgvScanning.MultiSelect = False
         Me.dgvScanning.Name = "dgvScanning"
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -248,7 +256,7 @@ Partial Class BarcodeOperation
         Me.dgvScanning.RowTemplate.Height = 24
         Me.dgvScanning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvScanning.ShowEditingIcon = False
-        Me.dgvScanning.Size = New System.Drawing.Size(738, 347)
+        Me.dgvScanning.Size = New System.Drawing.Size(1107, 538)
         Me.dgvScanning.StandardTab = True
         Me.dgvScanning.TabIndex = 1
         Me.dgvScanning.TabStop = False
@@ -427,17 +435,19 @@ Partial Class BarcodeOperation
         Me.Panel9.Controls.Add(Me.Label1)
         Me.Panel9.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel9.Location = New System.Drawing.Point(0, 0)
+        Me.Panel9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel9.Name = "Panel9"
-        Me.Panel9.Size = New System.Drawing.Size(738, 151)
+        Me.Panel9.Size = New System.Drawing.Size(1107, 232)
         Me.Panel9.TabIndex = 2
         '
         'chkCaseProduct
         '
         Me.chkCaseProduct.AutoSize = True
         Me.chkCaseProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkCaseProduct.Location = New System.Drawing.Point(297, 12)
+        Me.chkCaseProduct.Location = New System.Drawing.Point(446, 18)
+        Me.chkCaseProduct.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.chkCaseProduct.Name = "chkCaseProduct"
-        Me.chkCaseProduct.Size = New System.Drawing.Size(236, 28)
+        Me.chkCaseProduct.Size = New System.Drawing.Size(366, 37)
         Me.chkCaseProduct.TabIndex = 9
         Me.chkCaseProduct.Text = "Print with Other Product?"
         Me.chkCaseProduct.UseVisualStyleBackColor = True
@@ -447,9 +457,11 @@ Partial Class BarcodeOperation
         Me.gbGroupProduct.Controls.Add(Me.cbCaseProduct)
         Me.gbGroupProduct.Controls.Add(Me.Label4)
         Me.gbGroupProduct.Enabled = False
-        Me.gbGroupProduct.Location = New System.Drawing.Point(297, 46)
+        Me.gbGroupProduct.Location = New System.Drawing.Point(446, 71)
+        Me.gbGroupProduct.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbGroupProduct.Name = "gbGroupProduct"
-        Me.gbGroupProduct.Size = New System.Drawing.Size(390, 72)
+        Me.gbGroupProduct.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbGroupProduct.Size = New System.Drawing.Size(585, 111)
         Me.gbGroupProduct.TabIndex = 8
         Me.gbGroupProduct.TabStop = False
         Me.gbGroupProduct.Text = "Case Product"
@@ -459,18 +471,20 @@ Partial Class BarcodeOperation
         Me.cbCaseProduct.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCaseProduct.FormattingEnabled = True
         Me.cbCaseProduct.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbCaseProduct.Location = New System.Drawing.Point(166, 22)
+        Me.cbCaseProduct.Location = New System.Drawing.Point(249, 34)
+        Me.cbCaseProduct.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbCaseProduct.Name = "cbCaseProduct"
-        Me.cbCaseProduct.Size = New System.Drawing.Size(194, 32)
+        Me.cbCaseProduct.Size = New System.Drawing.Size(289, 41)
         Me.cbCaseProduct.TabIndex = 9
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(18, 25)
+        Me.Label4.Location = New System.Drawing.Point(27, 38)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(133, 24)
+        Me.Label4.Size = New System.Drawing.Size(207, 33)
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Case Product :"
         '
@@ -479,18 +493,20 @@ Partial Class BarcodeOperation
         Me.cbSlogan.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbSlogan.FormattingEnabled = True
         Me.cbSlogan.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbSlogan.Location = New System.Drawing.Point(159, 93)
+        Me.cbSlogan.Location = New System.Drawing.Point(238, 143)
+        Me.cbSlogan.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbSlogan.Name = "cbSlogan"
-        Me.cbSlogan.Size = New System.Drawing.Size(85, 32)
+        Me.cbSlogan.Size = New System.Drawing.Size(126, 41)
         Me.cbSlogan.TabIndex = 5
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(11, 93)
+        Me.Label3.Location = New System.Drawing.Point(16, 143)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(121, 24)
+        Me.Label3.Size = New System.Drawing.Size(189, 33)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Print Slogan :"
         '
@@ -499,9 +515,10 @@ Partial Class BarcodeOperation
         Me.cbPrintSummary.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPrintSummary.FormattingEnabled = True
         Me.cbPrintSummary.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbPrintSummary.Location = New System.Drawing.Point(159, 52)
+        Me.cbPrintSummary.Location = New System.Drawing.Point(238, 80)
+        Me.cbPrintSummary.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbPrintSummary.Name = "cbPrintSummary"
-        Me.cbPrintSummary.Size = New System.Drawing.Size(85, 32)
+        Me.cbPrintSummary.Size = New System.Drawing.Size(126, 41)
         Me.cbPrintSummary.TabIndex = 3
         '
         'cbPrice
@@ -509,18 +526,20 @@ Partial Class BarcodeOperation
         Me.cbPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPrice.FormattingEnabled = True
         Me.cbPrice.Items.AddRange(New Object() {"Yes", "No"})
-        Me.cbPrice.Location = New System.Drawing.Point(159, 12)
+        Me.cbPrice.Location = New System.Drawing.Point(238, 18)
+        Me.cbPrice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbPrice.Name = "cbPrice"
-        Me.cbPrice.Size = New System.Drawing.Size(85, 32)
+        Me.cbPrice.Size = New System.Drawing.Size(126, 41)
         Me.cbPrice.TabIndex = 2
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(11, 55)
+        Me.Label2.Location = New System.Drawing.Point(16, 85)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(142, 24)
+        Me.Label2.Size = New System.Drawing.Size(225, 33)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Print Summary :"
         '
@@ -528,9 +547,10 @@ Partial Class BarcodeOperation
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(11, 18)
+        Me.Label1.Location = New System.Drawing.Point(16, 28)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(105, 24)
+        Me.Label1.Size = New System.Drawing.Size(166, 33)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Print Price :"
         '
@@ -542,9 +562,10 @@ Partial Class BarcodeOperation
         Me.Panel5.Controls.Add(Me.btnCasePrint)
         Me.Panel5.Controls.Add(Me.btnCancel)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel5.Location = New System.Drawing.Point(0, 498)
+        Me.Panel5.Location = New System.Drawing.Point(0, 770)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(738, 100)
+        Me.Panel5.Size = New System.Drawing.Size(1107, 153)
         Me.Panel5.TabIndex = 12
         '
         'btnDelete
@@ -552,9 +573,10 @@ Partial Class BarcodeOperation
         Me.btnDelete.BackgroundImage = Global.AIMS.My.Resources.Resources.Gnome_edit_delete_svg
         Me.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnDelete.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnDelete.Location = New System.Drawing.Point(99, 0)
+        Me.btnDelete.Location = New System.Drawing.Point(148, 0)
+        Me.btnDelete.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(99, 98)
+        Me.btnDelete.Size = New System.Drawing.Size(148, 151)
         Me.btnDelete.TabIndex = 10
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -566,8 +588,9 @@ Partial Class BarcodeOperation
         Me.btnCasePrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCasePrint.Dock = System.Windows.Forms.DockStyle.Left
         Me.btnCasePrint.Location = New System.Drawing.Point(0, 0)
+        Me.btnCasePrint.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnCasePrint.Name = "btnCasePrint"
-        Me.btnCasePrint.Size = New System.Drawing.Size(99, 98)
+        Me.btnCasePrint.Size = New System.Drawing.Size(148, 151)
         Me.btnCasePrint.TabIndex = 9
         Me.btnCasePrint.Text = "Case Print"
         Me.btnCasePrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -578,9 +601,10 @@ Partial Class BarcodeOperation
         Me.btnCancel.BackgroundImage = Global.AIMS.My.Resources.Resources.cancel_icon
         Me.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCancel.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnCancel.Location = New System.Drawing.Point(637, 0)
+        Me.btnCancel.Location = New System.Drawing.Point(957, 0)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(99, 98)
+        Me.btnCancel.Size = New System.Drawing.Size(148, 151)
         Me.btnCancel.TabIndex = 2
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -590,8 +614,9 @@ Partial Class BarcodeOperation
         '
         Me.lvProductImage.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lvProductImage.Location = New System.Drawing.Point(0, 0)
+        Me.lvProductImage.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.lvProductImage.Name = "lvProductImage"
-        Me.lvProductImage.Size = New System.Drawing.Size(740, 600)
+        Me.lvProductImage.Size = New System.Drawing.Size(1109, 925)
         Me.lvProductImage.TabIndex = 2
         Me.lvProductImage.UseCompatibleStateImageBehavior = False
         '
@@ -601,9 +626,11 @@ Partial Class BarcodeOperation
         Me.GroupBox2.Controls.Add(Me.Panel7)
         Me.GroupBox2.Controls.Add(Me.Panel6)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 222)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 342)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(391, 378)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox2.Size = New System.Drawing.Size(587, 583)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Barcode Scan"
@@ -614,17 +641,19 @@ Partial Class BarcodeOperation
         Me.Panel2.Controls.Add(Me.Panel8)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(3, 16)
+        Me.Panel2.Location = New System.Drawing.Point(4, 24)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(385, 158)
+        Me.Panel2.Size = New System.Drawing.Size(579, 245)
         Me.Panel2.TabIndex = 5
         '
         'pctWeightImage
         '
         Me.pctWeightImage.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pctWeightImage.Location = New System.Drawing.Point(127, 0)
+        Me.pctWeightImage.Location = New System.Drawing.Point(190, 0)
+        Me.pctWeightImage.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pctWeightImage.Name = "pctWeightImage"
-        Me.pctWeightImage.Size = New System.Drawing.Size(131, 158)
+        Me.pctWeightImage.Size = New System.Drawing.Size(199, 245)
         Me.pctWeightImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pctWeightImage.TabIndex = 0
         Me.pctWeightImage.TabStop = False
@@ -632,26 +661,29 @@ Partial Class BarcodeOperation
         'Panel8
         '
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(258, 0)
+        Me.Panel8.Location = New System.Drawing.Point(389, 0)
+        Me.Panel8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(127, 158)
+        Me.Panel8.Size = New System.Drawing.Size(190, 245)
         Me.Panel8.TabIndex = 1
         '
         'Panel3
         '
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(127, 158)
+        Me.Panel3.Size = New System.Drawing.Size(190, 245)
         Me.Panel3.TabIndex = 0
         '
         'Panel7
         '
         Me.Panel7.Controls.Add(Me.tbBarcode)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(3, 174)
+        Me.Panel7.Location = New System.Drawing.Point(4, 269)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(385, 100)
+        Me.Panel7.Size = New System.Drawing.Size(579, 154)
         Me.Panel7.TabIndex = 4
         '
         'tbBarcode
@@ -659,17 +691,19 @@ Partial Class BarcodeOperation
         Me.tbBarcode.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tbBarcode.Font = New System.Drawing.Font("Tahoma", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbBarcode.Location = New System.Drawing.Point(0, 0)
+        Me.tbBarcode.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbBarcode.Name = "tbBarcode"
-        Me.tbBarcode.Size = New System.Drawing.Size(385, 85)
+        Me.tbBarcode.Size = New System.Drawing.Size(579, 123)
         Me.tbBarcode.TabIndex = 2
         Me.tbBarcode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Panel6
         '
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel6.Location = New System.Drawing.Point(3, 274)
+        Me.Panel6.Location = New System.Drawing.Point(4, 423)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(385, 101)
+        Me.Panel6.Size = New System.Drawing.Size(579, 155)
         Me.Panel6.TabIndex = 3
         '
         'GroupBox1
@@ -677,8 +711,10 @@ Partial Class BarcodeOperation
         Me.GroupBox1.Controls.Add(Me.RichTextBox1)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(391, 222)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Size = New System.Drawing.Size(587, 342)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Summary"
@@ -686,10 +722,11 @@ Partial Class BarcodeOperation
         'RichTextBox1
         '
         Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBox1.Location = New System.Drawing.Point(3, 16)
+        Me.RichTextBox1.Location = New System.Drawing.Point(4, 24)
+        Me.RichTextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(385, 203)
+        Me.RichTextBox1.Size = New System.Drawing.Size(579, 313)
         Me.RichTextBox1.TabIndex = 1
         Me.RichTextBox1.Text = ""
         '
@@ -725,13 +762,14 @@ Partial Class BarcodeOperation
         '
         'BarcodeOperation
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Lavender
-        Me.ClientSize = New System.Drawing.Size(1135, 628)
+        Me.ClientSize = New System.Drawing.Size(1702, 966)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TitleToolStrip)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "BarcodeOperation"
         Me.TabText = "Barcode Operation"
         Me.Text = "Barcode Operation"

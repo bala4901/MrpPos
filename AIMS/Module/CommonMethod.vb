@@ -369,6 +369,7 @@ Module CommonMethod
         Return chaine
     End Function
 
+
     Public Function getFileDbPath() As String
         Return My.Application.Info.DirectoryPath & "\database\filedb.fdb"
     End Function

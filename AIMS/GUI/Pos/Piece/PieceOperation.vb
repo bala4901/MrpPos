@@ -44,6 +44,221 @@ Public Class PieceOperation
     Private _orderId As Integer = 0
 
     Private _selectImage As Bitmap
+    Private dtFormat As String = "dd MMM yyyy HH:mm:ss"
+
+
+    Private piecePriceLabel As String = "^XA" _
+    & "^MMT" _
+    & "^PW398" _
+    & "^LL0319" _
+    & "^LS0" _
+    & "^FT10,74^A0N,28,28^FH\^FD{0}^FS" _
+    & "^FT11,38^A0N,28,28^FH\^FD{1}^FS" _
+    & "^FT212,150^A0N,14,14^FH\^FDExp:^FS" _
+    & "^FT12,178^A0N,14,14^FH\^FDSerial :^FS" _
+    & "^FT257,99^A0N,14,14^FH\^FD{2}^FS" _
+    & "^FT204,100^A0N,14,14^FH\^FDU. Price:^FS" _
+    & "^FT203,124^A0N,14,14^FH\^FDLot #:^FS" _
+    & "^FT18,136^A0N,14,14^FH\^FD@Rp. ^FS" _
+    & "^FT17,106^A0N,14,14^FH\^FDWeight:^FS" _
+    & "^FT238,152^A0N,20,19^FH\^FD{3}^FS" _
+    & "^FT58,179^A0N,20,19^FH\^FD{4}^FS" _
+    & "^FT239,125^A0N,20,19^FH\^FD{5}^FS" _
+    & "^FT56,149^A0N,28,28^FH\^FD{6}^FS" _
+    & "^FT71,109^A0N,28,28^FH\^FD{7}^FS" _
+    & "^FT157,184^A0N,28,28^FH\^FD{8}^FS" _
+    & "^BY2,3,82^FT11,277^BCN,,Y,N" _
+    & "^FD>;{9}^FS" _
+    & "^PQ1,0,1,Y^XZ" 'Line1, Line2, unit_price, exp, serial, lot,price, weigh,ean_code, barcode
+
+    Private pieceLabel As String = "^XA" _
+                    & "^MMT" _
+                    & "^PW398" _
+                    & "^LL0319" _
+                    & "^LS0" _
+                    & "^FT10,74^A0N,28,28^FH\^FD{0}^FS" _
+                    & "^FT10,38^A0N,28,28^FH\^FD{1}^FS" _
+                    & "^FT209,108^A0N,14,14^FH\^FDExp:^FS" _
+                    & "^FT19,145^A0N,14,14^FH\^FDSerial :^FS" _
+                    & "^FT203,133^A0N,14,14^FH\^FDLot #:^FS" _
+                    & "^FT17,115^A0N,14,14^FH\^FDWeight:^FS" _
+                    & "^FT238,109^A0N,20,19^FH\^FD{2}^FS" _
+                    & "^FT72,149^A0N,20,19^FH\^FD{3}^FS" _
+                    & "^FT238,136^A0N,20,19^FH\^FD{4}^FS" _
+                    & "^FT71,118^A0N,28,28^FH\^FD{5}^FS" _
+                    & "^FT157,172^A0N,28,28^FH\^FD{6}^FS" _
+                    & "^BY2,3,80^FT14,278^BCN,,Y,N" _
+                    & "^FD>;{7}^FS" _
+                    & "^PQ1,0,1,Y^XZ" 'line1, line2, exp, serial, lot, weight,ean_code, barcode
+
+    Private csLabel As String = "^XA" _
+                            & "^MMT" _
+                            & "^PW398" _
+                            & "^LL0319" _
+                            & "^LS0" _
+                            & "^FT5,70^A0N,28,28^FH\^FD{0}^FS" _
+                            & "^FT4,34^A0N,28,28^FH\^FD{1}^FS" _
+                            & "^FT221,127^A0N,14,14^FH\^FDSerial :^FS" _
+                            & "^FT230,155^A0N,14,14^FH\^FDExp:^FS" _
+                            & "^FT230,102^A0N,14,14^FH\^FDLot #:^FS" _
+                            & "^FT71,156^A0N,28,28^FH\^FD{2}^FS" _
+                            & "^FT265,131^A0N,20,19^FH\^FD{3}^FS" _
+                            & "^FT18,110^A0N,14,14^FH\^FDWeight:^FS" _
+                            & "^FT258,156^A0N,20,19^FH\^FD{4}^FS" _
+                            & "^FT18,148^A0N,14,14^FH\^FDQty:^FS" _
+                            & "^FT266,104^A0N,20,19^FH\^FD{5}^FS" _
+                            & "^FT72,113^A0N,28,28^FH\^FD{6}^FS" _
+                            & "^FT130,198^A0N,28,28^FH\^FD{7}^FS" _
+                            & "^BY2,3,77^FT12,286^BCN,,Y,N" _
+                            & "^FD>;{8}^FS" _
+                            & "^PQ1,0,1,Y^XZ" 'Line1, Line2, qty, serial, exp, lot, weight, ean, barcode
+
+    Private csPriceLabel As String = "^XA" _
+                                    & "^MMT" _
+                                    & "^PW398" _
+                                    & "^LL0319" _
+                                    & "^LS0" _
+                                    & "^FT8,70^A0N,28,28^FH\^FD{0}^FS" _
+                                    & "^FT7,35^A0N,28,28^FH\^FD{1}^FS" _
+                                    & "^FT189,170^A0N,14,14^FH\^FDU. Price :^FS" _
+                                    & "^FT203,136^A0N,14,14^FH\^FDExp:^FS" _
+                                    & "^FT196,112^A0N,14,14^FH\^FDLot #:^FS" _
+                                    & "^FT20,182^A0N,28,28^FH\^FDRp.{2}^FS" _
+                                    & "^FT249,171^A0N,20,19^FH\^FDRp.{3}/kg^FS" _
+                                    & "^FT8,216^A0N,14,14^FH\^FDQty:^FS" _
+                                    & "^FT8,95^A0N,14,14^FH\^FDWeigh:^FS" _
+                                    & "^FT231,138^A0N,20,19^FH\^FD{4}^FS" _
+                                    & "^FT7,149^A0N,14,14^FH\^FDPrice^FS" _
+                                    & "^FT33,216^A0N,23,24^FH\^FD{5}^FS" _
+                                    & "^FT232,113^A0N,20,19^FH\^FD{6}^FS" _
+                                    & "^FT25,128^A0N,28,28^FH\^FD{7}^FS" _
+                                    & "^FT189,214^A0N,28,28^FH\^FD{8}^FS" _
+                                    & "^BY2,3,55^FT11,284^BCN,,Y,N" _
+                                    & "^FD>;{9}^FS" _
+                                    & "^PQ1,0,1,Y^XZ" 'Line1, Line2, price, unit_price, exp, qty, lot, weight, ean, barcode
+
+    Private csSummaryHeader As String = "^XA" _
+                            & "^MMT" _
+                            & "^PW398" _
+                            & "^LL0319" _
+                            & "^LS0" _
+                            & "^FT25,290^A0N,23,24^FH\^FDPrint On:^FS" _
+                            & "^FT25,245^A0N,34,33^FH\^FDPages: ^FS" _
+                            & "^FT117,247^A0N,34,33^FH\^FD{0}^FS" _
+                            & "^FT113,105^A0N,34,33^FH\^FD{1}^FS" _
+                            & "^FT25,105^A0N,34,33^FH\^FDSerial: ^FS" _
+                            & "^FT248,198^A0N,34,33^FH\^FD{2}^FS" _
+                            & "^FT199,149^A0N,34,33^FH\^FD{3}^FS" _
+                            & "^FT25,198^A0N,34,33^FH\^FDWeight:^FS" _
+                            & "^FT25,150^A0N,34,33^FH\^FDPcs:^FS" _
+                            & "^FT80,49^A0N,34,33^FH\^FDCASE SUMMARY^FS" _
+                            & "^FT117,291^A0N,23,24^FH\^FD{4}^FS" _
+                            & "^PQ1,0,1,Y^XZ" 'pages, serial, weight, pcs,print dt
+
+    Private csSummaryDetails As String = "^XA" _
+            & "^MMT" _
+            & "^PW398" _
+            & "^LL0319" _
+            & "^LS0" _
+            & "^FT324,303^A0N,17,16^FH\^FD{0} of {1}^FS" _
+            & "^FT85,36^A0N,28,28^FH\^FD{2}^FS" _
+            & "^FT7,36^A0N,28,28^FH\^FDCase: ^FS" _
+            & "{3}" _
+            & "^FT316,68^A0N,14,14^FH\^FDWeight^FS" _
+            & "^FT113,68^A0N,14,14^FH\^FDWeight^FS" _
+            & "^FT204,68^A0N,14,14^FH\^FDSerial^FS" _
+            & "^FT17,68^A0N,14,14^FH\^FDSerial^FS" _
+            & "^FO19,276^GB360,0,1^FS" _
+            & "^FO14,48^GB359,0,1^FS" _
+            & "^FO13,71^GB359,0,1^FS" _
+            & "^FO194,47^GB0,230,1^FS" _
+            & "{4}" _
+            & "^PQ1,0,1,Y^XZ" 'pageno, totalpage, case_serial, details,end
+
+    Private pcsSummary As String = "^XA" _
+        & "^MMT" _
+        & "^PW398" _
+        & "^LL0319" _
+        & "^LS0" _
+        & "^FT324,303^A0N,17,16^FH\^FD{0} of {1}^FS" _
+        & "^FT85,36^A0N,28,28^FH\^FD{2}^FS" _
+        & "^FT7,36^A0N,28,28^FH\^FDOrder: ^FS" _
+        & "{3}" _
+        & "^FT316,68^A0N,14,14^FH\^FDWeight^FS" _
+        & "^FT113,68^A0N,14,14^FH\^FDWeight^FS" _
+        & "^FT204,68^A0N,14,14^FH\^FDSerial^FS" _
+        & "^FT17,68^A0N,14,14^FH\^FDSerial^FS" _
+        & "^FO19,276^GB360,0,1^FS" _
+        & "^FO14,48^GB359,0,1^FS" _
+        & "^FO13,71^GB359,0,1^FS" _
+        & "^FO194,47^GB0,230,1^FS" _
+        & "{4}" _
+        & "^PQ1,0,1,Y^XZ" 'pageno, totalpage, case_serial, details,end
+
+    Private csSummary As String = "^XA" _
+                                    & "^MMT" _
+                                    & "^PW398" _
+                                    & "^LL0319" _
+                                    & "^LS0" _
+                                    & "^FT324,300^A0N,17,16^FH\^FD{0} of {1}^FS" _
+                                    & "^FT7,36^A0N,28,28^FH\^FDCase Summary^FS" _
+                                    & "^FT305,67^A0N,14,14^FH\^FDWeight^FS" _
+                                    & "^FT212,67^A0N,14,14^FH\^FDPcs^FS" _
+                                    & "^FT75,67^A0N,14,14^FH\^FDCase^FS" _
+                                    & "{2}" _
+                                    & "^FO19,276^GB360,0,1^FS" _
+                                    & "^FO14,48^GB359,0,1^FS" _
+                                    & "^FO271,47^GB0,230,1^FS" _
+                                    & "^FO13,71^GB359,0,1^FS" _
+                                    & "^FO176,47^GB0,230,1^FS" _
+                                    & "{3}" _
+                                    & "^PQ1,0,1,Y^XZ" 'page, no page, details, end
+
+    Private pieceSummary As String = "^XA" _
+        & "^MMT" _
+        & "^PW398" _
+        & "^LL0319" _
+        & "^LS0" _
+        & "^FT324,303^A0N,17,16^FH\^FD{0} of {1}^FS" _
+        & "^FT7,36^A0N,28,28^FH\^FDPiece Summary: ^FS" _
+        & "{3}" _
+        & "^FT316,68^A0N,14,14^FH\^FDWeight^FS" _
+        & "^FT113,68^A0N,14,14^FH\^FDWeight^FS" _
+        & "^FT204,68^A0N,14,14^FH\^FDSerial^FS" _
+        & "^FT17,68^A0N,14,14^FH\^FDSerial^FS" _
+        & "^FO19,276^GB360,0,1^FS" _
+        & "^FO14,48^GB359,0,1^FS" _
+        & "^FO13,71^GB359,0,1^FS" _
+        & "^FO194,47^GB0,230,1^FS" _
+        & "{4}" _
+        & "^PQ1,0,1,Y^XZ" 'pageno, totalpage,  details,end
+
+    Private operationSummaryLabel As String = "^XA" _
+                                                & "^MMT" _
+                                                & "^PW398" _
+                                                & "^LL0319" _
+                                                & "^LS0" _
+                                                & "^FT91,35^A0N,28,28^FH\^FDOperation Summary^FS" _
+                                                & "^FT10,116^A0N,28,28^FH\^FD{0}^FS" _
+                                                & "^FT10,82^A0N,28,28^FH\^FD{1}^FS" _
+                                                & "^FT21,158^A0N,14,14^FH\^FDCode:^FS" _
+                                                & "^FT59,158^A0N,20,19^FH\^FD{2}^FS" _
+                                                & "^FT21,186^A0N,14,14^FH\^FDLot #:^FS" _
+                                                & "^FT58,186^A0N,20,19^FH\^FD{3}^FS" _
+                                                & "^FT21,216^A0N,14,14^FH\^FDExp:^FS" _
+                                                & "^FT56,216^A0N,20,19^FH\^FD{4}^FS" _
+                                                & "^FT21,242^A0N,14,14^FH\^FDEan:^FS" _
+                                                & "^FT55,242^A0N,20,19^FH\^FD{5}^FS" _
+                                                & "^FT214,175^A0N,14,14^FH\^FDWeight:^FS" _
+                                                & "^FT261,172^A0N,28,28^FH\^FD{6}^FS" _
+                                                & "^FT214,207^A0N,14,14^FH\^FDPcs:^FS" _
+                                                & "^FT261,215^A0N,28,28^FH\^FD{7}^FS" _
+                                                & "^FT214,243^A0N,14,14^FH\^FDCase:^FS" _
+                                                & "^FT261,251^A0N,28,28^FH\^FD{8}^FS" _
+                                                & "^FT226,305^A0N,11,12^FH\^FDPrint On:^FS" _
+                                                & "^FT272,305^A0N,11,12^FH\^FD{9}^FS" _
+                                                & "^FO4,47^GB393,0,3^FS" _
+                                                & "^PQ1,0,1,Y^XZ" 'Line1, line2, code, lot,exp,ean, weight, pcs, case, print_on
 
 #End Region
 
@@ -630,9 +845,6 @@ Public Class PieceOperation
             cas.no_of_pcs = no_pcs
             cas.qty = ttlWeight
 
-
-
-
             If _case_product_id <= 0 Then
                 cas.product_id = _product.id
             Else
@@ -662,55 +874,99 @@ Public Class PieceOperation
 
 #Region "Printing"
     Private Sub printLabel(ByVal line As DataTable)
+        Dim ct As Integer = line.Rows.Count
+        Dim label As String = ""
 
-        If _printSize Then
+        For i As Integer = 0 To ct - 1
+            Dim line1 As String = line.Rows(i)("line1")
+            Dim line2 As String = line.Rows(i)("line2")
+            Dim unit_price As String = line.Rows(i)("unit_price")
+            Dim exp_date As String = line.Rows(i)("exp_date")
+            Dim ean_code As String = line.Rows(i)("eancode")
+            Dim serial_no As String = line.Rows(i)("serial_no")
+            Dim lot_no As String = line.Rows(i)("lot_no")
+            Dim barcode As String = line.Rows(i)("barcode")
+            Dim price As String = line.Rows(i)("price")
+            Dim qty As Double = line.Rows(i)("qty")
+            Dim qty_str As String
+
+            If qty > 999 Then
+                qty_str = String.Format("{0} Kg", (qty / 1000))
+            Else
+                qty_str = String.Format("{0} g", qty)
+            End If
             If _printPrice Then
-                Using cr As New PiecePriceLabelSmall_c
-                    Try
-                        cr.SetDataSource(line)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                    Catch ex As Exception
-                        MsgBox(ex.ToString)
-                    End Try
-                End Using
-
+                'Line1, Line2, unit_price, exp, serial, lot,price, weigh,ean_code, barcode
+                label = String.Format(piecePriceLabel, line1, line2, unit_price, exp_date,
+                                      serial_no, lot_no, price, qty_str, ean_code, barcode)
             Else
-                Using cr As New PieceNoPriceLabelSmall_c
-                    Try
-                        cr.SetDataSource(line)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                        cr.Close()
-                    Catch ex As Exception
-                        MsgBox(ex.ToString)
-                    End Try
-                End Using
-            End If
-        Else
-            If Not _printPrice Then
-                Using cr As New PieceLabel
-                    Try
-                        cr.SetDataSource(line)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                        cr.Close()
-                    Catch ex As Exception
-                        MsgBox(ex.ToString)
-                    End Try
-                End Using
-            Else
-                Using cr As New PiecePriceLabel
-                    Try
-                        cr.SetDataSource(line)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                        cr.Close()
+                'line1, line2, exp, serial, lot, weight,ean_code, barcode
+                label = String.Format(pieceLabel, line1, line2, exp_date, serial_no, lot_no, qty_str, ean_code, barcode)
 
-                    Catch ex As Exception
-                        MsgBox(ex.ToString)
-                    End Try
-                End Using
             End If
+        Next
+
+        If label.Length > 0 Then
+            Dim printer As New LinePrinter(My.Settings.printer)
+            printer.WriteChars(label, True)
+            printer.EndJob(True)
         End If
 
-        
+        'For Each r In line
+        '    If _printPrice Then
+
+        '        '0: Line1 1:Line2 2:price 3:unit price 4:exp date 5:weight 6:ean 7:barcode
+        '    End If
+        'Next
+
+        'If _printSize Then
+        '    If _printPrice Then
+        '        Using cr As New PiecePriceLabelSmall_c
+        '            Try
+        '                cr.SetDataSource(line)
+        '                cr.PrintToPrinter(1, False, 0, 0)
+        '            Catch ex As Exception
+        '                MsgBox(ex.ToString)
+        '            End Try
+        '        End Using
+
+        '    Else
+        '        Using cr As New PieceNoPriceLabelSmall_c
+        '            Try
+        '                cr.SetDataSource(line)
+        '                cr.PrintToPrinter(1, False, 0, 0)
+        '                cr.Close()
+        '            Catch ex As Exception
+        '                MsgBox(ex.ToString)
+        '            End Try
+        '        End Using
+        '    End If
+        'Else
+        '    If Not _printPrice Then
+        '        Using cr As New PieceLabel
+        '            Try
+        '                cr.SetDataSource(line)
+        '                cr.PrintToPrinter(1, False, 0, 0)
+        '                cr.Close()
+        '            Catch ex As Exception
+        '                MsgBox(ex.ToString)
+        '            End Try
+        '        End Using
+        '    Else
+        '        Using cr As New PiecePriceLabel
+        '            Try
+        '                cr.SetDataSource(line)
+        '                cr.PrintToPrinter(1, False, 0, 0)
+        '                cr.Close()
+
+        '            Catch ex As Exception
+        '                MsgBox(ex.ToString)
+        '            End Try
+        '        End Using
+        '    End If
+        'End If
+
+
 
     End Sub
 
@@ -802,7 +1058,6 @@ Public Class PieceOperation
                         db.mrp_order_line.ApplyCurrentValues(line)
                     Next
 
-
                     Try
                         Dim ord As mrp_order_line = lines.ToList()(0)
                         Dim listOrderLine As New List(Of mrp_order_line)
@@ -810,45 +1065,72 @@ Public Class PieceOperation
                         Dim dt2 As New DataTable
                         dt2 = dt.Clone
 
+                        Dim label As String = ""
+                        Dim price_label As String = ""
+
                         For Each row As DataRow In dt.Rows
 
-                            row("code") = "Rp. " & _product.price_per_kg & "/Kg"
-                            row("line1") = case_prod.name
-                            row("line2") = case_prod.name2
-                            row("qty") = totalWeight
-                            row("unit_price") = no_of_pcs
-                            row("eancode") = setEAN13CodeFont1(case_prod.ean13)
-                            row("exp_date") = ord.exp_date
-                            row("lot_no") = ord.lot_no
-                            row("isPrintComp") = _printSlogan
-                            row("serial_no") = case_serial_no
-                            row("price") = (totalWeight / 1000) * _product.price_per_kg
-                            row("barcode") = "*" & case_serial_no & "." & ord.lot_no & "." & ord.exp_date & "." & totalWeight & "*"
-                            dt2.Rows.Add(row.ItemArray)
+                            Dim barcode As String = case_serial_no & "." & ord.lot_no & "." & ord.exp_date & "." & totalWeight
+                            Dim eancode As String = setEAN13CodeFont1(case_prod.ean13)
+                            Dim ttl_weight_str As String = ""
+
+                            If totalWeight > 999 Then
+                                ttl_weight_str = String.Format("{0} Kg", (totalWeight / 1000))
+                            Else
+                                ttl_weight_str = String.Format("{0} g", totalWeight)
+                            End If
+
+
+                            'Line1, Line2, qty, serial, exp, lot, weight, ean, barcode
+                            label = String.Format(csLabel, case_prod.name, case_prod.name2, no_of_pcs,
+                                                  case_serial_no, ord.exp_date, ord.lot_no, ttl_weight_str,
+                                                  eancode, barcode)
+
+                            Dim price As Integer = (totalWeight / 1000) * _product.price_per_kg
+                            'Line1, Line2, price, unit_price, exp, qty, lot, weight, ean, barcode
+                            price_label = String.Format(csPriceLabel, case_prod.name, case_prod.name2, price,
+                            _product.price_per_kg, ord.exp_date, no_of_pcs, ord.lot_no, ttl_weight_str, eancode, barcode)
+                            'setEAN13CodeFont1(case_prod.ean13)
+                            'row("code") = "Rp. " & _product.price_per_kg & "/Kg"
+                            'row("line1") = case_prod.name
+                            'row("line2") = case_prod.name2
+                            'row("qty") = totalWeight
+                            'row("unit_price") = no_of_pcs
+                            'row("eancode") = setEAN13CodeFont1(case_prod.ean13)
+                            'row("exp_date") = ord.exp_date
+                            'row("lot_no") = ord.lot_no
+                            'row("isPrintComp") = _printSlogan
+                            'row("serial_no") = case_serial_no
+                            'row("price") = (totalWeight / 1000) * _product.price_per_kg
+                            'row("barcode") = "*" & case_serial_no & "." & ord.lot_no & "." & ord.exp_date & "." & totalWeight & "*"
+                            'dt2.Rows.Add(row.ItemArray)
                             Exit For
                         Next
-
-
-                        If _printCasePrice Then
-                            Using crPrice As New CasePriceLabel
-                                crPrice.SetDataSource(dt2)
-                                For i As Integer = 1 To case_prod.no_of_barcode
-                                    crPrice.PrintToPrinter(1, False, 0, 0)
-                                Next
-                            End Using
-                        Else
-                            Using cr As New CaseLabel
-                                cr.SetDataSource(dt2)
-                                For i As Integer = 1 To case_prod.no_of_barcode
-                                    cr.PrintToPrinter(1, False, 0, 0)
-                                Next
-                            End Using
-                        End If
-
+                        Dim printer As New LinePrinter(My.Settings.printer)
+                        For i As Integer = 1 To case_prod.no_of_barcode
+                            If _printCasePrice Then
+                                printer.WriteChars(price_label, True)
+                            Else
+                                printer.WriteChars(label, True)
+                            End If
+                        Next
+                        printer.EndJob(True)
                         db.SaveChanges()
-
-
-
+                        'If _printCasePrice Then
+                        '    Using crPrice As New CasePriceLabel
+                        '        crPrice.SetDataSource(dt2)
+                        '        For i As Integer = 1 To case_prod.no_of_barcode
+                        '            crPrice.PrintToPrinter(1, False, 0, 0)
+                        '        Next
+                        '    End Using
+                        'Else
+                        '    Using cr As New CaseLabel
+                        '        cr.SetDataSource(dt2)
+                        '        For i As Integer = 1 To case_prod.no_of_barcode
+                        '            cr.PrintToPrinter(1, False, 0, 0)
+                        '        Next
+                        '    End Using
+                        'End If
                     Catch ex As Exception
                         MsgBox(ex.ToString)
                     End Try
@@ -862,48 +1144,129 @@ Public Class PieceOperation
         If box_id > 0 Then
             If MsgBox("Do you want print Case Summary?", MsgBoxStyle.YesNo, "Case Summary") = MsgBoxResult.Yes Then
                 Using db As New MrpPosEntities
-                    Dim cr As New cSummary
+                    'Dim cr As New cSummary
                     Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join oc In db.mrp_order_case
                                                                          On ol.box_id Equals oc.id
                                                                           Where oc.id = box_id
                                                                           Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs}) _
                                                                                .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no, .serial_no = x.serial_no, .qty = x.qty, _
                                                                                                                                           .total_weight = x.total_qty, .unit_price = x.unit_price, .serial_no1 = "", .qty1 = ""})
+
                     Dim dt As DataTable = lines.ToADOTable
 
-                    Dim tDt1 As New DataTable
-                    Dim tDt2 As New DataTable
-                    tDt1 = dt.Clone
-                    tDt2 = dt.Clone
+                    Dim rowsCnt As Integer = dt.Rows.Count
+                    Dim noRecordsShow As Integer = 20
+                    Dim pg As Integer = Math.Ceiling(rowsCnt / noRecordsShow)
+                    Dim printdt As String = DateTime.Now.ToString(dtFormat)
+
+                    'pages, serial, weight, pcs,print dt
+                    Dim csHeaderLabel As String = ""
+                    Dim printer1 As New LinePrinter(My.Settings.printer)
+
+                    Dim no_recs As Integer = 1
+                    Dim page As Integer = 1
+                    Dim h As Integer = 93
+                    Dim detail As String = ""
+                    Dim r1 As String = "^FT14,{0}^A0N,14,14^FH\^FD{1}^FS^FT107,{0}^A0N,14,14^FH\^FD{2}^FS"
+                    Dim r2 As String = "^FT202,{0}^A0N,14,14^FH\^FD{1}^FS^FT294,{0}^A0N,14,14^FH\^FD{2}^FS"
+                    Dim rEnd As String = "^FT170,303^A0N,23,24^FH\^FDEND^FS"
 
                     For i As Integer = 0 To dt.Rows.Count - 1
+                        Dim case_serial As String = dt.Rows(i)("case_serial_no")
+                        If i = 0 Then
+
+                            Dim total_weight As Double = dt.Rows(i)("total_weight")
+                            Dim total_pcs As Double = dt.Rows(i)("unit_price")
+                            Dim total_weight_str As String = ""
+                            If total_weight > 999 Then
+                                total_weight_str = String.Format("{0} Kg", (total_weight / 1000))
+                            Else
+                                total_weight_str = String.Format("{0} g", total_weight)
+                            End If
+                            csHeaderLabel = String.Format(csSummaryHeader, pg, case_serial, total_weight_str, total_pcs, printdt)
+                            printer1.WriteChars(csHeaderLabel, True)
+                        End If
+
+                        If no_recs > 18 Then
+
+                            'pageno, totalpage, case_serial, details,end
+                            Dim detailLabels As String = ""
+
+                            If page = pg Then
+                                detailLabels = String.Format(csSummaryDetails, page, pg, case_serial, detail, rEnd)
+                            Else
+                                detailLabels = String.Format(csSummaryDetails, page, pg, case_serial, detail, "")
+                            End If
+                            printer1.WriteChars(detailLabels, True)
+                            page += 1
+                            h = 93
+                            no_recs = 1
+                            detail = ""
+                        End If
+
+                        Dim serial As String = dt.Rows(i)("serial_no")
+                        Dim qty As Double = dt.Rows(i)("qty")
+                        Dim qty_str As String = ""
+                        If qty > 999 Then
+                            qty_str = String.Format("{0} Kg", (qty / 1000))
+                        Else
+                            qty_str = String.Format("{0} g", qty)
+                        End If
+
                         If i Mod 2 = 0 Then
-                            tDt1.Rows.Add(dt.Rows(i).ItemArray)
+                            detail = detail & String.Format(r1, h, serial, qty_str)
+                        Else
+                            detail = detail & String.Format(r2, h, serial, qty_str)
+                            h += 22
                         End If
-                    Next
 
-                    For i As Integer = 0 To dt.Rows.Count - 1
-                        If i Mod 2 <> 0 Then
-                            tDt2.Rows.Add(dt.Rows(i).ItemArray)
+
+                        If i = rowsCnt - 1 Then
+                            Dim detailLabels As String = ""
+                            If page = pg Then
+                                detailLabels = String.Format(csSummaryDetails, page, pg, case_serial, detail, rEnd)
+                            Else
+                                detailLabels = String.Format(csSummaryDetails, page, pg, case_serial, detail, "")
+                            End If
+                            printer1.WriteChars(detailLabels, True)
                         End If
+                        no_recs += 1
                     Next
+                    printer1.EndJob(True)
 
-                    Dim ct As Integer = tDt1.Rows.Count
-                    Dim ct1 As Integer = tDt2.Rows.Count
+                    'Dim tDt1 As New DataTable
+                    'Dim tDt2 As New DataTable
+                    'tDt1 = dt.Clone
+                    'tDt2 = dt.Clone
 
-                    For i As Integer = 0 To ct - 1
-                        If ct1 > i Then
-                            tDt1.Rows(i)("serial_no1") = tDt2.Rows(i)("serial_no")
-                            tDt1.Rows(i)("qty1") = tDt2.Rows(i)("qty")
-                        End If
-                    Next
+                    'For i As Integer = 0 To dt.Rows.Count - 1
+                    '    If i Mod 2 = 0 Then
+                    '        tDt1.Rows.Add(dt.Rows(i).ItemArray)
+                    '    End If
+                    'Next
 
-                    Try
-                        cr.SetDataSource(tDt1)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                    Catch ex As Exception
-                        MsgBox(ex.Message)
-                    End Try
+                    'For i As Integer = 0 To dt.Rows.Count - 1
+                    '    If i Mod 2 <> 0 Then
+                    '        tDt2.Rows.Add(dt.Rows(i).ItemArray)
+                    '    End If
+                    'Next
+
+                    'Dim ct As Integer = tDt1.Rows.Count
+                    'Dim ct1 As Integer = tDt2.Rows.Count
+
+                    'For i As Integer = 0 To ct - 1
+                    '    If ct1 > i Then
+                    '        tDt1.Rows(i)("serial_no1") = tDt2.Rows(i)("serial_no")
+                    '        tDt1.Rows(i)("qty1") = tDt2.Rows(i)("qty")
+                    '    End If
+                    'Next
+
+                    'Try
+                    '    cr.SetDataSource(tDt1)
+                    '    cr.PrintToPrinter(1, False, 0, 0)
+                    'Catch ex As Exception
+                    '    MsgBox(ex.Message)
+                    'End Try
                 End Using
             End If
         End If
@@ -913,105 +1276,113 @@ Public Class PieceOperation
 
     Private Sub printCaseSummary(ByVal orderId As Integer)
         Using db As New MrpPosEntities
-            Dim cr As New cSummary
-            Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join oc In db.mrp_order_case
-                                                                 On ol.box_id Equals oc.id
-                                                                 Join od In db.mrp_order On od.id Equals ol.order_id
-                                                                  Where ol.order_id = orderId
-                                                                  Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs, .ordername = od.name}) _
-                                                                       .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no & "-" & x.ordername, .serial_no = x.serial_no, .qty = x.qty, _
-                                                                                                                                   .total_weight = x.total_qty, .unit_price = x.unit_price, .serial_no1 = "", .qty1 = ""})
+            'Dim cr As New cSummary
 
+            Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join oc In db.mrp_order_case
+                                                                On ol.box_id Equals oc.id
+                                                                Join od In db.mrp_order On od.id Equals ol.order_id
+                                                                 Where ol.order_id = orderId
+                                                                 Select New With {.case_serial_no = oc.serial_no, .serial_no = ol.serial_no, .qty = ol.qty, .total_qty = oc.qty, .unit_price = oc.no_of_pcs, .ordername = od.name}) _
+                                                                      .AsEnumerable().Select(Function(x) New mrp_order_line With {.case_serial_no = x.case_serial_no & "-" & x.ordername, .serial_no = x.serial_no, .qty = x.qty, _
+                                                                                                                                  .total_weight = x.total_qty, .unit_price = x.unit_price, .serial_no1 = "", .qty1 = "", .line1 = x.ordername})
 
             If lines.ToList.Count <= 0 Then Return
 
-            Dim dt As DataTable = lines.ToADOTable
+
 
             Dim case_serial_nos As New List(Of String)
+            Dim case_lines As New List(Of mrp_order_case)
 
-            Dim initCase As String = ""
-
+            Dim order_name As String = ""
             For Each k As mrp_order_line In lines.ToList
-                If case_serial_nos.Count <= 0 Then
-                    case_serial_nos.Add(k.case_serial_no)
-                Else
-                    If Not case_serial_nos.Contains(k.case_serial_no) Then
-                        case_serial_nos.Add(k.case_serial_no)
-                    End If
+                If order_name.Length <= 0 Then
+                    order_name = k.line1
                 End If
 
-
+                If Not case_serial_nos.Contains(k.case_serial_no) Then
+                    Dim cs_order As New mrp_order_case
+                    cs_order.qty = k.total_weight
+                    cs_order.no_of_pcs = k.unit_price
+                    cs_order.serial_no = k.case_serial_no
+                    case_lines.Add(cs_order)
+                    case_serial_nos.Add(cs_order.serial_no)
+                Else
+                    Continue For
+                End If
             Next
 
-            Dim tDt1 As New DataTable
-            Dim tDt2 As New DataTable
-            tDt1 = dt.Clone
-            tDt2 = dt.Clone
+            Dim r1 As String = "^FT14,{3}^A0N,14,14^FH\^FD{0}^FS" _
+                            & "^FT218,{3}^A0N,14,14^FH\^FD{1}^FS" _
+                            & "^FT308,{3}^A0N,14,14^FH\^FD{2}^FS" ' case_no, pcs, weight, h
 
-            For Each cs As String In case_serial_nos
-                tDt1.Clear()
-                tDt2.Clear()
+            Dim rEnd As String = "^FT193,304^A0N,23,24^FH\^FDEND^FS"
+            Dim printdt As String = DateTime.Now.ToString(dtFormat)
+            Dim printer1 As New LinePrinter(My.Settings.printer)
 
-                For i As Integer = 0 To dt.Rows.Count - 1
+            Dim rowsCnt As Integer = case_lines.Count
+            Dim noRecordsShow As Integer = 9
+            Dim pg As Integer = Math.Ceiling(rowsCnt / noRecordsShow)
 
-                    If i Mod 2 = 0 Then
-                        If dt.Rows(i)("case_serial_no") = cs Then
-                            tDt1.Rows.Add(dt.Rows(i).ItemArray)
-                        End If
+            Dim rec_cnt As Integer = 1
+            Dim page As Integer = 1
+            Dim h As Integer = 93
+            Dim detail As String = ""
+            Dim i As Integer = 0
+
+            For Each cs As mrp_order_case In case_lines
+                If rec_cnt > noRecordsShow Then
+                    'page, no page, details, end
+                    Dim detailLabels As String = ""
+
+                    If page = pg Then
+                        detailLabels = String.Format(csSummary, page, pg, detail, rEnd)
+                    Else
+                        detailLabels = String.Format(csSummary, page, pg, detail, "")
                     End If
-                Next
 
-                For i As Integer = 0 To dt.Rows.Count - 1
-                    If i Mod 2 <> 0 Then
-                        If dt.Rows(i)("case_serial_no") = cs Then
-                            tDt2.Rows.Add(dt.Rows(i).ItemArray)
-                        End If
-                    End If
-                Next
+                    printer1.WriteChars(detailLabels, True)
 
-                Dim ct As Integer = tDt1.Rows.Count
-                Dim ct1 As Integer = tDt2.Rows.Count
-
-                If ct >= ct1 Then
-                    For i As Integer = 0 To ct - 1
-                        If ct1 > i Then
-                            tDt1.Rows(i)("serial_no1") = tDt2.Rows(i)("serial_no")
-                            tDt1.Rows(i)("qty1") = tDt2.Rows(i)("qty")
-                        End If
-                    Next
-                    Try
-                        cr.SetDataSource(tDt1)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                    Catch ex As Exception
-                        MsgBox(ex.Message)
-                    End Try
-                Else
-                    For i As Integer = 0 To ct - 1
-                        If ct1 > i Then
-                            tDt2.Rows(i)("serial_no1") = tDt1.Rows(i)("serial_no")
-                            tDt2.Rows(i)("qty1") = tDt1.Rows(i)("qty")
-                        End If
-                    Next
-                    Try
-                        cr.SetDataSource(tDt2)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                    Catch ex As Exception
-                        MsgBox(ex.Message)
-                    End Try
+                    page += 1
+                    h = 93
+                    rec_cnt = 1
+                    detail = ""
                 End If
 
+                Dim qty As Double = cs.qty
+                Dim qty_str As String = ""
 
+                If qty > 999 Then
+                    qty_str = String.Format("{0} Kg", (qty / 1000))
+                Else
+                    qty_str = String.Format("{0} g", qty)
+                End If
+
+                detail += String.Format(r1, cs.serial_no, cs.no_of_pcs, qty_str, h)
+                h += 22
+
+                If i = rowsCnt - 1 Then
+                    Dim detailLabels As String = ""
+                    If page = pg Then
+                        'page, no page, details, end
+                        detailLabels = String.Format(csSummary, page, pg, detail, rEnd)
+                    Else
+                        detailLabels = String.Format(csSummary, page, pg, detail, "")
+                    End If
+                    printer1.WriteChars(detailLabels, True)
+                End If
+
+                i += 1
+                rec_cnt += 1
             Next
 
-
-
+            printer1.EndJob(True)
 
         End Using
     End Sub
 
     Private Sub printPieceSummary(ByVal orderId As Integer)
         Using db As New MrpPosEntities
-            Dim cr As New cSummary
+            'Dim cr As New cSummary
             Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line
                                                            Join od In db.mrp_order On od.id Equals ol.order_id
                                                            Where (ol.order_id = orderId And ol.box_id = 0)
@@ -1058,76 +1429,87 @@ Public Class PieceOperation
             Next
 
             Dim tDt1 As New DataTable
-            Dim tDt2 As New DataTable
             tDt1 = dt.Clone
-            tDt2 = dt.Clone
+
+            Dim printer1 As New LinePrinter(My.Settings.printer)
+            Dim noRecordsShow As Integer = 20
+            Dim printdt As String = DateTime.Now.ToString(dtFormat)
+            Dim r1 As String = "^FT14,{0}^A0N,14,14^FH\^FD{1}^FS^FT107,{0}^A0N,14,14^FH\^FD{2}^FS"
+            Dim r2 As String = "^FT202,{0}^A0N,14,14^FH\^FD{1}^FS^FT294,{0}^A0N,14,14^FH\^FD{2}^FS"
+            Dim rEnd As String = "^FT170,303^A0N,23,24^FH\^FDEND^FS"
+
 
             For Each cs As String In case_serial_nos
                 tDt1.Clear()
-                tDt2.Clear()
-
                 For i As Integer = 0 To dt.Rows.Count - 1
+                    If dt.Rows(i)("case_serial_no") = cs Then
+                        tDt1.Rows.Add(dt.Rows(i).ItemArray)
+                    End If
+                Next
+
+                Dim rowsCnt As Integer = tDt1.Rows.Count
+                Dim pg As Integer = Math.Ceiling(rowsCnt / noRecordsShow)
+                Dim no_recs As Integer = 1
+                Dim page As Integer = 1
+                Dim detail As String = ""
+                Dim h As Integer = 93
+
+                For i As Integer = 0 To tDt1.Rows.Count - 1
+
+                    If no_recs > 18 Then
+
+                        'pageno, totalpage, case_serial, details,end
+                        Dim detailLabels As String = ""
+
+                        If page = pg Then
+                            detailLabels = String.Format(pcsSummary, page, pg, cs, detail, rEnd)
+                        Else
+                            detailLabels = String.Format(pcsSummary, page, pg, cs, detail, "")
+                        End If
+                        printer1.WriteChars(detailLabels, True)
+                        page += 1
+                        h = 93
+                        no_recs = 1
+                        detail = ""
+                    End If
+
+                    Dim serial As String = dt.Rows(i)("serial_no")
+                    Dim qty As Double = dt.Rows(i)("qty")
+                    Dim qty_str As String = ""
+                    If qty > 999 Then
+                        qty_str = String.Format("{0} Kg", (qty / 1000))
+                    Else
+                        qty_str = String.Format("{0} g", qty)
+                    End If
 
                     If i Mod 2 = 0 Then
-                        If dt.Rows(i)("case_serial_no") = cs Then
-                            tDt1.Rows.Add(dt.Rows(i).ItemArray)
-                        End If
+                        detail = detail & String.Format(r1, h, serial, qty_str)
+                    Else
+                        detail = detail & String.Format(r2, h, serial, qty_str)
+                        h += 22
                     End If
-                Next
 
-                For i As Integer = 0 To dt.Rows.Count - 1
-                    If i Mod 2 <> 0 Then
-                        If dt.Rows(i)("case_serial_no") = cs Then
-                            tDt2.Rows.Add(dt.Rows(i).ItemArray)
+
+                    If i = rowsCnt - 1 Then
+                        Dim detailLabels As String = ""
+                        If page = pg Then
+                            detailLabels = String.Format(pcsSummary, page, pg, cs, detail, rEnd)
+                        Else
+                            detailLabels = String.Format(pcsSummary, page, pg, cs, detail, "")
                         End If
+                        printer1.WriteChars(detailLabels, True)
                     End If
+                    no_recs += 1
                 Next
-
-                Dim ct As Integer = tDt1.Rows.Count
-                Dim ct1 As Integer = tDt2.Rows.Count
-
-                If ct >= ct1 Then
-                    For i As Integer = 0 To ct - 1
-                        If ct1 > i Then
-                            tDt1.Rows(i)("serial_no1") = tDt2.Rows(i)("serial_no")
-                            tDt1.Rows(i)("qty1") = tDt2.Rows(i)("qty")
-                        End If
-                    Next
-                    Try
-                        cr.SetDataSource(tDt1)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                    Catch ex As Exception
-                        MsgBox(ex.Message)
-                    End Try
-                Else
-                    For i As Integer = 0 To ct - 1
-                        If ct1 > i Then
-                            tDt2.Rows(i)("serial_no1") = tDt1.Rows(i)("serial_no")
-                            tDt2.Rows(i)("qty1") = tDt1.Rows(i)("qty")
-                        End If
-                    Next
-                    Try
-                        cr.SetDataSource(tDt2)
-                        cr.PrintToPrinter(1, False, 0, 0)
-                    Catch ex As Exception
-                        MsgBox(ex.Message)
-                    End Try
-                End If
-
-
             Next
-
-
-
+            printer1.EndJob(True)
 
         End Using
     End Sub
 
     Private Sub printSummaryLabel()
-        Dim cr As New PieceSummaryLabel
-
+        'Dim cr As New PieceSummaryLabel
         Using db As New MrpPosEntities
-
 
             Dim lines As IEnumerable(Of mrp_order_line) = (From ol In db.mrp_order_line Join pp In db.product_product On ol.product_id Equals pp.id
                                                                  Join lot In db.mrp_prod_lot On ol.prodlot_id Equals lot.id
@@ -1143,7 +1525,6 @@ Public Class PieceOperation
             Dim no_of_box As Integer = (From b In db.mrp_order_case Where b.order_id = _orderId Select b).Count
 
             If lines.ToList.Count > 0 Then
-
                 Dim cnt As Integer = 0
                 Dim totalPrice As Integer = 0
                 Dim no_of_pcs As Integer = 0
@@ -1153,33 +1534,54 @@ Public Class PieceOperation
                     no_of_pcs += 1
                 Next
 
-
-
                 Dim dt As DataTable = lines.ToADOTable
                 Dim dt2 As New DataTable
                 dt2 = dt.Clone
 
                 For Each row As DataRow In dt.Rows
-
                     row("qty") = cnt
                     row("unit_price") = no_of_pcs & " Pcs" & vbNewLine & no_of_box & " Case(s)"
                     dt2.Rows.Add(row.ItemArray)
                     Exit For
                 Next
 
-                Try
-                    cr.SetDataSource(dt2)
+                Dim rwCount As Integer = dt2.Rows.Count
+                Dim printon As String = DateTime.Now.ToString(dtFormat)
+                Dim printer1 As New LinePrinter(My.Settings.printer)
+                For i As Integer = 0 To rwCount - 1
+                    Dim line1 As String = dt2.Rows(i)("line1")
+                    Dim line2 As String = dt2.Rows(i)("line2")
+                    Dim code As String = dt2.Rows(i)("code")
+                    Dim lot_no As String = dt2.Rows(i)("lot_no")
+                    Dim exp As String = dt2.Rows(i)("exp_date")
+                    Dim ean As String = dt2.Rows(i)("eancode")
+                    Dim qty As Double = dt2.Rows(i)("qty")
+                    Dim qty_str As String = ""
+                    If qty > 999 Then
+                        qty_str = String.Format("{0} Kg", (qty / 1000))
+                    Else
+                        qty_str = String.Format("{0} g", qty)
+                    End If
 
-                    cr.PrintToPrinter(1, False, 0, 0)
+                    'Line1, line2, code, lot,exp,ean, weight, pcs, case, print_on
+                    Dim label As String = String.Format(operationSummaryLabel, line1, line2,
+                                                        code, lot_no, exp, ean, qty_str, no_of_pcs,
+                                                        no_of_box, printon)
+                    printer1.WriteChars(label, True)
+                Next
+                printer1.EndJob(True)
 
-                    printCaseSummary(_orderId)
+                'Try
+                '    cr.SetDataSource(dt2)
 
-                    printPieceSummary(_orderId)
-                Catch ex As Exception
+                '    cr.PrintToPrinter(1, False, 0, 0)
 
-                End Try
+                printCaseSummary(_orderId)
 
+                printPieceSummary(_orderId)
+                'Catch ex As Exception
 
+                'End Try
             End If
         End Using
 
@@ -1326,8 +1728,8 @@ Public Class PieceOperation
                                                                             .lot_no = lot.name, .qty = ol.qty, .price = ol.price, .unit_price = pp.price_per_kg,
                                                                             .exp_date = lot.expired_date, .eanCodeFont = pp.ean13, .serial_no = ol.serial_no}) _
                                                                 .AsEnumerable().Select(Function(x) New mrp_order_line With {.id = x.id, .code = x.code, .line1 = x.line1, .line2 = x.line2, .eancode = setEAN13CodeFont1(x.eancode), .serial_no = x.serial_no, _
-                                                                   .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = "Rp. " & toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
-                                                                                                                            .barcode = "*" & setEAN13CodeSales("21" & x.code & x.qty.PadLeft(5, "0"c)) & "*"})
+                                                                   .lot_no = x.lot_no, .qty = x.qty, .price = toDispCurrency(x.price), .unit_price = toDispCurrency(x.unit_price) & "/Kg", .exp_date = Format(x.exp_date, "ddMMyy"), .isPrintComp = _printSlogan,
+                                                                                                                            .barcode = setEAN13CodeSales("21" & x.code & x.qty.PadLeft(5, "0"c))})
 
 
             tbWeight.BackColor = Color.FromKnownColor(KnownColor.Window)
@@ -1339,7 +1741,7 @@ Public Class PieceOperation
             Call setSummary()
 
             Call printLabel(lines.ToADOTable())
-            Call printCaseLabel()
+            ' Call printCaseLabel()
         End Using
 
     End Sub
@@ -2182,18 +2584,31 @@ Public Class PieceOperation
             tbWeight.Text = "000"
 
 
-            Call refreshOrderLineGrid()
-            Call refreshBoxListGrid()
-            Call setSummary()
+ 
 
-            Call printLabel(lines.ToADOTable())
-            Call printCaseLabel()
+            'Call printLabel(lines.ToADOTable())
+            'Call printCaseLabel()
         End Using
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        For i As Integer = 1 To 99
+        For i As Integer = 1 To 23
             test(i * 857)
         Next
     End Sub
+
+    Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        For i As Integer = 1 To 23
+            test(i * 857)
+        Next
+        Call refreshOrderLineGrid()
+        Call refreshBoxListGrid()
+        Call setSummary()
+    End Sub
+
+    Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        printCaseSummary(4172)
+        printPieceSummary(4172)
+    End Sub
+
 End Class

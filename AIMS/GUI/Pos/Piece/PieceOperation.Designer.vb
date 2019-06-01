@@ -125,6 +125,7 @@ Partial Class PieceOperation
         Me.pctWeightImage = New System.Windows.Forms.PictureBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.tbWeight = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -140,6 +141,7 @@ Partial Class PieceOperation
         Me.MrpPos2 = New AIMS.MrpPos()
         Me.TitleToolStripLabel = New System.Windows.Forms.ToolStripLabel()
         Me.TitleToolStrip = New System.Windows.Forms.ToolStrip()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -164,6 +166,7 @@ Partial Class PieceOperation
         Me.GroupBox2.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.pctWeightImage, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel3.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel6.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -178,15 +181,17 @@ Partial Class PieceOperation
         '
         Me.Panel1.Controls.Add(Me.SplitContainer1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(0, 28)
+        Me.Panel1.Location = New System.Drawing.Point(0, 41)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1135, 600)
+        Me.Panel1.Size = New System.Drawing.Size(1702, 925)
         Me.Panel1.TabIndex = 7
         '
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.SplitContainer1.Name = "SplitContainer1"
         '
         'SplitContainer1.Panel1
@@ -197,8 +202,9 @@ Partial Class PieceOperation
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.GroupBox1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1135, 600)
-        Me.SplitContainer1.SplitterDistance = 740
+        Me.SplitContainer1.Size = New System.Drawing.Size(1702, 925)
+        Me.SplitContainer1.SplitterDistance = 1109
+        Me.SplitContainer1.SplitterWidth = 6
         Me.SplitContainer1.TabIndex = 0
         '
         'Panel4
@@ -207,8 +213,9 @@ Partial Class PieceOperation
         Me.Panel4.Controls.Add(Me.lvProductImage)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(740, 600)
+        Me.Panel4.Size = New System.Drawing.Size(1109, 925)
         Me.Panel4.TabIndex = 5
         '
         'pnlImageScan
@@ -220,8 +227,9 @@ Partial Class PieceOperation
         Me.pnlImageScan.Controls.Add(Me.Panel5)
         Me.pnlImageScan.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlImageScan.Location = New System.Drawing.Point(0, 0)
+        Me.pnlImageScan.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pnlImageScan.Name = "pnlImageScan"
-        Me.pnlImageScan.Size = New System.Drawing.Size(740, 600)
+        Me.pnlImageScan.Size = New System.Drawing.Size(1109, 925)
         Me.pnlImageScan.TabIndex = 3
         '
         'pnlLotNo
@@ -242,8 +250,9 @@ Partial Class PieceOperation
         Me.pnlLotNo.Controls.Add(Me.Label7)
         Me.pnlLotNo.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlLotNo.Location = New System.Drawing.Point(0, 0)
+        Me.pnlLotNo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pnlLotNo.Name = "pnlLotNo"
-        Me.pnlLotNo.Size = New System.Drawing.Size(738, 498)
+        Me.pnlLotNo.Size = New System.Drawing.Size(1107, 770)
         Me.pnlLotNo.TabIndex = 13
         '
         'pnlOrder
@@ -252,14 +261,16 @@ Partial Class PieceOperation
         Me.pnlOrder.Controls.Add(Me.dgvScanning)
         Me.pnlOrder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlOrder.Location = New System.Drawing.Point(0, 0)
+        Me.pnlOrder.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pnlOrder.Name = "pnlOrder"
-        Me.pnlOrder.Size = New System.Drawing.Size(738, 498)
+        Me.pnlOrder.Size = New System.Drawing.Size(1107, 770)
         Me.pnlOrder.TabIndex = 13
         '
         'pnlBoxInfo
         '
         Me.pnlBoxInfo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlBoxInfo.Location = New System.Drawing.Point(0, 254)
+        Me.pnlBoxInfo.Location = New System.Drawing.Point(0, 391)
+        Me.pnlBoxInfo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pnlBoxInfo.Name = "pnlBoxInfo"
         '
         'pnlBoxInfo.Panel1
@@ -269,8 +280,9 @@ Partial Class PieceOperation
         'pnlBoxInfo.Panel2
         '
         Me.pnlBoxInfo.Panel2.Controls.Add(Me.dgBoxLine)
-        Me.pnlBoxInfo.Size = New System.Drawing.Size(738, 244)
-        Me.pnlBoxInfo.SplitterDistance = 246
+        Me.pnlBoxInfo.Size = New System.Drawing.Size(1107, 379)
+        Me.pnlBoxInfo.SplitterDistance = 369
+        Me.pnlBoxInfo.SplitterWidth = 6
         Me.pnlBoxInfo.TabIndex = 2
         '
         'dgCaseData
@@ -297,6 +309,7 @@ Partial Class PieceOperation
         Me.dgCaseData.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgCaseData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgCaseData.Location = New System.Drawing.Point(0, 0)
+        Me.dgCaseData.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dgCaseData.MultiSelect = False
         Me.dgCaseData.Name = "dgCaseData"
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -319,7 +332,7 @@ Partial Class PieceOperation
         Me.dgCaseData.RowTemplate.Height = 24
         Me.dgCaseData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgCaseData.ShowEditingIcon = False
-        Me.dgCaseData.Size = New System.Drawing.Size(246, 244)
+        Me.dgCaseData.Size = New System.Drawing.Size(369, 379)
         Me.dgCaseData.StandardTab = True
         Me.dgCaseData.TabIndex = 2
         Me.dgCaseData.TabStop = False
@@ -431,6 +444,7 @@ Partial Class PieceOperation
         Me.dgBoxLine.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgBoxLine.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgBoxLine.Location = New System.Drawing.Point(0, 0)
+        Me.dgBoxLine.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dgBoxLine.MultiSelect = False
         Me.dgBoxLine.Name = "dgBoxLine"
         DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -453,7 +467,7 @@ Partial Class PieceOperation
         Me.dgBoxLine.RowTemplate.Height = 24
         Me.dgBoxLine.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgBoxLine.ShowEditingIcon = False
-        Me.dgBoxLine.Size = New System.Drawing.Size(488, 244)
+        Me.dgBoxLine.Size = New System.Drawing.Size(732, 379)
         Me.dgBoxLine.StandardTab = True
         Me.dgBoxLine.TabIndex = 2
         Me.dgBoxLine.TabStop = False
@@ -551,6 +565,7 @@ Partial Class PieceOperation
         Me.dgvScanning.Dock = System.Windows.Forms.DockStyle.Top
         Me.dgvScanning.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvScanning.Location = New System.Drawing.Point(0, 0)
+        Me.dgvScanning.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.dgvScanning.MultiSelect = False
         Me.dgvScanning.Name = "dgvScanning"
         DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -573,7 +588,7 @@ Partial Class PieceOperation
         Me.dgvScanning.RowTemplate.Height = 24
         Me.dgvScanning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvScanning.ShowEditingIcon = False
-        Me.dgvScanning.Size = New System.Drawing.Size(738, 254)
+        Me.dgvScanning.Size = New System.Drawing.Size(1107, 391)
         Me.dgvScanning.StandardTab = True
         Me.dgvScanning.TabIndex = 1
         Me.dgvScanning.TabStop = False
@@ -739,9 +754,10 @@ Partial Class PieceOperation
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(438, 143)
+        Me.Label6.Location = New System.Drawing.Point(657, 220)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(114, 42)
+        Me.Label6.Size = New System.Drawing.Size(176, 64)
         Me.Label6.TabIndex = 132
         Me.Label6.Text = "Case :"
         '
@@ -751,18 +767,20 @@ Partial Class PieceOperation
         Me.cbPrice.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbPrice.FormattingEnabled = True
         Me.cbPrice.Items.AddRange(New Object() {"No", "Yes"})
-        Me.cbPrice.Location = New System.Drawing.Point(306, 140)
+        Me.cbPrice.Location = New System.Drawing.Point(459, 215)
+        Me.cbPrice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbPrice.Name = "cbPrice"
-        Me.cbPrice.Size = New System.Drawing.Size(110, 50)
+        Me.cbPrice.Size = New System.Drawing.Size(163, 72)
         Me.cbPrice.TabIndex = 126
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(11, 140)
+        Me.Label4.Location = New System.Drawing.Point(16, 215)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(228, 42)
+        Me.Label4.Size = New System.Drawing.Size(347, 64)
         Me.Label4.TabIndex = 125
         Me.Label4.Text = "* Print Price :"
         '
@@ -770,9 +788,10 @@ Partial Class PieceOperation
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(11, 74)
+        Me.Label3.Location = New System.Drawing.Point(16, 114)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(263, 42)
+        Me.Label3.Size = New System.Drawing.Size(402, 64)
         Me.Label3.TabIndex = 124
         Me.Label3.Text = "* How to Pack :"
         '
@@ -782,28 +801,31 @@ Partial Class PieceOperation
         Me.cbCasePack.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCasePack.FormattingEnabled = True
         Me.cbCasePack.Items.AddRange(New Object() {"By Pcs", "By Case"})
-        Me.cbCasePack.Location = New System.Drawing.Point(306, 71)
+        Me.cbCasePack.Location = New System.Drawing.Point(459, 109)
+        Me.cbCasePack.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbCasePack.Name = "cbCasePack"
-        Me.cbCasePack.Size = New System.Drawing.Size(172, 50)
+        Me.cbCasePack.Size = New System.Drawing.Size(256, 72)
         Me.cbCasePack.TabIndex = 123
         '
         'txtLotNo
         '
         Me.txtLotNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtLotNo.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtLotNo.Location = New System.Drawing.Point(306, 7)
+        Me.txtLotNo.Location = New System.Drawing.Point(459, 11)
+        Me.txtLotNo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.txtLotNo.MaxLength = 10
         Me.txtLotNo.Name = "txtLotNo"
-        Me.txtLotNo.Size = New System.Drawing.Size(238, 50)
+        Me.txtLotNo.Size = New System.Drawing.Size(356, 71)
         Me.txtLotNo.TabIndex = 121
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(11, 15)
+        Me.Label2.Location = New System.Drawing.Point(16, 23)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(172, 42)
+        Me.Label2.Size = New System.Drawing.Size(264, 64)
         Me.Label2.TabIndex = 122
         Me.Label2.Text = "* Lot No :"
         '
@@ -813,9 +835,11 @@ Partial Class PieceOperation
         Me.gbCaseProduct.Controls.Add(Me.lblCase)
         Me.gbCaseProduct.Controls.Add(Me.cbProductCode)
         Me.gbCaseProduct.Controls.Add(Me.tbQtyPerCase)
-        Me.gbCaseProduct.Location = New System.Drawing.Point(18, 269)
+        Me.gbCaseProduct.Location = New System.Drawing.Point(27, 414)
+        Me.gbCaseProduct.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.gbCaseProduct.Name = "gbCaseProduct"
-        Me.gbCaseProduct.Size = New System.Drawing.Size(573, 145)
+        Me.gbCaseProduct.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.gbCaseProduct.Size = New System.Drawing.Size(860, 223)
         Me.gbCaseProduct.TabIndex = 129
         Me.gbCaseProduct.TabStop = False
         Me.gbCaseProduct.Text = "Case Product"
@@ -824,9 +848,10 @@ Partial Class PieceOperation
         '
         Me.lblProductCode.AutoSize = True
         Me.lblProductCode.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblProductCode.Location = New System.Drawing.Point(6, 16)
+        Me.lblProductCode.Location = New System.Drawing.Point(9, 25)
+        Me.lblProductCode.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblProductCode.Name = "lblProductCode"
-        Me.lblProductCode.Size = New System.Drawing.Size(361, 42)
+        Me.lblProductCode.Size = New System.Drawing.Size(552, 64)
         Me.lblProductCode.TabIndex = 127
         Me.lblProductCode.Text = "* Case Product Code :"
         '
@@ -834,9 +859,10 @@ Partial Class PieceOperation
         '
         Me.lblCase.AutoSize = True
         Me.lblCase.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCase.Location = New System.Drawing.Point(42, 83)
+        Me.lblCase.Location = New System.Drawing.Point(63, 128)
+        Me.lblCase.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCase.Name = "lblCase"
-        Me.lblCase.Size = New System.Drawing.Size(237, 42)
+        Me.lblCase.Size = New System.Drawing.Size(363, 64)
         Me.lblCase.TabIndex = 128
         Me.lblCase.Text = "Pcs per Case :"
         '
@@ -844,28 +870,31 @@ Partial Class PieceOperation
         '
         Me.cbProductCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbProductCode.FormattingEnabled = True
-        Me.cbProductCode.Location = New System.Drawing.Point(373, 17)
+        Me.cbProductCode.Location = New System.Drawing.Point(560, 26)
+        Me.cbProductCode.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbProductCode.Name = "cbProductCode"
-        Me.cbProductCode.Size = New System.Drawing.Size(196, 47)
+        Me.cbProductCode.Size = New System.Drawing.Size(292, 69)
         Me.cbProductCode.TabIndex = 9
         '
         'tbQtyPerCase
         '
         Me.tbQtyPerCase.Enabled = False
         Me.tbQtyPerCase.Font = New System.Drawing.Font("Microsoft Sans Serif", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbQtyPerCase.Location = New System.Drawing.Point(301, 83)
+        Me.tbQtyPerCase.Location = New System.Drawing.Point(452, 128)
+        Me.tbQtyPerCase.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbQtyPerCase.MaxLength = 3
         Me.tbQtyPerCase.Name = "tbQtyPerCase"
-        Me.tbQtyPerCase.Size = New System.Drawing.Size(112, 47)
+        Me.tbQtyPerCase.Size = New System.Drawing.Size(166, 67)
         Me.tbQtyPerCase.TabIndex = 11
         '
         'Label5
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(11, 198)
+        Me.Label5.Location = New System.Drawing.Point(16, 305)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(258, 42)
+        Me.Label5.Size = New System.Drawing.Size(393, 64)
         Me.Label5.TabIndex = 130
         Me.Label5.Text = "* Print Slogan :"
         '
@@ -875,9 +904,10 @@ Partial Class PieceOperation
         Me.cbSlogan.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbSlogan.FormattingEnabled = True
         Me.cbSlogan.Items.AddRange(New Object() {"No", "Yes"})
-        Me.cbSlogan.Location = New System.Drawing.Point(306, 198)
+        Me.cbSlogan.Location = New System.Drawing.Point(459, 305)
+        Me.cbSlogan.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbSlogan.Name = "cbSlogan"
-        Me.cbSlogan.Size = New System.Drawing.Size(110, 50)
+        Me.cbSlogan.Size = New System.Drawing.Size(163, 72)
         Me.cbSlogan.TabIndex = 131
         '
         'cbCasePrice
@@ -886,9 +916,10 @@ Partial Class PieceOperation
         Me.cbCasePrice.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCasePrice.FormattingEnabled = True
         Me.cbCasePrice.Items.AddRange(New Object() {"No", "Yes"})
-        Me.cbCasePrice.Location = New System.Drawing.Point(548, 149)
+        Me.cbCasePrice.Location = New System.Drawing.Point(822, 229)
+        Me.cbCasePrice.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbCasePrice.Name = "cbCasePrice"
-        Me.cbCasePrice.Size = New System.Drawing.Size(110, 37)
+        Me.cbCasePrice.Size = New System.Drawing.Size(163, 51)
         Me.cbCasePrice.TabIndex = 133
         '
         'cbSize
@@ -897,18 +928,20 @@ Partial Class PieceOperation
         Me.cbSize.Font = New System.Drawing.Font("Tahoma", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbSize.FormattingEnabled = True
         Me.cbSize.Items.AddRange(New Object() {"6cm x 6cm", "10cm x 6cm"})
-        Me.cbSize.Location = New System.Drawing.Point(548, 207)
+        Me.cbSize.Location = New System.Drawing.Point(822, 318)
+        Me.cbSize.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.cbSize.Name = "cbSize"
-        Me.cbSize.Size = New System.Drawing.Size(147, 37)
+        Me.cbSize.Size = New System.Drawing.Size(218, 51)
         Me.cbSize.TabIndex = 134
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Tahoma", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(438, 201)
+        Me.Label7.Location = New System.Drawing.Point(657, 309)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(103, 42)
+        Me.Label7.Size = New System.Drawing.Size(158, 64)
         Me.Label7.TabIndex = 135
         Me.Label7.Text = "Size :"
         '
@@ -924,9 +957,10 @@ Partial Class PieceOperation
         Me.Panel5.Controls.Add(Me.btnBack)
         Me.Panel5.Controls.Add(Me.btnCancel)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel5.Location = New System.Drawing.Point(0, 498)
+        Me.Panel5.Location = New System.Drawing.Point(0, 770)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(738, 100)
+        Me.Panel5.Size = New System.Drawing.Size(1107, 153)
         Me.Panel5.TabIndex = 12
         '
         'btnConfirm
@@ -934,9 +968,10 @@ Partial Class PieceOperation
         Me.btnConfirm.BackgroundImage = Global.AIMS.My.Resources.Resources.validate
         Me.btnConfirm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnConfirm.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnConfirm.Location = New System.Drawing.Point(538, 0)
+        Me.btnConfirm.Location = New System.Drawing.Point(809, 0)
+        Me.btnConfirm.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnConfirm.Name = "btnConfirm"
-        Me.btnConfirm.Size = New System.Drawing.Size(99, 98)
+        Me.btnConfirm.Size = New System.Drawing.Size(148, 151)
         Me.btnConfirm.TabIndex = 11
         Me.btnConfirm.Text = "Close Production"
         Me.btnConfirm.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -947,9 +982,10 @@ Partial Class PieceOperation
         Me.btnDelete.BackgroundImage = Global.AIMS.My.Resources.Resources.Gnome_edit_delete_svg
         Me.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnDelete.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnDelete.Location = New System.Drawing.Point(396, 0)
+        Me.btnDelete.Location = New System.Drawing.Point(592, 0)
+        Me.btnDelete.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(99, 98)
+        Me.btnDelete.Size = New System.Drawing.Size(148, 151)
         Me.btnDelete.TabIndex = 10
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -960,9 +996,10 @@ Partial Class PieceOperation
         Me.btnCasePrint.BackgroundImage = Global.AIMS.My.Resources.Resources.Box_icon
         Me.btnCasePrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCasePrint.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnCasePrint.Location = New System.Drawing.Point(297, 0)
+        Me.btnCasePrint.Location = New System.Drawing.Point(444, 0)
+        Me.btnCasePrint.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnCasePrint.Name = "btnCasePrint"
-        Me.btnCasePrint.Size = New System.Drawing.Size(99, 98)
+        Me.btnCasePrint.Size = New System.Drawing.Size(148, 151)
         Me.btnCasePrint.TabIndex = 9
         Me.btnCasePrint.Text = "Case Print"
         Me.btnCasePrint.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -973,9 +1010,10 @@ Partial Class PieceOperation
         Me.btnReprint.BackgroundImage = Global.AIMS.My.Resources.Resources.printer
         Me.btnReprint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnReprint.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnReprint.Location = New System.Drawing.Point(198, 0)
+        Me.btnReprint.Location = New System.Drawing.Point(296, 0)
+        Me.btnReprint.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnReprint.Name = "btnReprint"
-        Me.btnReprint.Size = New System.Drawing.Size(99, 98)
+        Me.btnReprint.Size = New System.Drawing.Size(148, 151)
         Me.btnReprint.TabIndex = 8
         Me.btnReprint.Text = "Reprint"
         Me.btnReprint.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -986,9 +1024,10 @@ Partial Class PieceOperation
         Me.btnNext.BackgroundImage = Global.AIMS.My.Resources.Resources.go_next
         Me.btnNext.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnNext.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnNext.Location = New System.Drawing.Point(99, 0)
+        Me.btnNext.Location = New System.Drawing.Point(148, 0)
+        Me.btnNext.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(99, 98)
+        Me.btnNext.Size = New System.Drawing.Size(148, 151)
         Me.btnNext.TabIndex = 7
         Me.btnNext.Text = "Next"
         Me.btnNext.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -1000,8 +1039,9 @@ Partial Class PieceOperation
         Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnBack.Dock = System.Windows.Forms.DockStyle.Left
         Me.btnBack.Location = New System.Drawing.Point(0, 0)
+        Me.btnBack.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(99, 98)
+        Me.btnBack.Size = New System.Drawing.Size(148, 151)
         Me.btnBack.TabIndex = 6
         Me.btnBack.Text = "Previous"
         Me.btnBack.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -1012,9 +1052,10 @@ Partial Class PieceOperation
         Me.btnCancel.BackgroundImage = Global.AIMS.My.Resources.Resources.cancel_icon
         Me.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnCancel.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnCancel.Location = New System.Drawing.Point(637, 0)
+        Me.btnCancel.Location = New System.Drawing.Point(957, 0)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(99, 98)
+        Me.btnCancel.Size = New System.Drawing.Size(148, 151)
         Me.btnCancel.TabIndex = 2
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -1024,8 +1065,9 @@ Partial Class PieceOperation
         '
         Me.lvProductImage.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lvProductImage.Location = New System.Drawing.Point(0, 0)
+        Me.lvProductImage.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.lvProductImage.Name = "lvProductImage"
-        Me.lvProductImage.Size = New System.Drawing.Size(740, 600)
+        Me.lvProductImage.Size = New System.Drawing.Size(1109, 925)
         Me.lvProductImage.TabIndex = 2
         Me.lvProductImage.UseCompatibleStateImageBehavior = False
         '
@@ -1035,9 +1077,11 @@ Partial Class PieceOperation
         Me.GroupBox2.Controls.Add(Me.Panel7)
         Me.GroupBox2.Controls.Add(Me.Panel6)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 222)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 342)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(391, 378)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox2.Size = New System.Drawing.Size(587, 583)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Weigther"
@@ -1048,17 +1092,19 @@ Partial Class PieceOperation
         Me.Panel2.Controls.Add(Me.Panel8)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(3, 16)
+        Me.Panel2.Location = New System.Drawing.Point(4, 24)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(385, 158)
+        Me.Panel2.Size = New System.Drawing.Size(579, 245)
         Me.Panel2.TabIndex = 5
         '
         'pctWeightImage
         '
         Me.pctWeightImage.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pctWeightImage.Location = New System.Drawing.Point(127, 0)
+        Me.pctWeightImage.Location = New System.Drawing.Point(190, 0)
+        Me.pctWeightImage.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.pctWeightImage.Name = "pctWeightImage"
-        Me.pctWeightImage.Size = New System.Drawing.Size(131, 158)
+        Me.pctWeightImage.Size = New System.Drawing.Size(199, 245)
         Me.pctWeightImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pctWeightImage.TabIndex = 0
         Me.pctWeightImage.TabStop = False
@@ -1066,27 +1112,41 @@ Partial Class PieceOperation
         'Panel8
         '
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(258, 0)
+        Me.Panel8.Location = New System.Drawing.Point(389, 0)
+        Me.Panel8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(127, 158)
+        Me.Panel8.Size = New System.Drawing.Size(190, 245)
         Me.Panel8.TabIndex = 1
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.Button2)
+        Me.Panel3.Controls.Add(Me.Button1)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(127, 158)
+        Me.Panel3.Size = New System.Drawing.Size(190, 245)
         Me.Panel3.TabIndex = 0
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(76, 61)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 0
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Panel7
         '
         Me.Panel7.Controls.Add(Me.tbWeight)
         Me.Panel7.Controls.Add(Me.Label1)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(3, 174)
+        Me.Panel7.Location = New System.Drawing.Point(4, 269)
+        Me.Panel7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(385, 100)
+        Me.Panel7.Size = New System.Drawing.Size(579, 154)
         Me.Panel7.TabIndex = 4
         '
         'tbWeight
@@ -1095,8 +1155,9 @@ Partial Class PieceOperation
         Me.tbWeight.Enabled = False
         Me.tbWeight.Font = New System.Drawing.Font("Tahoma", 48.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbWeight.Location = New System.Drawing.Point(0, 0)
+        Me.tbWeight.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tbWeight.Name = "tbWeight"
-        Me.tbWeight.Size = New System.Drawing.Size(330, 85)
+        Me.tbWeight.Size = New System.Drawing.Size(497, 123)
         Me.tbWeight.TabIndex = 2
         Me.tbWeight.Text = "000"
         Me.tbWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
@@ -1106,9 +1167,10 @@ Partial Class PieceOperation
         Me.Label1.AutoSize = True
         Me.Label1.Dock = System.Windows.Forms.DockStyle.Right
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(330, 0)
+        Me.Label1.Location = New System.Drawing.Point(497, 0)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(55, 58)
+        Me.Label1.Size = New System.Drawing.Size(82, 87)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "g"
         '
@@ -1117,9 +1179,10 @@ Partial Class PieceOperation
         Me.Panel6.Controls.Add(Me.btnWeight)
         Me.Panel6.Controls.Add(Me.btnValidateWeight)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel6.Location = New System.Drawing.Point(3, 274)
+        Me.Panel6.Location = New System.Drawing.Point(4, 423)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(385, 101)
+        Me.Panel6.Size = New System.Drawing.Size(579, 155)
         Me.Panel6.TabIndex = 3
         '
         'btnWeight
@@ -1127,9 +1190,10 @@ Partial Class PieceOperation
         Me.btnWeight.BackgroundImage = Global.AIMS.My.Resources.Resources.scale_48x48
         Me.btnWeight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnWeight.Dock = System.Windows.Forms.DockStyle.Left
-        Me.btnWeight.Location = New System.Drawing.Point(99, 0)
+        Me.btnWeight.Location = New System.Drawing.Point(148, 0)
+        Me.btnWeight.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnWeight.Name = "btnWeight"
-        Me.btnWeight.Size = New System.Drawing.Size(99, 101)
+        Me.btnWeight.Size = New System.Drawing.Size(148, 155)
         Me.btnWeight.TabIndex = 7
         Me.btnWeight.Text = "Weight Scale"
         Me.btnWeight.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -1141,8 +1205,9 @@ Partial Class PieceOperation
         Me.btnValidateWeight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.btnValidateWeight.Dock = System.Windows.Forms.DockStyle.Left
         Me.btnValidateWeight.Location = New System.Drawing.Point(0, 0)
+        Me.btnValidateWeight.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.btnValidateWeight.Name = "btnValidateWeight"
-        Me.btnValidateWeight.Size = New System.Drawing.Size(99, 101)
+        Me.btnValidateWeight.Size = New System.Drawing.Size(148, 155)
         Me.btnValidateWeight.TabIndex = 5
         Me.btnValidateWeight.Text = "Validate"
         Me.btnValidateWeight.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -1153,8 +1218,10 @@ Partial Class PieceOperation
         Me.GroupBox1.Controls.Add(Me.RichTextBox1)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(391, 222)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Size = New System.Drawing.Size(587, 342)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Summary"
@@ -1162,10 +1229,11 @@ Partial Class PieceOperation
         'RichTextBox1
         '
         Me.RichTextBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.RichTextBox1.Location = New System.Drawing.Point(3, 16)
+        Me.RichTextBox1.Location = New System.Drawing.Point(4, 24)
+        Me.RichTextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(385, 203)
+        Me.RichTextBox1.Size = New System.Drawing.Size(579, 313)
         Me.RichTextBox1.TabIndex = 1
         Me.RichTextBox1.Text = ""
         '
@@ -1201,7 +1269,7 @@ Partial Class PieceOperation
         Me.TitleToolStripLabel.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TitleToolStripLabel.IsLink = True
         Me.TitleToolStripLabel.Name = "TitleToolStripLabel"
-        Me.TitleToolStripLabel.Size = New System.Drawing.Size(189, 25)
+        Me.TitleToolStripLabel.Size = New System.Drawing.Size(288, 38)
         Me.TitleToolStripLabel.Text = "Piece Scanning"
         Me.TitleToolStripLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         '
@@ -1213,19 +1281,30 @@ Partial Class PieceOperation
         Me.TitleToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TitleToolStripLabel})
         Me.TitleToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.TitleToolStrip.Name = "TitleToolStrip"
-        Me.TitleToolStrip.Size = New System.Drawing.Size(1135, 28)
+        Me.TitleToolStrip.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
+        Me.TitleToolStrip.Size = New System.Drawing.Size(1702, 41)
         Me.TitleToolStrip.TabIndex = 6
         Me.TitleToolStrip.Text = "ToolStrip3"
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(32, 16)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 1
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'PieceOperation
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Lavender
-        Me.ClientSize = New System.Drawing.Size(1135, 628)
+        Me.ClientSize = New System.Drawing.Size(1702, 966)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TitleToolStrip)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "PieceOperation"
         Me.TabText = "Piece Operation"
         Me.Text = "Piece Operation"
@@ -1255,6 +1334,7 @@ Partial Class PieceOperation
         Me.GroupBox2.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         CType(Me.pctWeightImage, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel3.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
         Me.Panel6.ResumeLayout(False)
@@ -1374,4 +1454,6 @@ Partial Class PieceOperation
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TitleToolStripLabel As System.Windows.Forms.ToolStripLabel
     Friend WithEvents TitleToolStrip As System.Windows.Forms.ToolStrip
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 End Class
