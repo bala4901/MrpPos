@@ -2597,7 +2597,7 @@ Public Class PieceOperation
         Next
     End Sub
 
-    Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs)
         For i As Integer = 1 To 23
             test(i * 857)
         Next
@@ -2606,7 +2606,7 @@ Public Class PieceOperation
         Call setSummary()
     End Sub
 
-    Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         printCaseSummary(4172)
         printPieceSummary(4172)
     End Sub
